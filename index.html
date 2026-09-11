@@ -280,10 +280,41 @@ h1,h2,h3,.font-display{font-family:Manrope,sans-serif}*{box-sizing:border-box}bu
 #resellerMarkupPanel{background:#080f16!important;border-color:rgba(230,184,63,.25)!important;border-radius:16px!important;box-shadow:0 25px 80px rgba(0,0,0,.55)!important}.category-chip{background:#080f16!important;border-color:var(--pt-line)!important}#searchInput{background:#080f16!important;border-color:var(--pt-line)!important}
 .pt-reseller{margin:40px 0 20px;padding:28px;border:1px solid rgba(230,184,63,.17);border-radius:19px;background:radial-gradient(circle at 80% 30%,rgba(230,184,63,.10),transparent 22rem),linear-gradient(110deg,#0b1218,#070c11);display:flex;align-items:center;justify-content:space-between;gap:20px}.pt-reseller h3{font-size:20px;margin:0 0 6px}.pt-reseller p{font-size:11px;color:#7f8a94;margin:0}.pt-reseller strong{color:var(--pt-gold2)}
 .pt-footer{border-top:1px solid var(--pt-line);margin-top:46px;padding:35px 0 28px;color:#68737d}.pt-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.pt-footer strong{color:#e9edf1;font:800 17px Manrope}.pt-footer p,.pt-footer a{font-size:9px;line-height:1.7}.pt-footer a{display:block;color:#727e88;margin:6px 0}
-body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{display:none!important}#tabCatalogo{max-width:none!important}#tabContacto,#tabNosotros,#tabOfertas{max-width:1480px!important}
+body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{display:block!important}#tabCatalogo{max-width:none!important}#tabContacto,#tabNosotros,#tabOfertas{max-width:1480px!important}
 @media(max-width:1100px){.pt-nav{display:none}.pt-brand{min-width:0}.pt-search{width:280px}.pt-categories{grid-template-columns:repeat(4,1fr)}#productList{grid-template-columns:repeat(3,minmax(0,1fr))!important}.pt-hero-copy{width:65%}.pt-visual{width:55%;opacity:.8}}
 @media(max-width:720px){.pt-header{height:64px}.pt-header-inner{padding:0 14px;gap:10px}.pt-page{padding-top:64px}.pt-brand strong{font-size:15px}.pt-brand small{font-size:7px}.pt-brand img{width:38px;height:38px}.pt-search{display:none}.pt-mode{margin-left:auto}.pt-wrap{padding:0 14px}.pt-hero-card{min-height:510px;border-radius:20px}.pt-hero-copy{padding:40px 24px;width:100%}.pt-hero h2{font-size:43px}.pt-hero-desc{font-size:12px}.pt-visual{width:100%;height:45%;top:auto;bottom:0;opacity:.72}.pt-laptop{width:190px;height:120px;right:20%;top:16%}.pt-phone{width:55px;height:110px;right:5%;top:27%}.pt-headphones{width:105px;height:105px;border-width:13px;right:28%;bottom:8%}.pt-charger{width:48px;height:62px;right:8%;bottom:12%}.pt-power{width:100px;height:34px;right:43%;bottom:10%}.pt-benefits{grid-template-columns:repeat(2,1fr)}.pt-benefit:first-child{border-radius:14px 0 0 0}.pt-benefit:nth-child(2){border-radius:0 14px 0 0}.pt-benefit:nth-child(3){border-radius:0 0 0 14px}.pt-benefit:last-child{border-radius:0 0 14px 0}.pt-categories{grid-template-columns:repeat(4,1fr)}#productList{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.product-card{min-height:300px}.product-card>div:first-child{height:150px!important}.product-card>div:nth-child(2){padding:10px!important}.product-card>div:last-child{padding:10px!important}.pt-section-head{margin-top:30px}.pt-reseller{flex-direction:column;align-items:flex-start}.pt-footer-grid{grid-template-columns:1fr 1fr}}
 
+
+/* === POWERTECH V2 POLISH === */
+.pt-hero-bg{background-image:linear-gradient(90deg,rgba(3,5,7,.98) 0%,rgba(3,5,7,.88) 34%,rgba(3,5,7,.35) 62%,rgba(3,5,7,.72) 100%),url('encabezado.jpg'),radial-gradient(circle at 78% 50%,rgba(230,184,63,.13),transparent 26rem);background-size:cover;background-position:center;}
+.pt-hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,5,7,.18),transparent 55%);pointer-events:none}
+#categoryChipsRow{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px}
+#categoryChipsRow .category-chip{min-height:78px;border-radius:14px!important;padding:10px 7px!important;white-space:normal!important;background:#080f16!important;color:#aeb7bf!important;border:1px solid rgba(255,255,255,.07)!important;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700!important}
+#categoryChipsRow .category-chip:hover{border-color:rgba(230,184,63,.38)!important;color:#fff!important;transform:translateY(-2px)}
+#categoryChipsRow .category-chip.bg-gold-muted{background:linear-gradient(135deg,#f5c64f,#dca72d)!important;color:#090b0d!important;border-color:transparent!important}
+#productList{min-height:80px;margin-top:15px}
+#noResults{background:#080f16;border:1px solid rgba(255,255,255,.07);border-radius:16px}
+/* Modal sizes adapted to the new desktop layout */
+#productModal>div.relative{width:min(1000px,94vw)!important;max-width:none!important;max-height:90vh!important;border-radius:24px!important;overflow:hidden!important}
+#productModal .p-4.pt-1{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;padding:30px!important;align-items:start}
+#productModal .p-4.pt-1>#modalGallery{grid-column:1;grid-row:1 / span 8;height:500px!important;border-radius:18px!important}
+#productModal .p-4.pt-1>#galleryDots{grid-column:1;grid-row:9}
+#productModal .p-4.pt-1>#gallerySwipeHint{grid-column:1;grid-row:10}
+#productModal .p-4.pt-1>#modalCategory,#productModal .p-4.pt-1>#modalTitle,#productModal .p-4.pt-1>#modalPrice,#productModal .p-4.pt-1>#modalDesc,#productModal .p-4.pt-1>h4,#productModal .p-4.pt-1>#modalSpecs,#productModal .p-4.pt-1>a{grid-column:2}
+#productModal .p-4.pt-1>#modalTitle{font-size:28px!important}
+#productModal .p-4.pt-1>#modalPrice{font-size:30px!important}
+#comboModal>div.relative{width:min(760px,94vw)!important;max-width:none!important;border-radius:24px!important;max-height:90vh!important}
+#comboModal .p-4.pt-1{padding:30px!important}
+#comboModal .p-4.pt-1 #comboTitle{font-size:30px!important}
+#comboModal .p-4.pt-1 #comboPrice{font-size:32px!important}
+.pt-combos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:18px}
+.pt-combo-card{position:relative;overflow:hidden;min-height:270px;padding:22px;border-radius:19px;border:1px solid rgba(230,184,63,.16);background:radial-gradient(circle at 80% 20%,rgba(230,184,63,.12),transparent 12rem),linear-gradient(145deg,#0c151d,#070c11);cursor:pointer;transition:.22s ease}
+.pt-combo-card:hover{transform:translateY(-5px);border-color:rgba(230,184,63,.42);box-shadow:0 25px 60px rgba(0,0,0,.35)}
+.pt-combo-icon{width:62px;height:62px;border-radius:17px;display:grid;place-items:center;background:rgba(230,184,63,.09);border:1px solid rgba(230,184,63,.22);font-size:29px;margin-bottom:22px}
+.pt-combo-badge{position:absolute;top:18px;right:18px;font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:#eec75b;background:rgba(230,184,63,.09);border:1px solid rgba(230,184,63,.18);padding:6px 8px;border-radius:999px}
+.pt-combo-card h4{font:800 17px Manrope;margin:0 0 8px;color:#fff}.pt-combo-card p{font-size:10px;line-height:1.6;color:#77838d;margin:0 0 18px}.pt-combo-price{font:800 21px Manrope;color:#ffc94f}
+@media(max-width:1100px){#categoryChipsRow{grid-template-columns:repeat(5,minmax(0,1fr))}.pt-combos{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){#categoryChipsRow{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}#categoryChipsRow .category-chip{min-height:67px;font-size:9px!important}.pt-combos{grid-template-columns:1fr}.pt-combo-card{min-height:220px}#productModal>div.relative,#comboModal>div.relative{width:100%!important;border-radius:20px 20px 0 0!important;max-height:94vh!important}#productModal .p-4.pt-1{display:block;padding:18px!important}#productModal .p-4.pt-1>#modalGallery{height:330px!important;margin-bottom:10px}#productModal .p-4.pt-1>#modalTitle{font-size:22px!important}#productModal .p-4.pt-1>#modalPrice{font-size:25px!important}#comboModal .p-4.pt-1{padding:20px!important}}
 </style>
 </head>
 
@@ -357,6 +388,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
   <div id="catalogModeSummary" class="mt-5 p-4 flex items-center justify-between"><div><p id="catalogModeLabel" class="text-xs font-bold text-white">Cliente · precios mayoristas</p><p class="text-[10px] text-gray-500 mt-1">Precios directos de Powertech</p></div><div id="markupBadge" class="hidden text-xs font-bold gold-text"></div></div>
   <section id="productList" class="pb-3"></section>
   <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">No encontramos productos que coincidan con tu búsqueda.</p>
+<div class="pt-section-head" style="margin-top:42px"><div><h3>Combos <span class="gold-text">destacados</span></h3><p>Armados para distintos tipos de comercios y emprendimientos.</p></div><button class="pt-link" onclick="switchTab('ofertas')">Ver todos →</button></div><div class="pt-combos"><div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div><div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div><div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div>
   <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');document.getElementById('resellerMarkupPanel').classList.remove('hidden')">Configurar mi margen&nbsp; →</button></section>
 </main>
 
@@ -364,7 +396,10 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 
 <main id="tabNosotros" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y revendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
 
-<main id="tabOfertas" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Ofertas</h3><p>Productos y combos con condiciones especiales.</p></div></div><div class="pt-reseller"><div><h3>Ofertas Powertech</h3><p>Explorá las oportunidades disponibles en el catálogo.</p></div><button class="pt-primary" onclick="goToOffersCategory()">Ver ofertas →</button></div></main>
+<main id="tabOfertas" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Ofertas y <span class="gold-text">Combos</span></h3><p>Opciones armadas para empezar, ampliar o abastecer tu comercio.</p></div><span class="pt-link">Precios mayoristas</span></div><div class="pt-combos">
+<div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div>
+<div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div>
+<div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div></main>
 
 <footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
 </div>
@@ -1636,7 +1671,15 @@ function updateCatalogModeUI(){
   const label = document.getElementById('catalogModeLabel');
   const badge = document.getElementById('markupBadge');
   const input = document.getElementById('markupInput');
+  const topMode = document.getElementById('ptModeText');
+  const topMarkup = document.getElementById('ptModeMarkup');
 
+  if(topMode) topMode.textContent = catalogMode === 'revendedor' ? 'Revendedor' : 'Cliente';
+  if(topMarkup) topMarkup.textContent = catalogMode === 'revendedor' ? `+${resellerMarkup}%` : 'Mayorista';
+  if(label) label.textContent = catalogMode === 'revendedor' ? `Revendedor · precio de venta con +${resellerMarkup}%` : 'Cliente · precios mayoristas';
+  if(badge){ badge.textContent = `+${resellerMarkup}%`; badge.classList.toggle('hidden',catalogMode !== 'revendedor'); }
+  if(panel) panel.classList.toggle('hidden',catalogMode !== 'revendedor');
+  if(input) input.value = resellerMarkup;
   if(!clientBtn || !resellerBtn) return;
 
   clientBtn.classList.remove('bg-gold-muted','text-black','text-gray-400');
@@ -2077,19 +2120,9 @@ function updateCategoryUI(){
 }
 
 function goToOffersCategory(){
-
-  activeCategory='combos-oferta';
-
-  switchTab('catalogo');
-
+  activeCategory=null;
   updateCategoryUI();
-  refreshList();
-
-  window.scrollTo({
-    top:0,
-    behavior:'smooth'
-  });
-
+  switchTab('ofertas');
 }
 
 
@@ -2682,21 +2715,6 @@ document.addEventListener(
   }
 );
 
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', ()=>{
-  if(typeof window.updateCatalogModeUI === 'function'){
-    const original=window.updateCatalogModeUI;
-    window.updateCatalogModeUI=function(){
-      original();
-      const t=document.getElementById('ptModeText');
-      const m=document.getElementById('ptModeMarkup');
-      if(t) t.textContent=(typeof catalogMode!=='undefined' && catalogMode==='revendedor')?'Revendedor':'Cliente';
-      if(m) m.textContent=(typeof catalogMode!=='undefined' && catalogMode==='revendedor')?`+${resellerMarkup}%`:'Mayorista';
-    };
-    window.updateCatalogModeUI();
-  }
-});
 </script>
 </body>
 </html>
