@@ -285,6 +285,26 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 @media(max-width:720px){.pt-header{height:64px}.pt-header-inner{padding:0 14px;gap:10px}.pt-page{padding-top:64px}.pt-brand strong{font-size:15px}.pt-brand small{font-size:7px}.pt-brand img{width:38px;height:38px}.pt-search{display:none}.pt-mode{margin-left:auto}.pt-wrap{padding:0 14px}.pt-hero-card{min-height:510px;border-radius:20px}.pt-hero-copy{padding:40px 24px;width:100%}.pt-hero h2{font-size:43px}.pt-hero-desc{font-size:12px}.pt-visual{width:100%;height:45%;top:auto;bottom:0;opacity:.72}.pt-laptop{width:190px;height:120px;right:20%;top:16%}.pt-phone{width:55px;height:110px;right:5%;top:27%}.pt-headphones{width:105px;height:105px;border-width:13px;right:28%;bottom:8%}.pt-charger{width:48px;height:62px;right:8%;bottom:12%}.pt-power{width:100px;height:34px;right:43%;bottom:10%}.pt-benefits{grid-template-columns:repeat(2,1fr)}.pt-benefit:first-child{border-radius:14px 0 0 0}.pt-benefit:nth-child(2){border-radius:0 14px 0 0}.pt-benefit:nth-child(3){border-radius:0 0 0 14px}.pt-benefit:last-child{border-radius:0 0 14px 0}.pt-categories{grid-template-columns:repeat(4,1fr)}#productList{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.product-card{min-height:300px}.product-card>div:first-child{height:150px!important}.product-card>div:nth-child(2){padding:10px!important}.product-card>div:last-child{padding:10px!important}.pt-section-head{margin-top:30px}.pt-reseller{flex-direction:column;align-items:flex-start}.pt-footer-grid{grid-template-columns:1fr 1fr}}
 
 
+
+/* === POWERTECH RESELLER ACCOUNT DRAWER === */
+.pt-account-overlay{position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(6px);z-index:150;opacity:1;transition:opacity .22s ease}
+.pt-account-drawer{position:fixed;z-index:151;top:0;right:0;height:100vh;width:min(390px,100vw);background:linear-gradient(180deg,#071018 0%,#03080d 100%);border-left:1px solid rgba(255,255,255,.09);box-shadow:-30px 0 90px rgba(0,0,0,.55);overflow-y:auto;transform:translateX(0);transition:transform .25s ease;padding:18px 16px 24px}
+.pt-account-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.pt-account-mode{display:flex;align-items:center;gap:11px;background:#091119;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:9px 12px;min-width:174px}
+.pt-account-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(230,184,63,.22);background:rgba(230,184,63,.06);color:var(--pt-gold2)}
+.pt-account-mode b{display:block;font-size:11px;color:#f6f7f8}.pt-account-mode span{display:block;font-size:9px;color:#8c98a2;margin-top:2px}.pt-account-mode .gold-text{color:var(--pt-gold2)}
+.pt-account-close{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#091119;color:#aab4bc;font-size:20px;line-height:1}
+.pt-account-card{border:1px solid rgba(255,255,255,.10);border-radius:15px;background:linear-gradient(180deg,rgba(9,18,26,.98),rgba(4,11,16,.98));overflow:hidden;margin-top:10px}
+.pt-account-row{padding:16px 17px;border-bottom:1px solid rgba(255,255,255,.075)}.pt-account-row:last-child{border-bottom:0}
+.pt-account-label{font-size:11px;font-weight:800;color:#eef2f5}.pt-account-muted{font-size:9px;color:#87939d;line-height:1.5;margin-top:4px}.pt-account-big{font-size:28px;line-height:1;font-weight:900;color:var(--pt-gold2);letter-spacing:-.04em;margin-top:8px}
+.pt-account-row-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.pt-account-btn{height:34px;padding:0 13px;border-radius:9px;background:#081018;color:#fff;border:1px solid rgba(255,255,255,.12);font-size:9px;font-weight:800}.pt-account-btn:hover{border-color:rgba(230,184,63,.45);color:var(--pt-gold2)}
+.pt-account-markup-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.pt-account-markup-actions button{height:29px;padding:0 10px;border-radius:8px;border:1px solid rgba(230,184,63,.18);background:rgba(230,184,63,.05);color:#d5a933;font-size:9px;font-weight:800}.pt-account-markup-actions button:hover{background:rgba(230,184,63,.13)}
+.pt-account-feature{display:flex;align-items:center;gap:12px}.pt-account-feature-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:rgba(230,184,63,.07);border:1px solid rgba(230,184,63,.18);color:var(--pt-gold2);font-size:18px;flex:none}
+.pt-account-wa{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 14px;border:1px solid rgba(255,255,255,.09);border-radius:15px;background:linear-gradient(135deg,#07151b,#061018)}.pt-account-wa-copy b{display:block;font-size:10px;color:#fff}.pt-account-wa-copy span{display:block;font-size:9px;color:#7f8a93;margin-top:3px}.pt-account-wa-copy strong{display:block;color:var(--pt-gold2);font-size:12px;margin-top:8px}.pt-account-wa-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(37,211,102,.08);color:#25d366;border:1px solid rgba(37,211,102,.16);font-size:20px}
+.pt-account-cart-head{display:flex;align-items:center;justify-content:space-between}.pt-account-cart-head b{font-size:13px}.pt-account-cart-head button{background:none;border:0;color:#d8b24b;font-size:9px;font-weight:800}.pt-account-cart-items{margin-top:8px}.pt-account-cart-item{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}.pt-account-cart-item:last-child{border-bottom:0}.pt-account-cart-item img{width:42px;height:42px;border-radius:9px;object-fit:contain;background:#0a1117;border:1px solid rgba(255,255,255,.05)}.pt-account-cart-name{font-size:9px;color:#dfe4e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pt-account-cart-meta{font-size:8px;color:#7d8891;margin-top:3px}.pt-account-cart-price{font-size:9px;color:var(--pt-gold2);font-weight:800;text-align:right}.pt-account-cart-total{display:flex;justify-content:space-between;align-items:center;margin-top:11px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}.pt-account-cart-total span{font-size:9px;color:#9aa4ac}.pt-account-cart-total strong{font-size:13px;color:var(--pt-gold2)}.pt-account-primary{width:100%;height:40px;margin-top:12px;border:0;border-radius:10px;background:linear-gradient(135deg,#ffd15e,#dba52a);color:#080b0d;font-size:10px;font-weight:900}
+.pt-account-empty{font-size:9px;color:#7e8992;padding:13px 0}.pt-account-note{font-size:8px;color:#68747d;line-height:1.5;margin-top:8px}
+@media(max-width:720px){.pt-account-drawer{width:100%;padding:14px 12px 20px}.pt-account-card{border-radius:14px}.pt-account-row{padding:15px}.pt-account-wa{margin-top:10px}.pt-account-cart-item{grid-template-columns:42px 1fr auto}}
+
 /* === POWERTECH V2 POLISH === */
 .pt-hero-bg{background-image:linear-gradient(90deg,rgba(3,5,7,.98) 0%,rgba(3,5,7,.88) 34%,rgba(3,5,7,.35) 62%,rgba(3,5,7,.72) 100%),url('encabezado.jpg'),radial-gradient(circle at 78% 50%,rgba(230,184,63,.13),transparent 26rem);background-size:cover;background-position:center;}
 .pt-hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,5,7,.18),transparent 55%);pointer-events:none}
@@ -339,7 +359,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3m0 0A7 7 0 1 0 6.8 6.8a7 7 0 0 0 9.9 9.9Z"/></svg>
       <input placeholder="Buscar productos, marcas, categorías..." oninput="document.getElementById('searchInput').value=this.value;onSearchInput();">
     </div>
-    <button class="pt-mode" onclick="setCatalogMode(catalogMode==='revendedor'?'cliente':'revendedor')"><span>◉</span><b id="ptModeText">Revendedor</b><span id="ptModeMarkup">+30%</span></button>
+    <button class="pt-mode" onclick="toggleAccountDrawer()"><span>◉</span><b id="ptModeText">Revendedor</b><span id="ptModeMarkup">+30%</span></button>
     <button id="cartBtn" class="pt-cart" onclick="openCart()" aria-label="Abrir carrito">
       <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.078-.324-.145-.633-.478-.633H5.106M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm12.75 0a.75.75 0 1 0-1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
       <span id="cartCount">0</span>
@@ -357,7 +377,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas, stock y atención personalizada.</p>
       <div class="pt-actions">
         <button class="pt-primary" onclick="switchTab('catalogo');document.getElementById('productList').scrollIntoView({behavior:'smooth'})">Ver catálogo&nbsp; →</button>
-        <button class="pt-secondary" onclick="setCatalogMode('revendedor');document.getElementById('resellerMarkupPanel').classList.remove('hidden')">Soy revendedor</button>
+        <button class="pt-secondary" onclick="setCatalogMode('revendedor');openAccountPanel()">Soy revendedor</button>
       </div>
     </div>
     <div class="pt-visual" aria-hidden="true">
@@ -389,7 +409,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
   <section id="productList" class="pb-3"></section>
   <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">No encontramos productos que coincidan con tu búsqueda.</p>
 <div class="pt-section-head" style="margin-top:42px"><div><h3>Combos <span class="gold-text">destacados</span></h3><p>Armados para distintos tipos de comercios y emprendimientos.</p></div><button class="pt-link" onclick="switchTab('ofertas')">Ver todos →</button></div><div class="pt-combos"><div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div><div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div><div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div>
-  <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');document.getElementById('resellerMarkupPanel').classList.remove('hidden')">Configurar mi margen&nbsp; →</button></section>
+  <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');openAccountPanel()">Configurar mi margen&nbsp; →</button></section>
 </main>
 
 <main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas, stock y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
@@ -403,6 +423,72 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 
 <footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
 </div>
+
+<!-- =====================================================
+     POWERTECH · PANEL DE CUENTA / REVENDEDOR
+===================================================== -->
+<div id="accountDrawerOverlay" class="pt-account-overlay hidden" onclick="closeAccountPanel()"></div>
+<aside id="accountDrawer" class="pt-account-drawer hidden" aria-label="Panel de cuenta del revendedor">
+  <div class="pt-account-top">
+    <div class="pt-account-mode">
+      <div class="pt-account-icon">♙</div>
+      <div><b id="accountDrawerMode">Revendedor</b><span id="accountDrawerSub">+30% de margen</span></div>
+    </div>
+    <button class="pt-account-close" onclick="closeAccountPanel()" aria-label="Cerrar">×</button>
+  </div>
+
+  <div class="pt-account-card">
+    <div class="pt-account-row">
+      <div class="pt-account-row-head">
+        <div><div class="pt-account-label">Tu cuenta</div><div class="pt-account-muted gold-text">Revendedor Premium</div></div>
+      </div>
+    </div>
+
+    <div class="pt-account-row">
+      <div class="pt-account-row-head">
+        <div><div class="pt-account-label">Tu margen general</div><div id="accountMarkupValue" class="pt-account-big">+30%</div></div>
+        <button class="pt-account-btn" onclick="editAccountMarkup()">Editar</button>
+      </div>
+      <div class="pt-account-markup-actions">
+        <button onclick="setAccountMarkup(10)">+10%</button>
+        <button onclick="setAccountMarkup(20)">+20%</button>
+        <button onclick="setAccountMarkup(30)">+30%</button>
+        <button onclick="setAccountMarkup(40)">+40%</button>
+      </div>
+    </div>
+
+    <div class="pt-account-row">
+      <div class="pt-account-row-head">
+        <div><div class="pt-account-label">Ajuste por producto</div><div class="pt-account-muted">Podés personalizar el margen de cada producto.</div></div>
+        <button class="pt-account-btn" onclick="openProductMarkupNotice()">Configurar</button>
+      </div>
+    </div>
+
+    <div class="pt-account-row">
+      <div class="pt-account-feature">
+        <div class="pt-account-feature-icon">♧</div>
+        <div><div class="pt-account-label">Tu catálogo personalizado</div><div class="pt-account-muted">Compartí tu catálogo con tus precios de venta.</div><button class="pt-account-btn" style="margin-top:9px;color:var(--pt-gold2)" onclick="openPersonalCatalog()">Ver catálogo →</button></div>
+      </div>
+    </div>
+  </div>
+
+  <a class="pt-account-wa" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20necesito%20ayuda%20con%20mi%20cat%C3%A1logo." target="_blank" rel="noopener">
+    <div class="pt-account-wa-copy"><b>¿Necesitás ayuda?</b><span>Escribinos por WhatsApp</span><strong>11 6887-8292 →</strong></div>
+    <div class="pt-account-wa-icon">◉</div>
+  </a>
+
+  <div class="pt-account-card" style="margin-top:14px">
+    <div class="pt-account-row">
+      <div class="pt-account-cart-head"><b>🛒 Tu carrito</b><button onclick="closeAccountPanel();openCart()">Ver todos →</button></div>
+      <div class="pt-account-muted"><span id="accountCartCount">0</span> productos</div>
+      <div id="accountCartItems" class="pt-account-cart-items"></div>
+      <div class="pt-account-cart-total"><span>Total mayorista</span><strong id="accountWholesaleTotal">$0</strong></div>
+      <button class="pt-account-primary" onclick="closeAccountPanel();openCart()">Ver carrito →</button>
+    </div>
+  </div>
+  <div class="pt-account-note">Los precios mostrados en este panel son informativos. El pedido enviado por WhatsApp mantiene los precios mayoristas de Powertech.</div>
+</aside>
+
 <!-- =====================================================
      🔥 MODAL COMBO (NUEVO)
 ===================================================== -->
@@ -1648,6 +1734,82 @@ function displayPrice(price){
     : Number(price);
 }
 
+function toggleAccountDrawer(){
+  if(catalogMode !== 'revendedor') setCatalogMode('revendedor');
+  openAccountPanel();
+}
+
+function openAccountPanel(){
+  const overlay=document.getElementById('accountDrawerOverlay');
+  const drawer=document.getElementById('accountDrawer');
+  if(!overlay || !drawer) return;
+  overlay.classList.remove('hidden');
+  drawer.classList.remove('hidden');
+  document.body.style.overflow='hidden';
+  renderAccountPanel();
+}
+
+function closeAccountPanel(){
+  const overlay=document.getElementById('accountDrawerOverlay');
+  const drawer=document.getElementById('accountDrawer');
+  if(overlay) overlay.classList.add('hidden');
+  if(drawer) drawer.classList.add('hidden');
+  if(!document.getElementById('cartModal')?.classList.contains('flex')) document.body.style.overflow='';
+}
+
+function setAccountMarkup(value){
+  setCatalogMode('revendedor');
+  setMarkup(value);
+  renderAccountPanel();
+}
+
+function editAccountMarkup(){
+  const value=window.prompt('¿Qué margen general querés aplicar? (ejemplo: 30)', String(resellerMarkup));
+  if(value===null) return;
+  const n=Number(String(value).replace(',','.'));
+  if(!Number.isFinite(n) || n<0){ alert('Ingresá un porcentaje válido.'); return; }
+  setAccountMarkup(Math.min(500,n));
+}
+
+function openProductMarkupNotice(){
+  alert('La personalización de margen por producto será la próxima etapa. La sección ya queda preparada para incorporarla.');
+}
+
+function openPersonalCatalog(){
+  closeAccountPanel();
+  setCatalogMode('revendedor');
+  document.getElementById('productList')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderAccountPanel(){
+  const mode=document.getElementById('accountDrawerMode');
+  const sub=document.getElementById('accountDrawerSub');
+  const value=document.getElementById('accountMarkupValue');
+  const count=document.getElementById('accountCartCount');
+  const items=document.getElementById('accountCartItems');
+  const total=document.getElementById('accountWholesaleTotal');
+  if(mode) mode.textContent=catalogMode==='revendedor'?'Revendedor':'Cliente';
+  if(sub) sub.textContent=catalogMode==='revendedor'?`+${resellerMarkup}% de margen`:'Precios mayoristas';
+  if(value) value.textContent=`+${resellerMarkup}%`;
+  const entries=Object.entries(cart);
+  const qty=entries.reduce((sum,[,q])=>sum+Number(q||0),0);
+  if(count) count.textContent=qty;
+  if(!items || !total) return;
+  let wholesaleTotal=0;
+  if(!entries.length){
+    items.innerHTML='<div class="pt-account-empty">Todavía no agregaste productos.</div>';
+    total.textContent='$0';
+    return;
+  }
+  items.innerHTML=entries.slice(0,4).map(([id,qty])=>{
+    const p=products.find(x=>x.id===Number(id));
+    if(!p) return '';
+    if(p.price!==null) wholesaleTotal += Number(p.price)*Number(qty);
+    return `<div class="pt-account-cart-item"><img src="${imageName(p.image)}" alt=""><div><div class="pt-account-cart-name">${p.name}</div><div class="pt-account-cart-meta">x${qty}</div></div><div class="pt-account-cart-price">${p.price===null?'Consultar':money(Number(p.price)*Number(qty))}</div></div>`;
+  }).join('');
+  total.textContent=money(wholesaleTotal);
+}
+
 function setCatalogMode(mode){
   catalogMode = mode === 'revendedor' ? 'revendedor' : 'cliente';
   localStorage.setItem('powertech_catalog_mode', catalogMode);
@@ -2426,6 +2588,7 @@ function updateCartUI(){
   }
 
   renderCartItems();
+  renderAccountPanel();
 
 }
 
