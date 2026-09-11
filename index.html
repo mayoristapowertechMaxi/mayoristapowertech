@@ -249,907 +249,125 @@ h1,h2,h3,.font-display{
   transform:scale(.95);
 }
 
-/* =========================================================
-   POWERTECH V2 — PREMIUM B2B VISUAL SYSTEM
-   ========================================================= */
-:root{
-  --pt-bg:#030507;
-  --pt-panel:#091017;
-  --pt-panel-2:#0d151d;
-  --pt-border:rgba(201,162,39,.22);
-  --pt-gold:#e4b63e;
-  --pt-gold-2:#ffc94f;
-  --pt-muted:#89939d;
-  --pt-green:#25D366;
-}
-
-body{
-  background:
-    radial-gradient(circle at 78% 4%, rgba(201,162,39,.10), transparent 26rem),
-    radial-gradient(circle at 8% 24%, rgba(20,50,75,.16), transparent 30rem),
-    var(--pt-bg) !important;
-  color:#e9edf1 !important;
-}
-
-header{
-  height:76px !important;
-  background:rgba(3,5,7,.88) !important;
-  border-bottom:1px solid rgba(255,255,255,.07) !important;
-  box-shadow:0 10px 40px rgba(0,0,0,.35);
-}
-
-header > div:first-child{
-  height:76px !important;
-  max-width:1440px !important;
-  flex-direction:row !important;
-  justify-content:flex-start !important;
-  gap:24px !important;
-  padding:0 28px !important;
-  margin:auto !important;
-}
-
-header img{
-  width:44px !important;
-  height:44px !important;
-  border-radius:12px !important;
-  margin:0 !important;
-  object-fit:cover !important;
-  box-shadow:0 0 0 1px rgba(228,182,62,.3),0 8px 25px rgba(0,0,0,.4) !important;
-}
-
-header h1{
-  position:absolute !important;
-  left:84px !important;
-  top:17px !important;
-  margin:0 !important;
-  font-size:18px !important;
-  letter-spacing:-.02em !important;
-}
-
-header p{
-  position:absolute !important;
-  left:84px !important;
-  top:40px !important;
-  margin:0 !important;
-  font-size:9px !important;
-  color:#77818b !important;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-}
-
-header .w-full.max-w-md{
-  position:absolute !important;
-  left:50% !important;
-  top:15px !important;
-  transform:translateX(-50%) !important;
-  width:min(430px,34vw) !important;
-  max-width:none !important;
-  margin:0 !important;
-}
-
-#resellerMarkupPanel{
-  position:fixed !important;
-  top:86px !important;
-  right:28px !important;
-  width:310px !important;
-  z-index:70 !important;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
-
-header nav{
-  position:absolute !important;
-  left:390px !important;
-  top:0 !important;
-  height:76px !important;
-  width:auto !important;
-  border:0 !important;
-  padding:0 !important;
-  gap:4px;
-}
-
-header nav button{
-  flex:none !important;
-  height:76px !important;
-  padding:0 12px !important;
-  font-size:11px !important;
-}
-
-#cartBtn{
-  position:absolute !important;
-  right:28px !important;
-  left:auto !important;
-  top:18px !important;
-  background:#0d151d !important;
-  border-color:rgba(255,255,255,.10) !important;
-  min-width:44px;
-  justify-content:center;
-}
-
-header > div:first-child > img + h1 + p + div{
-  z-index:20;
-}
-
-body > .h-\[300px\],
-body > .h-\[320px\]{
-  height:76px !important;
-}
-
-body > section#combosDestacados,
-#tabCatalogo,
-#tabContacto,
-#tabNosotros,
-#tabOfertas{
-  max-width:1440px !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-}
-
-/* Hero */
-.pt-hero{
-  max-width:1440px;
-  margin:24px auto 0;
-  padding:0 28px;
-}
-.pt-hero-card{
-  min-height:390px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:26px;
-  overflow:hidden;
-  position:relative;
-  background:
-    radial-gradient(circle at 76% 35%, rgba(228,182,62,.16), transparent 22rem),
-    linear-gradient(115deg,#030405 0%,#080c10 48%,#11171c 100%);
-  box-shadow:0 25px 90px rgba(0,0,0,.42);
-}
-.pt-hero-card:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.10),transparent 60%,rgba(228,182,62,.05));
-  pointer-events:none;
-}
-.pt-hero-copy{
-  position:relative;
-  z-index:2;
-  width:55%;
-  padding:66px 0 60px 58px;
-}
-.pt-eyebrow{
-  color:var(--pt-gold-2);
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.18em;
-}
-.pt-hero h2{
-  font-family:Manrope,sans-serif;
-  font-size:clamp(38px,4.4vw,68px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  color:#fff;
-  margin:16px 0 18px;
-}
-.pt-hero h2 span{color:var(--pt-gold-2)}
-.pt-hero p{
-  max-width:540px;
-  color:#aab2ba;
-  font-size:15px;
-  line-height:1.7;
-}
-.pt-hero-actions{
-  display:flex;
-  gap:12px;
-  margin-top:28px;
-}
-.pt-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  min-height:44px;
-  padding:0 20px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:800;
-  text-decoration:none;
-  transition:.2s ease;
-}
-.pt-btn-primary{
-  background:linear-gradient(135deg,#ffc94f,#d99d20);
-  color:#090b0d;
-  box-shadow:0 10px 30px rgba(228,182,62,.16);
-}
-.pt-btn-secondary{
-  border:1px solid rgba(228,182,62,.45);
-  color:#f1c85c;
-  background:rgba(255,255,255,.02);
-}
-.pt-btn:hover{transform:translateY(-2px)}
-
-.pt-hero-visual{
-  position:absolute;
-  z-index:1;
-  right:0;
-  top:0;
-  width:52%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-.pt-orb{
-  width:470px;
-  height:470px;
-  border-radius:50%;
-  background:radial-gradient(circle,#171d23 0%,#080c10 56%,transparent 70%);
-  box-shadow:inset 0 0 80px rgba(228,182,62,.08);
-}
-.pt-floating-card{
-  position:absolute;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(8,13,18,.76);
-  backdrop-filter:blur(14px);
-  border-radius:18px;
-  padding:15px 18px;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
-.pt-floating-card strong{display:block;color:#fff;font-size:13px}
-.pt-floating-card span{display:block;color:#8d99a3;font-size:10px;margin-top:4px}
-.pt-fc1{right:12%;top:19%}
-.pt-fc2{right:28%;bottom:18%}
-.pt-fc3{right:3%;bottom:34%}
-
-/* Benefits */
-.pt-benefits{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  max-width:1440px;
-  margin:16px auto 0;
-  padding:0 28px;
-}
-.pt-benefit{
-  background:#091017;
-  border:1px solid rgba(255,255,255,.06);
-  padding:18px 20px;
-  min-height:78px;
-}
-.pt-benefit:first-child{border-radius:16px 0 0 16px}
-.pt-benefit:last-child{border-radius:0 16px 16px 0}
-.pt-benefit b{display:block;color:#f3f5f7;font-size:12px}
-.pt-benefit span{display:block;color:#77828c;font-size:10px;margin-top:5px}
-
-/* Catalog shell */
-#tabCatalogo{
-  padding:0 28px !important;
-}
-#tabCatalogo #catalogModeSummary{
-  margin-top:26px !important;
-  background:linear-gradient(135deg,rgba(228,182,62,.08),rgba(255,255,255,.02)) !important;
-  border:1px solid rgba(228,182,62,.18) !important;
-  border-radius:16px !important;
-  padding:14px 18px !important;
-}
-#categoryChipsRow{
-  flex-wrap:nowrap !important;
-  overflow:auto !important;
-  padding-bottom:5px;
-}
-.category-chip{
-  background:#091017 !important;
-  border-color:rgba(255,255,255,.08) !important;
-  padding:10px 15px !important;
-  border-radius:12px !important;
-}
-#searchInput{
-  background:#091017 !important;
-  border-color:rgba(255,255,255,.08) !important;
-  height:46px;
-  border-radius:14px !important;
-}
-#productList{
-  display:grid !important;
-  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-  gap:16px !important;
-  margin-top:22px !important;
-}
-.product-card{
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:stretch !important;
-  gap:0 !important;
-  padding:0 !important;
-  min-height:320px;
-  background:linear-gradient(180deg,#0b1218,#070c11) !important;
-  border:1px solid rgba(255,255,255,.075) !important;
-  border-radius:18px !important;
-  overflow:hidden;
-  box-shadow:0 12px 35px rgba(0,0,0,.20);
-}
-.product-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(228,182,62,.28) !important;
-  box-shadow:0 20px 50px rgba(0,0,0,.36);
-}
-.product-card > div:first-child{
-  width:100% !important;
-  height:210px !important;
-  flex:none !important;
-  border-radius:0 !important;
-  background:#080d12 !important;
-}
-.product-card > div:nth-child(2){
-  padding:15px 15px 0 !important;
-}
-.product-card > div:nth-child(2) p:first-child{
-  font-size:13px !important;
-  min-height:38px;
-}
-.product-card > div:nth-child(2) .gold-text{
-  font-size:20px !important;
-}
-.product-card > div:nth-child(2) > div{
-  flex-direction:column !important;
-  align-items:flex-start !important;
-  gap:5px !important;
-}
-.product-card > div:last-child{
-  padding:12px 15px 15px !important;
-  margin-top:auto;
-}
-.product-card > div:last-child button{
-  width:38px;
-  height:38px;
-}
-.product-card > div:last-child span{
-  font-size:13px;
-}
-.product-card .qty-btn.bg-gold-muted{
-  background:linear-gradient(135deg,#ffc94f,#d99d20) !important;
-}
-
-/* Sections outside catalog */
-#combosDestacados{
-  padding:0 28px 10px !important;
-  margin-top:26px !important;
-}
-#combosDestacados > div:first-child{
-  border-bottom:1px solid rgba(255,255,255,.07);
-  padding-bottom:12px;
-}
-#tabContacto,#tabNosotros,#tabOfertas{
-  padding-left:28px !important;
-  padding-right:28px !important;
-}
-
-/* Floating WhatsApp */
-#whatsappFloat{
-  width:52px !important;
-  height:52px !important;
-  right:24px !important;
-  bottom:24px !important;
-  box-shadow:0 12px 35px rgba(0,0,0,.4),0 0 0 5px rgba(37,211,102,.07);
-}
-
-/* Mobile */
-@media(max-width:900px){
-  header{height:70px !important}
-  header > div:first-child{
-    height:70px !important;
-    padding:0 14px !important;
-  }
-  header img{width:40px !important;height:40px !important}
-  header h1{left:66px !important;top:14px !important;font-size:16px !important}
-  header p{left:66px !important;top:36px !important;font-size:7px !important}
-  header .w-full.max-w-md{display:none !important}
-  header nav{
-    display:none !important;
-  }
-  #cartBtn{right:14px !important;top:14px !important}
-  body > .h-\[300px\],
-  body > .h-\[320px\]{height:70px !important}
-  .pt-hero{padding:0 14px;margin-top:14px}
-  .pt-hero-card{min-height:470px}
-  .pt-hero-copy{width:100%;padding:38px 24px}
-  .pt-hero h2{font-size:42px}
-  .pt-hero p{font-size:13px;max-width:420px}
-  .pt-hero-visual{width:100%;height:42%;top:auto;bottom:0;opacity:.8}
-  .pt-orb{width:360px;height:360px}
-  .pt-benefits{
-    grid-template-columns:repeat(2,1fr);
-    padding:0 14px;
-  }
-  .pt-benefit:first-child{border-radius:14px 0 0 0}
-  .pt-benefit:nth-child(2){border-radius:0 14px 0 0}
-  .pt-benefit:nth-child(3){border-radius:0 0 0 14px}
-  .pt-benefit:last-child{border-radius:0 0 14px 0}
-  #tabCatalogo{padding:0 14px !important}
-  #productList{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
-  .product-card{min-height:285px}
-  .product-card > div:first-child{height:150px !important}
-  .product-card > div:nth-child(2){padding:11px 11px 0 !important}
-  .product-card > div:nth-child(2) .gold-text{font-size:17px !important}
-  .product-card > div:last-child{padding:10px 11px 12px !important}
-  #combosDestacados,#tabContacto,#tabNosotros,#tabOfertas{padding-left:14px !important;padding-right:14px !important}
-  #resellerMarkupPanel{right:14px !important;left:14px !important;width:auto !important}
-}
+:root{--pt-bg:#030507;--pt-panel:#080f16;--pt-panel-2:#0c151d;--pt-line:rgba(255,255,255,.075);--pt-gold:#e6b83f;--pt-gold2:#ffc94f;--pt-text:#f4f6f8;--pt-muted:#8d98a3;--pt-green:#25d366}
+html,body{background:var(--pt-bg)!important;color:var(--pt-text)!important}
+body{font-family:Inter,sans-serif;background:radial-gradient(circle at 82% 0%,rgba(230,184,63,.08),transparent 28rem),radial-gradient(circle at 0% 30%,rgba(15,40,62,.12),transparent 32rem),#030507!important}
+h1,h2,h3,.font-display{font-family:Manrope,sans-serif}*{box-sizing:border-box}button{transition:.18s ease}.gold-text{color:var(--pt-gold2)!important}
+.pt-header{position:fixed;z-index:80;top:0;left:0;right:0;height:76px;background:rgba(3,5,7,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--pt-line)}
+.pt-header-inner{max-width:1480px;height:100%;margin:auto;padding:0 28px;display:flex;align-items:center;gap:28px}
+.pt-brand{display:flex;align-items:center;gap:12px;min-width:225px}.pt-brand img{width:42px;height:42px;border-radius:12px;object-fit:cover;border:1px solid rgba(230,184,63,.35)}
+.pt-brand strong{font:800 17px Manrope;color:#fff;display:block;letter-spacing:-.03em}.pt-brand small{font-size:8px;color:#78838e;text-transform:uppercase;letter-spacing:.14em}
+.pt-nav{display:flex;align-items:center;height:100%;gap:2px}.pt-nav button{height:100%;padding:0 12px;background:none;border:0;color:#8d98a3;font-size:11px;font-weight:600;position:relative}.pt-nav button.active,.pt-nav button:hover{color:#fff}.pt-nav button.active:after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--pt-gold),transparent)}
+.pt-search{margin-left:auto;width:min(360px,28vw);height:42px;border:1px solid rgba(255,255,255,.07);background:#091017;border-radius:13px;display:flex;align-items:center;padding:0 13px;color:#77828c}.pt-search input{width:100%;border:0;outline:0;background:none;color:#fff;font-size:11px}.pt-search input::placeholder{color:#66717b}
+.pt-mode{height:42px;display:flex;align-items:center;gap:7px;padding:0 12px;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:#091017;color:#fff;font-size:10px;font-weight:700;white-space:nowrap}.pt-mode span{color:var(--pt-gold2);font-size:9px}
+.pt-cart{width:42px;height:42px;border-radius:13px;background:#0b131a;border:1px solid var(--pt-line);display:flex;align-items:center;justify-content:center;position:relative;color:#fff}.pt-cart #cartCount{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--pt-gold2);color:#080b0d;font-size:9px;font-weight:900}
+.pt-page{padding-top:76px}.pt-wrap{max-width:1480px;margin:auto;padding:0 28px}
+.pt-hero{padding-top:22px}.pt-hero-card{min-height:430px;border:1px solid var(--pt-line);border-radius:25px;overflow:hidden;position:relative;background:#05080b;box-shadow:0 30px 100px rgba(0,0,0,.42)}
+.pt-hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,5,7,.98) 0%,rgba(3,5,7,.91) 37%,rgba(3,5,7,.28) 67%,rgba(3,5,7,.72) 100%),radial-gradient(circle at 78% 50%,rgba(230,184,63,.13),transparent 26rem),linear-gradient(135deg,#05080a,#11181e)}
+.pt-hero-copy{position:relative;z-index:5;padding:72px 0 70px 62px;width:55%}.pt-eyebrow{color:var(--pt-gold2);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.19em}
+.pt-hero h2{font-size:clamp(42px,5vw,72px);line-height:.96;letter-spacing:-.065em;margin:17px 0 19px;color:#fff}.pt-hero h2 em{font-style:normal;color:var(--pt-gold2)}.pt-hero-desc{max-width:520px;color:#aab3bb;font-size:14px;line-height:1.75}
+.pt-actions{display:flex;gap:12px;margin-top:29px}.pt-primary,.pt-secondary{min-height:46px;padding:0 21px;border-radius:12px;font-size:11px;font-weight:900}.pt-primary{background:linear-gradient(135deg,#ffd15e,#d89f23);color:#080b0d;border:0}.pt-secondary{background:rgba(255,255,255,.015);color:#f0c453;border:1px solid rgba(230,184,63,.5)}
+.pt-visual{position:absolute;z-index:2;right:0;top:0;width:53%;height:100%;overflow:hidden}.pt-visual:before{content:"";position:absolute;width:510px;height:510px;right:3%;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(28,35,41,.95),rgba(10,14,18,.7) 50%,transparent 70%);box-shadow:0 0 100px rgba(230,184,63,.06)}
+.pt-device{position:absolute;filter:drop-shadow(0 30px 28px rgba(0,0,0,.65));border:1px solid rgba(255,255,255,.09);background:linear-gradient(145deg,#161c21,#050708)}
+.pt-laptop{width:280px;height:180px;right:25%;top:14%;transform:rotate(-5deg);border-radius:10px}.pt-laptop:after{content:"";position:absolute;left:-24px;right:-24px;bottom:-22px;height:18px;border-radius:0 0 12px 12px;background:#1c242a}
+.pt-phone{width:82px;height:158px;right:10%;top:25%;border-radius:17px;transform:rotate(9deg)}.pt-headphones{width:150px;height:150px;right:25%;bottom:11%;border-radius:50%;border:18px solid #141a1f;background:transparent}.pt-headphones:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;left:22px;top:22px;background:#050709;border:1px solid #2a3035}.pt-charger{width:68px;height:86px;right:4%;bottom:13%;border-radius:13px;transform:rotate(-8deg)}.pt-power{width:140px;height:48px;right:39%;bottom:12%;border-radius:12px;transform:rotate(-8deg)}.pt-glow{position:absolute;width:230px;height:230px;right:18%;top:27%;background:rgba(230,184,63,.08);filter:blur(50px);border-radius:50%}
+.pt-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:15px}.pt-benefit{min-height:76px;padding:17px 20px;background:#080f16;border:1px solid var(--pt-line)}.pt-benefit:first-child{border-radius:15px 0 0 15px}.pt-benefit:last-child{border-radius:0 15px 15px 0}.pt-benefit b{font-size:11px;color:#e8edf1;display:block}.pt-benefit span{font-size:9px;color:#6f7b85;display:block;margin-top:5px}
+.pt-section-head{display:flex;align-items:end;justify-content:space-between;margin:40px 0 17px}.pt-section-head h3{font-size:22px;letter-spacing:-.035em;margin:0}.pt-section-head p{font-size:10px;color:#727d87;margin:4px 0 0}.pt-link{font-size:10px;color:var(--pt-gold2);font-weight:800}
+.pt-categories{display:grid;grid-template-columns:repeat(8,1fr);gap:9px}.pt-cat{min-height:91px;border:1px solid var(--pt-line);border-radius:14px;background:#080f16;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:#b8c0c7;font-size:10px;font-weight:700;text-align:center;padding:8px}.pt-cat:hover,.pt-cat.active{border-color:rgba(230,184,63,.35);background:linear-gradient(180deg,#101820,#080f16);color:#fff}.pt-cat-icon{width:29px;height:29px;border-radius:9px;border:1px solid rgba(230,184,63,.25);display:grid;place-items:center;color:var(--pt-gold2);font-size:14px}
+.pt-toolbar{display:flex;align-items:center;gap:12px;margin-top:28px}.pt-toolbar .pt-search-box{flex:1;height:46px;border-radius:13px;background:#080f16;border:1px solid var(--pt-line);display:flex;align-items:center;padding:0 13px}.pt-toolbar .pt-search-box input{width:100%;background:none;border:0;outline:0;color:#fff;font-size:12px}.pt-toolbar .pt-search-box input::placeholder{color:#69747e}.pt-tabs{display:flex;gap:5px}.pt-tabs button{height:38px;padding:0 13px;border:1px solid var(--pt-line);background:#080f16;color:#7e8993;border-radius:10px;font-size:10px;font-weight:700}.pt-tabs button.active{background:linear-gradient(135deg,#f5c64f,#dca72d);color:#090b0d;border-color:transparent}
+#catalogModeSummary{background:#080f16!important;border:1px solid var(--pt-line)!important;border-radius:15px!important}#productList{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:15px!important}
+.product-card{background:linear-gradient(180deg,#0b131a,#070c11)!important;border:1px solid var(--pt-line)!important;border-radius:18px!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;padding:0!important;min-height:350px;box-shadow:0 12px 35px rgba(0,0,0,.2);transition:.22s ease!important}.product-card:hover{transform:translateY(-5px);border-color:rgba(230,184,63,.30)!important;box-shadow:0 25px 60px rgba(0,0,0,.35)}.product-card>div:first-child{height:215px!important;width:100%!important;flex:none!important;background:#070c11!important;border-radius:0!important}.product-card>div:nth-child(2){padding:14px 15px 0!important}.product-card>div:last-child{padding:12px 15px 15px!important;margin-top:auto}.product-card img{transition:.3s ease}.product-card:hover img{transform:scale(1.035)}
+#resellerMarkupPanel{background:#080f16!important;border-color:rgba(230,184,63,.25)!important;border-radius:16px!important;box-shadow:0 25px 80px rgba(0,0,0,.55)!important}.category-chip{background:#080f16!important;border-color:var(--pt-line)!important}#searchInput{background:#080f16!important;border-color:var(--pt-line)!important}
+.pt-reseller{margin:40px 0 20px;padding:28px;border:1px solid rgba(230,184,63,.17);border-radius:19px;background:radial-gradient(circle at 80% 30%,rgba(230,184,63,.10),transparent 22rem),linear-gradient(110deg,#0b1218,#070c11);display:flex;align-items:center;justify-content:space-between;gap:20px}.pt-reseller h3{font-size:20px;margin:0 0 6px}.pt-reseller p{font-size:11px;color:#7f8a94;margin:0}.pt-reseller strong{color:var(--pt-gold2)}
+.pt-footer{border-top:1px solid var(--pt-line);margin-top:46px;padding:35px 0 28px;color:#68737d}.pt-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.pt-footer strong{color:#e9edf1;font:800 17px Manrope}.pt-footer p,.pt-footer a{font-size:9px;line-height:1.7}.pt-footer a{display:block;color:#727e88;margin:6px 0}
+body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{display:none!important}#tabCatalogo{max-width:none!important}#tabContacto,#tabNosotros,#tabOfertas{max-width:1480px!important}
+@media(max-width:1100px){.pt-nav{display:none}.pt-brand{min-width:0}.pt-search{width:280px}.pt-categories{grid-template-columns:repeat(4,1fr)}#productList{grid-template-columns:repeat(3,minmax(0,1fr))!important}.pt-hero-copy{width:65%}.pt-visual{width:55%;opacity:.8}}
+@media(max-width:720px){.pt-header{height:64px}.pt-header-inner{padding:0 14px;gap:10px}.pt-page{padding-top:64px}.pt-brand strong{font-size:15px}.pt-brand small{font-size:7px}.pt-brand img{width:38px;height:38px}.pt-search{display:none}.pt-mode{margin-left:auto}.pt-wrap{padding:0 14px}.pt-hero-card{min-height:510px;border-radius:20px}.pt-hero-copy{padding:40px 24px;width:100%}.pt-hero h2{font-size:43px}.pt-hero-desc{font-size:12px}.pt-visual{width:100%;height:45%;top:auto;bottom:0;opacity:.72}.pt-laptop{width:190px;height:120px;right:20%;top:16%}.pt-phone{width:55px;height:110px;right:5%;top:27%}.pt-headphones{width:105px;height:105px;border-width:13px;right:28%;bottom:8%}.pt-charger{width:48px;height:62px;right:8%;bottom:12%}.pt-power{width:100px;height:34px;right:43%;bottom:10%}.pt-benefits{grid-template-columns:repeat(2,1fr)}.pt-benefit:first-child{border-radius:14px 0 0 0}.pt-benefit:nth-child(2){border-radius:0 14px 0 0}.pt-benefit:nth-child(3){border-radius:0 0 0 14px}.pt-benefit:last-child{border-radius:0 0 14px 0}.pt-categories{grid-template-columns:repeat(4,1fr)}#productList{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.product-card{min-height:300px}.product-card>div:first-child{height:150px!important}.product-card>div:nth-child(2){padding:10px!important}.product-card>div:last-child{padding:10px!important}.pt-section-head{margin-top:30px}.pt-reseller{flex-direction:column;align-items:flex-start}.pt-footer-grid{grid-template-columns:1fr 1fr}}
 
 </style>
 </head>
 
-<body class="bg-black text-gray-200 min-h-screen pb-24">
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="fixed top-0 left-0 right-0 z-40 bg-black/95 backdrop-blur border-b border-gold-dark/40">
-
-  <div class="relative flex flex-col items-center justify-center px-3 pt-4 pb-3 max-w-3xl mx-auto">
-
-    <button
-      id="cartBtn"
-      onclick="openCart()"
-      class="absolute left-3 top-4 flex items-center gap-1.5 bg-neutral-900 border border-gold-dark/60 rounded-full px-3 py-2">
-
-      <svg class="w-5 h-5 gold-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-        <path stroke-linecap="round" stroke-linejoin="round"
-        d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.078-.324-.145-.633-.478-.633H5.106M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
-      </svg>
-
-      <span id="cartCount" class="text-xs font-bold gold-text">0</span>
-    </button>
-
-    <img
-      src="logo.png"
-      alt="Powertech Mayorista"
-      class="h-40 w-40 sm:h-48 sm:w-48 rounded-2xl object-cover ring-2 ring-gold-dark/60 shadow-lg"
-      onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 rx=%2224%22 fill=%22%23111111%22/%3E%3Ctext x=%2250%25%22 y=%2258%25%22 font-size=%2250%22 fill=%22%23C9A227%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E';">
-
-    <h1 class="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight mt-2 text-center">
-      Powertech Mayorista
-    </h1>
-
-    <p class="text-xs sm:text-sm text-gray-400 text-center mt-0.5">
-      Distribución mayorista · catálogo para clientes y revendedores
-    </p>
-
-    <div class="mt-3 w-full max-w-md">
-      <div class="flex items-center justify-center gap-1 bg-neutral-900/90 border border-gold-dark/30 rounded-xl p-1">
-        <button id="modeClientBtn" onclick="setCatalogMode('cliente')"
-          class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition bg-gold-muted text-black">
-          Cliente
-        </button>
-        <button id="modeResellerBtn" onclick="setCatalogMode('revendedor')"
-          class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition text-gray-400">
-          Revendedor
-        </button>
-      </div>
-
-      <div id="resellerMarkupPanel" class="hidden mt-2 bg-neutral-950/90 border border-gold-dark/30 rounded-xl p-3">
-        <div class="flex items-center justify-between gap-3">
-          <div>
-            <p class="text-xs font-bold text-white">Markup de reventa</p>
-            <p class="text-[10px] text-gray-500">Se aplica sobre el precio mayorista</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <input id="markupInput" type="number" min="0" max="500" step="1" value="30"
-              oninput="setMarkup(this.value)"
-              class="w-20 bg-neutral-900 border border-gold-dark/40 rounded-lg px-2.5 py-2 text-sm text-white text-right focus:outline-none focus:border-gold">
-            <span class="text-sm font-bold gold-text">%</span>
-          </div>
-        </div>
-        <p class="text-[10px] text-gray-500 mt-2">
-          Ejemplo: 30% convierte $10.000 mayorista en $13.000 de venta.
-        </p>
-      </div>
+<body class="min-h-screen text-gray-200">
+<header class="pt-header">
+  <div class="pt-header-inner">
+    <div class="pt-brand">
+      <img src="logo.png" alt="Powertech" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 rx=%2224%22 fill=%22%23080f16%22/%3E%3Ctext x=%2250%25%22 y=%2260%25%22 font-size=%2250%22 fill=%22%23ffc94f%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E';">
+      <div><strong>POWERTECH</strong><small>Distribuidora mayorista</small></div>
     </div>
-
+    <nav class="pt-nav">
+      <button class="active" onclick="switchTab('catalogo');window.scrollTo({top:0,behavior:'smooth'})">Inicio</button>
+      <button onclick="switchTab('catalogo')">Catálogo</button>
+      <button onclick="switchTab('catalogo');document.getElementById('categoryChipsRow').scrollIntoView({behavior:'smooth'})">Categorías</button>
+      <button onclick="goToOffersCategory()">Ofertas</button>
+      <button onclick="setCatalogMode('revendedor')">Revendedores</button>
+      <button onclick="switchTab('nosotros')">Nosotros</button>
+      <button onclick="switchTab('contacto')">Contacto</button>
+    </nav>
+    <div class="pt-search">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3m0 0A7 7 0 1 0 6.8 6.8a7 7 0 0 0 9.9 9.9Z"/></svg>
+      <input placeholder="Buscar productos, marcas, categorías..." oninput="document.getElementById('searchInput').value=this.value;onSearchInput();">
+    </div>
+    <button class="pt-mode" onclick="setCatalogMode(catalogMode==='revendedor'?'cliente':'revendedor')"><span>◉</span><b id="ptModeText">Revendedor</b><span id="ptModeMarkup">+30%</span></button>
+    <button id="cartBtn" class="pt-cart" onclick="openCart()" aria-label="Abrir carrito">
+      <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.078-.324-.145-.633-.478-.633H5.106M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm12.75 0a.75.75 0 1 0-1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
+      <span id="cartCount">0</span>
+    </button>
   </div>
-
-  <nav class="flex max-w-3xl mx-auto px-1 border-t border-gold-dark/20">
-
-    <button onclick="switchTab('catalogo')" id="tabBtnCatalogo"
-      class="tab-underline active flex-1 py-2.5 text-[11px] sm:text-sm font-semibold text-gray-400">
-      Catálogo
-    </button>
-
-    <button onclick="switchTab('contacto')" id="tabBtnContacto"
-      class="tab-underline flex-1 py-2.5 text-[11px] sm:text-sm font-semibold text-gray-400">
-      Contacto
-    </button>
-
-    <button onclick="switchTab('nosotros')" id="tabBtnNosotros"
-      class="tab-underline flex-1 py-2.5 text-[11px] sm:text-sm font-semibold text-gray-400">
-      Quiénes Somos
-    </button>
-
-    <button onclick="switchTab('ofertas')" id="tabBtnOfertas"
-      class="tab-underline flex-1 py-2.5 text-[11px] sm:text-sm font-semibold text-gray-400">
-      Ofertas
-    </button>
-
-  </nav>
-
 </header>
 
-
-<section class="pt-hero" aria-label="Presentación Powertech">
+<div class="pt-page">
+<section class="pt-wrap pt-hero">
   <div class="pt-hero-card">
+    <div class="pt-hero-bg"></div>
     <div class="pt-hero-copy">
       <div class="pt-eyebrow">Distribuidora mayorista</div>
-      <h2>Tecnología que impulsa <span>tu negocio</span></h2>
-      <p>
-        Accesorios, productos electrónicos y tecnología para comercios y revendedores.
-        Precios mayoristas, stock y atención personalizada en un solo lugar.
-      </p>
-      <div class="pt-hero-actions">
-        <button class="pt-btn pt-btn-primary" onclick="switchTab('catalogo')">
-          Ver catálogo <span>→</span>
-        </button>
-        <button class="pt-btn pt-btn-secondary" onclick="setCatalogMode('revendedor')">
-          Soy revendedor
-        </button>
+      <h2>Tecnología que impulsa <em>tu negocio</em></h2>
+      <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas, stock y atención personalizada.</p>
+      <div class="pt-actions">
+        <button class="pt-primary" onclick="switchTab('catalogo');document.getElementById('productList').scrollIntoView({behavior:'smooth'})">Ver catálogo&nbsp; →</button>
+        <button class="pt-secondary" onclick="setCatalogMode('revendedor');document.getElementById('resellerMarkupPanel').classList.remove('hidden')">Soy revendedor</button>
       </div>
     </div>
-    <div class="pt-hero-visual" aria-hidden="true">
-      <div class="pt-orb"></div>
-      <div class="pt-floating-card pt-fc1">
-        <strong>Precios mayoristas</strong>
-        <span>Especiales para reventa</span>
-      </div>
-      <div class="pt-floating-card pt-fc2">
-        <strong>+30% de margen</strong>
-        <span>Configurá tu precio de venta</span>
-      </div>
-      <div class="pt-floating-card pt-fc3">
-        <strong>WhatsApp directo</strong>
-        <span>Atención personalizada</span>
-      </div>
+    <div class="pt-visual" aria-hidden="true">
+      <div class="pt-glow"></div><div class="pt-device pt-laptop"></div><div class="pt-device pt-phone"></div><div class="pt-device pt-headphones"></div><div class="pt-device pt-charger"></div><div class="pt-device pt-power"></div>
     </div>
+  </div>
+  <div class="pt-benefits">
+    <div class="pt-benefit"><b>Precios mayoristas</b><span>Condiciones especiales para comercios</span></div>
+    <div class="pt-benefit"><b>Envíos a todo el país</b><span>Despachos y entregas coordinadas</span></div>
+    <div class="pt-benefit"><b>Atención personalizada</b><span>WhatsApp directo con Powertech</span></div>
+    <div class="pt-benefit"><b>Catálogo para revendedores</b><span>Configurá tu margen de ganancia</span></div>
   </div>
 </section>
 
-<section class="pt-benefits" aria-label="Beneficios">
-  <div class="pt-benefit"><b>Precios mayoristas</b><span>Condiciones pensadas para comercios</span></div>
-  <div class="pt-benefit"><b>Envíos a todo el país</b><span>Despachos y entregas coordinadas</span></div>
-  <div class="pt-benefit"><b>Atención por WhatsApp</b><span>Respuesta rápida y personalizada</span></div>
-  <div class="pt-benefit"><b>Catálogo para revendedores</b><span>Tu margen, tus precios, tu negocio</span></div>
-</section>
-
-
-<!-- =====================================================
-     🔥 COMBOS DESTACADOS (NUEVA SECCIÓN)
-===================================================== -->
-
-<section id="combosDestacados" class="max-w-3xl mx-auto px-3 pt-4 pb-6 fade-in">
-
-  <div class="flex items-center gap-2 mb-3">
-    <div class="w-8 h-[3px] bg-gradient-to-r from-gold to-transparent rounded-full"></div>
-    <h2 class="font-display font-extrabold text-lg text-white">
-      🔥 Combos <span class="gold-text">Destacados</span>
-    </h2>
-  </div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-
-    <!-- COMBO EMPRENDEDOR -->
-    <div onclick="openComboModal(1)" class="combo-card card-shine border border-gold-dark/40 rounded-2xl p-4 relative">
-      <span class="combo-badge">Popular</span>
-      <div class="w-full h-24 rounded-xl overflow-hidden bg-gradient-to-br from-gold-dark/20 to-neutral-900 flex items-center justify-center mb-3">
-        <span class="combo-icon">💼</span>
-      </div>
-      <h3 class="font-display font-bold text-base text-white mb-1">Combo Emprendedor</h3>
-      <p class="text-[11px] text-gray-400 mb-2 line-clamp-2">30 productos esenciales para iniciar tu negocio</p>
-      <p class="font-display font-extrabold text-lg gold-text">$50.000</p>
+<main id="tabCatalogo" class="pt-wrap fade-in">
+  <div class="pt-section-head"><div><h3>Categorías</h3><p>Explorá productos y encontrá lo que necesitás.</p></div><button class="pt-link" onclick="clearCategory()">Ver todas&nbsp; →</button></div>
+  <div id="categoryChipsRow" class="pt-categories"></div>
+  <div class="pt-section-head" style="margin-bottom:10px"><div><h3>Productos destacados</h3><p>Los mejores productos, al mejor precio mayorista.</p></div><span class="pt-link">Ver todos&nbsp; →</span></div>
+  <div class="pt-toolbar">
+    <div class="pt-search-box">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#69747e" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3m0 0A7 7 0 1 0 6.8 6.8a7 7 0 0 0 9.9 9.9Z"/></svg>
+      <input id="searchInput" type="text" placeholder="Buscar productos, marcas, categorías..." oninput="onSearchInput()">
+      <button id="clearSearchBtn" class="hidden" onclick="clearSearch()">×</button>
     </div>
-
-    <!-- COMBO IPHONE -->
-    <div onclick="openComboModal(2)" class="combo-card card-shine border border-gold-dark/40 rounded-2xl p-4 relative">
-      <span class="combo-badge">Premium</span>
-      <div class="w-full h-24 rounded-xl overflow-hidden bg-gradient-to-br from-gold-dark/20 to-neutral-900 flex items-center justify-center mb-3">
-        <span class="combo-icon">📱</span>
-      </div>
-      <h3 class="font-display font-bold text-base text-white mb-1">Combo iPhone</h3>
-      <p class="text-[11px] text-gray-400 mb-2 line-clamp-2">Todo para dispositivos Apple y 16 Pro Max</p>
-      <p class="font-display font-extrabold text-lg gold-text">$200.000</p>
-    </div>
-
-    <!-- COMBO FULL COMERCIO -->
-    <div onclick="openComboModal(3)" class="combo-card card-shine border border-gold-dark/40 rounded-2xl p-4 relative">
-      <span class="combo-badge">Completo</span>
-      <div class="w-full h-24 rounded-xl overflow-hidden bg-gradient-to-br from-gold-dark/20 to-neutral-900 flex items-center justify-center mb-3">
-        <span class="combo-icon">🏪</span>
-      </div>
-      <h3 class="font-display font-bold text-base text-white mb-1">Combo Full Comercio</h3>
-      <p class="text-[11px] text-gray-400 mb-2 line-clamp-2">El pack completo para abastecer tu mostrador</p>
-      <p class="font-display font-extrabold text-lg gold-text">$200.000</p>
-    </div>
-
+    <div class="pt-tabs"><button class="active" onclick="clearCategory()">Más vendidos</button><button onclick="goToOffersCategory()">Ofertas</button><button onclick="clearCategory()">Nuevos</button></div>
   </div>
-
-</section>
-
-<!-- =====================================================
-     CATÁLOGO
-===================================================== -->
-
-<main id="tabCatalogo" class="max-w-3xl mx-auto px-3 fade-in">
-
-  <div id="catalogModeSummary" class="mt-3 flex items-center justify-between gap-3 bg-neutral-900/60 border border-gold-dark/20 rounded-xl px-3 py-2.5">
-    <div>
-      <p class="text-[10px] uppercase tracking-wider text-gray-500">Modo de catálogo</p>
-      <p id="catalogModeLabel" class="text-xs font-bold text-white">Cliente · precios mayoristas</p><p id="catalogModeSub" class="text-[10px] text-gray-500 mt-0.5">Precios directos de Powertech</p>
-    </div>
-    <span id="markupBadge" class="hidden text-[10px] font-bold gold-text bg-gold-dark/20 border border-gold-dark/40 rounded-full px-2.5 py-1">+30%</span>
-  </div>
-
-  <div class="mt-3">
-
-    <p class="text-xs text-gray-500 mb-2">
-      Elegí una categoría
-    </p>
-
-    <div id="categoryChipsRow" class="flex flex-wrap gap-2"></div>
-
-  </div>
-
-  <!-- BUSCADOR -->
-
-  <div class="relative mt-4">
-
-    <svg class="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"
-      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round"
-      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-    </svg>
-
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Buscar producto..."
-      class="w-full bg-neutral-900 border border-gold-dark/40 rounded-xl py-2.5 pl-9 pr-9 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gold-muted"
-      oninput="onSearchInput()">
-
-    <button
-      id="clearSearchBtn"
-      onclick="clearSearch()"
-      class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-500">
-
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-        d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-
-    </button>
-
-  </div>
-
-  <div id="activeFilterChip" class="hidden items-center gap-2 mt-2.5">
-
-    <span class="text-xs text-gray-500">
-      Filtrando por:
-    </span>
-
-    <span
-      id="activeFilterLabel"
-      class="text-xs font-semibold gold-text bg-gold-dark/20 border border-gold-dark/50 rounded-full px-2.5 py-1">
-    </span>
-
-    <button onclick="clearCategory()" class="text-xs text-gray-500 underline">
-      Quitar
-    </button>
-
-  </div>
-
-  <section
-    id="productList"
-    class="mt-4 flex flex-col gap-2 pb-4">
-  </section>
-
-  <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">
-    No encontramos productos que coincidan con tu búsqueda.
-  </p>
-
+  <div id="activeFilterChip" class="hidden items-center gap-2 mt-3"><span class="text-xs text-gray-500">Filtrando por:</span><span id="activeFilterLabel" class="text-xs font-semibold gold-text"></span><button onclick="clearCategory()" class="text-xs text-gray-500 underline">Quitar</button></div>
+  <div id="catalogModeSummary" class="mt-5 p-4 flex items-center justify-between"><div><p id="catalogModeLabel" class="text-xs font-bold text-white">Cliente · precios mayoristas</p><p class="text-[10px] text-gray-500 mt-1">Precios directos de Powertech</p></div><div id="markupBadge" class="hidden text-xs font-bold gold-text"></div></div>
+  <section id="productList" class="pb-3"></section>
+  <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">No encontramos productos que coincidan con tu búsqueda.</p>
+  <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');document.getElementById('resellerMarkupPanel').classList.remove('hidden')">Configurar mi margen&nbsp; →</button></section>
 </main>
 
-<!-- =====================================================
-     CONTACTO
-===================================================== -->
+<main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas, stock y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
 
-<main id="tabContacto" class="max-w-3xl mx-auto px-4 hidden fade-in">
+<main id="tabNosotros" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y revendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
 
-  <div class="mt-4 mb-8">
+<main id="tabOfertas" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Ofertas</h3><p>Productos y combos con condiciones especiales.</p></div></div><div class="pt-reseller"><div><h3>Ofertas Powertech</h3><p>Explorá las oportunidades disponibles en el catálogo.</p></div><button class="pt-primary" onclick="goToOffersCategory()">Ver ofertas →</button></div></main>
 
-    <div class="w-12 h-[3px] bg-gradient-to-r from-gold to-transparent rounded-full mb-4"></div>
-
-    <h2 class="font-display font-extrabold text-2xl text-white">
-      Hablemos
-    </h2>
-
-    <p class="text-gray-400 text-sm mb-6">
-      Estamos para ayudarte con tu pedido mayorista
-    </p>
-
-    <a
-      href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
-      target="_blank"
-      class="flex items-center gap-3 bg-neutral-900 border border-gold-dark/40 rounded-xl p-4">
-
-      <div class="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center">
-        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.198.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-</svg>
-      </div>
-
-      <div>
-        <p class="text-sm font-semibold text-white">
-          WhatsApp
-        </p>
-
-        <p class="text-xs text-gray-400">
-          Pedidos y consultas
-        </p>
-      </div>
-
-    </a>
-
-    <div class="flex items-center gap-3 bg-neutral-900 border border-gold-dark/40 rounded-xl p-4 mt-3">
-
-      <div class="w-11 h-11 rounded-full bg-neutral-800 flex items-center justify-center">
-        <span class="gold-text text-lg">⌖</span>
-      </div>
-
-      <div>
-        <p class="text-sm font-semibold text-white">
-          Zona de cobertura
-        </p>
-
-        <p class="text-xs text-gray-400">
-          Zona Sur del Gran Buenos Aires y envíos a todo el país
-        </p>
-      </div>
-
-    </div>
-
-    <a
-      href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
-      class="mt-6 w-full bg-[#25D366] text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2">
-
-      Escribirnos por WhatsApp
-
-    </a>
-
-  </div>
-
-</main>
-
-<!-- =====================================================
-     QUIÉNES SOMOS
-===================================================== -->
-
-<main id="tabNosotros" class="max-w-3xl mx-auto px-4 hidden fade-in">
-
-  <div class="mt-4 mb-8">
-
-    <div class="w-12 h-[3px] bg-gradient-to-r from-gold to-transparent rounded-full mb-4"></div>
-
-    <h2 class="font-display font-extrabold text-2xl text-white leading-tight">
-      10 años potenciando
-      <br>
-      <span class="gold-text">
-        al comercio de Zona Sur
-      </span>
-    </h2>
-
-    <p class="text-gray-400 text-sm mb-6">
-      Powertech Distribuidora Mayorista
-    </p>
-
-    <div class="space-y-4 text-[15px] leading-relaxed text-gray-300">
-
-      <p>
-        Desde hace más de una década, en
-        <span class="gold-text font-semibold">Powertech</span>
-        acompañamos a kioscos, almacenes y maxikioscos con productos de alta rotación.
-      </p>
-
-      <p>
-        Nos especializamos en cargadores, cables, auriculares, tecnología y accesorios pensados para la reventa.
-      </p>
-
-      <p>
-        Trabajamos con stock permanente y atención personalizada para que puedas abastecer tu comercio de manera simple.
-      </p>
-
-      <p>
-        Realizamos envíos en Zona Sur y despachos a todo el país.
-      </p>
-
-    </div>
-
-    <div class="grid grid-cols-3 gap-2.5 mt-7">
-
-      <div class="border border-gold-dark/40 rounded-xl p-3 text-center">
-        <p class="font-display font-extrabold text-xl gold-text">
-          +10
-        </p>
-        <p class="text-[11px] text-gray-400">
-          Años en el rubro
-        </p>
-      </div>
-
-      <div class="border border-gold-dark/40 rounded-xl p-3 text-center">
-        <p class="font-display font-extrabold text-xl gold-text">
-          Zona Sur
-        </p>
-        <p class="text-[11px] text-gray-400">
-          Cobertura local
-        </p>
-      </div>
-
-      <div class="border border-gold-dark/40 rounded-xl p-3 text-center">
-        <p class="font-display font-extrabold text-xl gold-text">
-          País
-        </p>
-        <p class="text-[11px] text-gray-400">
-          Envíos nacionales
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</main>
-
-<!-- =====================================================
-     OFERTAS
-===================================================== -->
-
-<main id="tabOfertas" class="max-w-3xl mx-auto px-4 hidden fade-in">
-
-  <div class="mt-4 mb-8">
-
-    <div class="w-12 h-[3px] bg-gradient-to-r from-gold to-transparent rounded-full mb-4"></div>
-
-    <h2 class="font-display font-extrabold text-2xl text-white">
-      Combos y <span class="gold-text">Ofertas</span>
-    </h2>
-
-    <p class="text-gray-400 text-sm mb-6">
-      Las mejores oportunidades para tu mostrador
-    </p>
-
-    <div class="card-shine border border-gold-dark/40 rounded-2xl p-5">
-
-      <p class="text-sm text-gray-300 leading-relaxed">
-        Consultá por combos, promociones y productos de alta rotación disponibles.
-      </p>
-
-      <button
-        onclick="goToOffersCategory()"
-        class="w-full mt-5 bg-gold-muted text-black font-bold py-3 rounded-xl">
-
-        Ver Combos y Oferta
-
-      </button>
-
-      <a
-        href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20consultar%20por%20los%20combos%20y%20ofertas."
-        class="w-full mt-3 border border-gold-dark/50 text-white font-semibold py-3 rounded-xl flex items-center justify-center">
-
-        Consultar por WhatsApp
-
-      </a>
-
-    </div>
-
-  </div>
-
-</main>
-
+<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
+</div>
 <!-- =====================================================
      🔥 MODAL COMBO (NUEVO)
 ===================================================== -->
@@ -1437,6 +655,8 @@ body > section#combosDestacados,
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
+
+
 
 <script>
 
@@ -2482,8 +1702,10 @@ function renderProducts(list){
   container.innerHTML = '';
 
   if(!list.length){
+
     noResults.classList.remove('hidden');
     return;
+
   }
 
   noResults.classList.add('hidden');
@@ -2491,100 +1713,101 @@ function renderProducts(list){
   list.forEach(p => {
 
     const qty = cart[p.id] || 0;
-    const row = document.createElement('article');
-    row.className = 'product-card';
+
+    const row = document.createElement('div');
+
+    row.className =
+      'product-card flex items-center gap-3 bg-neutral-900/70 border border-gold-dark/20 rounded-xl p-2.5';
 
     const firstImage = imageName(p.images[0]);
-    const price = displayPrice(p.price);
 
     row.innerHTML = `
+
       <div
-        class="w-full overflow-hidden img-placeholder cursor-pointer"
+        class="w-16 h-16 rounded-lg overflow-hidden img-placeholder flex-shrink-0 cursor-pointer"
         onclick="openProductModal(${p.id})">
 
         <img
           src="${firstImage}"
           alt="${p.name}"
           class="w-full h-full object-cover"
-          loading="lazy"
           onerror="this.onerror=null;this.src='${placeholderSVG()}';">
 
       </div>
 
-      <div class="min-w-0 cursor-pointer" onclick="openProductModal(${p.id})">
-
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <span class="text-[9px] uppercase tracking-wider text-gray-500">
-            ${p.categoryLabel || 'Tecnología'}
-          </span>
-          <span class="text-[9px] text-gray-600">SKU #${String(p.id).padStart(4,'0')}</span>
-        </div>
+      <div
+        class="flex-1 min-w-0 cursor-pointer"
+        onclick="openProductModal(${p.id})">
 
         <p class="text-sm font-semibold text-white leading-snug line-clamp-2">
           ${p.name}
         </p>
 
-        <div class="flex items-end justify-between gap-2 mt-3">
-          <div>
-            <span class="block font-display font-extrabold gold-text text-[19px]">
-              ${money(price)}
-            </span>
-            <span class="block text-[9px] text-gray-500 mt-0.5">
-              ${catalogMode === 'revendedor' ? 'Precio de venta estimado' : 'Precio mayorista'}
-            </span>
-          </div>
-          ${catalogMode === 'revendedor'
-            ? `<span class="text-[9px] font-bold text-green-400 bg-green-400/10 border border-green-400/20 rounded-full px-2 py-1">+${resellerMarkup}%</span>`
-            : ''}
+        <div class="flex items-center gap-2 mt-1">
+
+          <span class="font-display font-bold gold-text text-[15px]">
+            ${money(displayPrice(p.price))}
+          </span>
+
+          <span class="text-[10px] text-gray-400 border border-gray-700 rounded-full px-1.5 py-0.5">
+            ${p.categoryLabel}
+          </span>
+
         </div>
 
       </div>
 
-      <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 flex-shrink-0">
 
-        <div class="flex items-center gap-1.5">
-          ${
-            qty > 0
-            ? `
-              <button
-                onclick="event.stopPropagation();changeQty(${p.id},-1)"
-                class="qty-btn w-8 h-8 rounded-lg bg-neutral-800 text-gray-300 flex items-center justify-center">
-                −
-              </button>
+        ${
+          qty > 0
 
-              <span class="w-5 text-center text-sm font-bold text-white">${qty}</span>
+          ?
 
-              <button
-                onclick="event.stopPropagation();changeQty(${p.id},1)"
-                class="qty-btn w-8 h-8 rounded-lg bg-gold-muted text-black flex items-center justify-center">
-                +
-              </button>
-            `
-            : `
-              <button
-                onclick="event.stopPropagation();changeQty(${p.id},1)"
-                class="qty-btn w-9 h-9 rounded-lg bg-gold-muted text-black flex items-center justify-center"
-                aria-label="Agregar ${p.name} al carrito">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                </svg>
-              </button>
-            `
-          }
-        </div>
+          `
+          <button
+            onclick="event.stopPropagation();changeQty(${p.id},-1)"
+            class="qty-btn w-7 h-7 rounded-full bg-neutral-800 text-gray-300 flex items-center justify-center">
+            −
+          </button>
 
-        <button
-          onclick="openProductModal(${p.id})"
-          class="text-[10px] font-semibold text-gray-500 hover:text-white transition">
-          Ver detalle
-        </button>
+          <span class="w-5 text-center text-sm font-bold text-white">
+            ${qty}
+          </span>
+
+          <button
+            onclick="event.stopPropagation();changeQty(${p.id},1)"
+            class="qty-btn w-7 h-7 rounded-full bg-gold-muted text-black flex items-center justify-center">
+            +
+          </button>
+          `
+
+          :
+
+          `
+          <button
+            onclick="event.stopPropagation();changeQty(${p.id},1)"
+            class="qty-btn w-8 h-8 rounded-full bg-gold-muted text-black flex items-center justify-center">
+
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+              <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"/>
+            </svg>
+
+          </button>
+          `
+        }
 
       </div>
+
     `;
 
     container.appendChild(row);
+
   });
+
 }
+
 
 /* =====================================================
    BÚSQUEDA
@@ -3460,6 +2683,20 @@ document.addEventListener(
 );
 
 </script>
-
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(typeof window.updateCatalogModeUI === 'function'){
+    const original=window.updateCatalogModeUI;
+    window.updateCatalogModeUI=function(){
+      original();
+      const t=document.getElementById('ptModeText');
+      const m=document.getElementById('ptModeMarkup');
+      if(t) t.textContent=(typeof catalogMode!=='undefined' && catalogMode==='revendedor')?'Revendedor':'Cliente';
+      if(m) m.textContent=(typeof catalogMode!=='undefined' && catalogMode==='revendedor')?`+${resellerMarkup}%`:'Mayorista';
+    };
+    window.updateCatalogModeUI();
+  }
+});
+</script>
 </body>
 </html>
