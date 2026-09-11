@@ -288,7 +288,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 
 /* === POWERTECH RESELLER ACCOUNT DRAWER === */
 .pt-account-overlay{position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(6px);z-index:150;opacity:1;transition:opacity .22s ease}
-.pt-account-drawer{position:fixed;z-index:151;top:0;right:0;height:100vh;width:min(390px,100vw);background:linear-gradient(180deg,#071018 0%,#03080d 100%);border-left:1px solid rgba(255,255,255,.09);box-shadow:-30px 0 90px rgba(0,0,0,.55);overflow-y:auto;transform:translateX(0);transition:transform .25s ease;padding:18px 16px 24px}
+.pt-account-drawer{position:fixed;z-index:151;top:0;right:0;height:100vh;width:min(360px,100vw);background:linear-gradient(180deg,#071018 0%,#03080d 100%);border-left:1px solid rgba(255,255,255,.09);box-shadow:-30px 0 90px rgba(0,0,0,.55);overflow-y:auto;transform:translateX(0);transition:transform .25s ease;padding:18px 16px 24px}
 .pt-account-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .pt-account-mode{display:flex;align-items:center;gap:11px;background:#091119;border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:9px 12px;min-width:174px}
 .pt-account-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(230,184,63,.22);background:rgba(230,184,63,.06);color:var(--pt-gold2)}
@@ -335,6 +335,16 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 .pt-combo-card h4{font:800 17px Manrope;margin:0 0 8px;color:#fff}.pt-combo-card p{font-size:10px;line-height:1.6;color:#77838d;margin:0 0 18px}.pt-combo-price{font:800 21px Manrope;color:#ffc94f}
 @media(max-width:1100px){#categoryChipsRow{grid-template-columns:repeat(5,minmax(0,1fr))}.pt-combos{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){#categoryChipsRow{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}#categoryChipsRow .category-chip{min-height:67px;font-size:9px!important}.pt-combos{grid-template-columns:1fr}.pt-combo-card{min-height:220px}#productModal>div.relative,#comboModal>div.relative{width:100%!important;border-radius:20px 20px 0 0!important;max-height:94vh!important}#productModal .p-4.pt-1{display:block;padding:18px!important}#productModal .p-4.pt-1>#modalGallery{height:330px!important;margin-bottom:10px}#productModal .p-4.pt-1>#modalTitle{font-size:22px!important}#productModal .p-4.pt-1>#modalPrice{font-size:25px!important}#comboModal .p-4.pt-1{padding:20px!important}}
+
+/* === POWERTECH ACCOUNT / HERO CLEANUP === */
+.pt-hero-bg{background-image:linear-gradient(90deg,rgba(3,5,7,.96) 0%,rgba(3,5,7,.84) 32%,rgba(3,5,7,.24) 64%,rgba(3,5,7,.58) 100%),url('encabezado.jpg')!important;background-size:cover!important;background-position:center center!important;}
+.pt-hero-bg:after{background:linear-gradient(90deg,rgba(3,5,7,.12),transparent 58%)!important;}
+.pt-account-drawer{width:min(360px,100vw)!important;}
+.pt-account-card{box-shadow:0 16px 40px rgba(0,0,0,.18);}
+.pt-account-row{padding:15px 16px;}
+.pt-account-wa{min-height:78px;}
+.pt-account-primary{font-size:10px;letter-spacing:.01em;}
+@media(max-width:720px){.pt-account-drawer{width:100%!important;}}
 </style>
 </head>
 
@@ -374,14 +384,11 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
     <div class="pt-hero-copy">
       <div class="pt-eyebrow">Distribuidora mayorista</div>
       <h2>Tecnología que impulsa <em>tu negocio</em></h2>
-      <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas, stock y atención personalizada.</p>
+      <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas y atención personalizada.</p>
       <div class="pt-actions">
         <button class="pt-primary" onclick="switchTab('catalogo');document.getElementById('productList').scrollIntoView({behavior:'smooth'})">Ver catálogo&nbsp; →</button>
         <button class="pt-secondary" onclick="setCatalogMode('revendedor');openAccountPanel()">Soy revendedor</button>
       </div>
-    </div>
-    <div class="pt-visual" aria-hidden="true">
-      <div class="pt-glow"></div><div class="pt-device pt-laptop"></div><div class="pt-device pt-phone"></div><div class="pt-device pt-headphones"></div><div class="pt-device pt-charger"></div><div class="pt-device pt-power"></div>
     </div>
   </div>
   <div class="pt-benefits">
@@ -412,7 +419,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
   <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');openAccountPanel()">Configurar mi margen&nbsp; →</button></section>
 </main>
 
-<main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas, stock y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
+<main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
 
 <main id="tabNosotros" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y revendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
 
@@ -428,7 +435,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
      POWERTECH · PANEL DE CUENTA / REVENDEDOR
 ===================================================== -->
 <div id="accountDrawerOverlay" class="pt-account-overlay hidden" onclick="closeAccountPanel()"></div>
-<aside id="accountDrawer" class="pt-account-drawer hidden" aria-label="Panel de cuenta del revendedor">
+<aside id="accountDrawer" class="pt-account-drawer hidden" aria-label="Panel de cuenta y catálogo personalizado">
   <div class="pt-account-top">
     <div class="pt-account-mode">
       <div class="pt-account-icon">♙</div>
@@ -1732,6 +1739,12 @@ function displayPrice(price){
   return catalogMode === 'revendedor'
     ? Math.round(Number(price) * (1 + resellerMarkup / 100))
     : Number(price);
+}
+
+function showUserAccountAfterLogin(){
+  // Punto de entrada para el futuro login real: después de autenticar al usuario,
+  // mostramos directamente el panel que diseñamos a partir de la referencia needthis.jpg.
+  openAccountPanel();
 }
 
 function toggleAccountDrawer(){
