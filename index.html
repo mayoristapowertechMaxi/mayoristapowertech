@@ -248,6 +248,433 @@ h1,h2,h3,.font-display{
 .category-chip:active{
   transform:scale(.95);
 }
+
+/* =========================================================
+   POWERTECH V2 — PREMIUM B2B VISUAL SYSTEM
+   ========================================================= */
+:root{
+  --pt-bg:#030507;
+  --pt-panel:#091017;
+  --pt-panel-2:#0d151d;
+  --pt-border:rgba(201,162,39,.22);
+  --pt-gold:#e4b63e;
+  --pt-gold-2:#ffc94f;
+  --pt-muted:#89939d;
+  --pt-green:#25D366;
+}
+
+body{
+  background:
+    radial-gradient(circle at 78% 4%, rgba(201,162,39,.10), transparent 26rem),
+    radial-gradient(circle at 8% 24%, rgba(20,50,75,.16), transparent 30rem),
+    var(--pt-bg) !important;
+  color:#e9edf1 !important;
+}
+
+header{
+  height:76px !important;
+  background:rgba(3,5,7,.88) !important;
+  border-bottom:1px solid rgba(255,255,255,.07) !important;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+header > div:first-child{
+  height:76px !important;
+  max-width:1440px !important;
+  flex-direction:row !important;
+  justify-content:flex-start !important;
+  gap:24px !important;
+  padding:0 28px !important;
+  margin:auto !important;
+}
+
+header img{
+  width:44px !important;
+  height:44px !important;
+  border-radius:12px !important;
+  margin:0 !important;
+  object-fit:cover !important;
+  box-shadow:0 0 0 1px rgba(228,182,62,.3),0 8px 25px rgba(0,0,0,.4) !important;
+}
+
+header h1{
+  position:absolute !important;
+  left:84px !important;
+  top:17px !important;
+  margin:0 !important;
+  font-size:18px !important;
+  letter-spacing:-.02em !important;
+}
+
+header p{
+  position:absolute !important;
+  left:84px !important;
+  top:40px !important;
+  margin:0 !important;
+  font-size:9px !important;
+  color:#77818b !important;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+header .w-full.max-w-md{
+  position:absolute !important;
+  left:50% !important;
+  top:15px !important;
+  transform:translateX(-50%) !important;
+  width:min(430px,34vw) !important;
+  max-width:none !important;
+  margin:0 !important;
+}
+
+#resellerMarkupPanel{
+  position:fixed !important;
+  top:86px !important;
+  right:28px !important;
+  width:310px !important;
+  z-index:70 !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+header nav{
+  position:absolute !important;
+  left:390px !important;
+  top:0 !important;
+  height:76px !important;
+  width:auto !important;
+  border:0 !important;
+  padding:0 !important;
+  gap:4px;
+}
+
+header nav button{
+  flex:none !important;
+  height:76px !important;
+  padding:0 12px !important;
+  font-size:11px !important;
+}
+
+#cartBtn{
+  position:absolute !important;
+  right:28px !important;
+  left:auto !important;
+  top:18px !important;
+  background:#0d151d !important;
+  border-color:rgba(255,255,255,.10) !important;
+  min-width:44px;
+  justify-content:center;
+}
+
+header > div:first-child > img + h1 + p + div{
+  z-index:20;
+}
+
+body > .h-\[300px\],
+body > .h-\[320px\]{
+  height:76px !important;
+}
+
+body > section#combosDestacados,
+#tabCatalogo,
+#tabContacto,
+#tabNosotros,
+#tabOfertas{
+  max-width:1440px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Hero */
+.pt-hero{
+  max-width:1440px;
+  margin:24px auto 0;
+  padding:0 28px;
+}
+.pt-hero-card{
+  min-height:390px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:26px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 76% 35%, rgba(228,182,62,.16), transparent 22rem),
+    linear-gradient(115deg,#030405 0%,#080c10 48%,#11171c 100%);
+  box-shadow:0 25px 90px rgba(0,0,0,.42);
+}
+.pt-hero-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.10),transparent 60%,rgba(228,182,62,.05));
+  pointer-events:none;
+}
+.pt-hero-copy{
+  position:relative;
+  z-index:2;
+  width:55%;
+  padding:66px 0 60px 58px;
+}
+.pt-eyebrow{
+  color:var(--pt-gold-2);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+}
+.pt-hero h2{
+  font-family:Manrope,sans-serif;
+  font-size:clamp(38px,4.4vw,68px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  color:#fff;
+  margin:16px 0 18px;
+}
+.pt-hero h2 span{color:var(--pt-gold-2)}
+.pt-hero p{
+  max-width:540px;
+  color:#aab2ba;
+  font-size:15px;
+  line-height:1.7;
+}
+.pt-hero-actions{
+  display:flex;
+  gap:12px;
+  margin-top:28px;
+}
+.pt-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:0 20px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none;
+  transition:.2s ease;
+}
+.pt-btn-primary{
+  background:linear-gradient(135deg,#ffc94f,#d99d20);
+  color:#090b0d;
+  box-shadow:0 10px 30px rgba(228,182,62,.16);
+}
+.pt-btn-secondary{
+  border:1px solid rgba(228,182,62,.45);
+  color:#f1c85c;
+  background:rgba(255,255,255,.02);
+}
+.pt-btn:hover{transform:translateY(-2px)}
+
+.pt-hero-visual{
+  position:absolute;
+  z-index:1;
+  right:0;
+  top:0;
+  width:52%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.pt-orb{
+  width:470px;
+  height:470px;
+  border-radius:50%;
+  background:radial-gradient(circle,#171d23 0%,#080c10 56%,transparent 70%);
+  box-shadow:inset 0 0 80px rgba(228,182,62,.08);
+}
+.pt-floating-card{
+  position:absolute;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(8,13,18,.76);
+  backdrop-filter:blur(14px);
+  border-radius:18px;
+  padding:15px 18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.pt-floating-card strong{display:block;color:#fff;font-size:13px}
+.pt-floating-card span{display:block;color:#8d99a3;font-size:10px;margin-top:4px}
+.pt-fc1{right:12%;top:19%}
+.pt-fc2{right:28%;bottom:18%}
+.pt-fc3{right:3%;bottom:34%}
+
+/* Benefits */
+.pt-benefits{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  max-width:1440px;
+  margin:16px auto 0;
+  padding:0 28px;
+}
+.pt-benefit{
+  background:#091017;
+  border:1px solid rgba(255,255,255,.06);
+  padding:18px 20px;
+  min-height:78px;
+}
+.pt-benefit:first-child{border-radius:16px 0 0 16px}
+.pt-benefit:last-child{border-radius:0 16px 16px 0}
+.pt-benefit b{display:block;color:#f3f5f7;font-size:12px}
+.pt-benefit span{display:block;color:#77828c;font-size:10px;margin-top:5px}
+
+/* Catalog shell */
+#tabCatalogo{
+  padding:0 28px !important;
+}
+#tabCatalogo #catalogModeSummary{
+  margin-top:26px !important;
+  background:linear-gradient(135deg,rgba(228,182,62,.08),rgba(255,255,255,.02)) !important;
+  border:1px solid rgba(228,182,62,.18) !important;
+  border-radius:16px !important;
+  padding:14px 18px !important;
+}
+#categoryChipsRow{
+  flex-wrap:nowrap !important;
+  overflow:auto !important;
+  padding-bottom:5px;
+}
+.category-chip{
+  background:#091017 !important;
+  border-color:rgba(255,255,255,.08) !important;
+  padding:10px 15px !important;
+  border-radius:12px !important;
+}
+#searchInput{
+  background:#091017 !important;
+  border-color:rgba(255,255,255,.08) !important;
+  height:46px;
+  border-radius:14px !important;
+}
+#productList{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:16px !important;
+  margin-top:22px !important;
+}
+.product-card{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:0 !important;
+  padding:0 !important;
+  min-height:320px;
+  background:linear-gradient(180deg,#0b1218,#070c11) !important;
+  border:1px solid rgba(255,255,255,.075) !important;
+  border-radius:18px !important;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.20);
+}
+.product-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(228,182,62,.28) !important;
+  box-shadow:0 20px 50px rgba(0,0,0,.36);
+}
+.product-card > div:first-child{
+  width:100% !important;
+  height:210px !important;
+  flex:none !important;
+  border-radius:0 !important;
+  background:#080d12 !important;
+}
+.product-card > div:nth-child(2){
+  padding:15px 15px 0 !important;
+}
+.product-card > div:nth-child(2) p:first-child{
+  font-size:13px !important;
+  min-height:38px;
+}
+.product-card > div:nth-child(2) .gold-text{
+  font-size:20px !important;
+}
+.product-card > div:nth-child(2) > div{
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:5px !important;
+}
+.product-card > div:last-child{
+  padding:12px 15px 15px !important;
+  margin-top:auto;
+}
+.product-card > div:last-child button{
+  width:38px;
+  height:38px;
+}
+.product-card > div:last-child span{
+  font-size:13px;
+}
+.product-card .qty-btn.bg-gold-muted{
+  background:linear-gradient(135deg,#ffc94f,#d99d20) !important;
+}
+
+/* Sections outside catalog */
+#combosDestacados{
+  padding:0 28px 10px !important;
+  margin-top:26px !important;
+}
+#combosDestacados > div:first-child{
+  border-bottom:1px solid rgba(255,255,255,.07);
+  padding-bottom:12px;
+}
+#tabContacto,#tabNosotros,#tabOfertas{
+  padding-left:28px !important;
+  padding-right:28px !important;
+}
+
+/* Floating WhatsApp */
+#whatsappFloat{
+  width:52px !important;
+  height:52px !important;
+  right:24px !important;
+  bottom:24px !important;
+  box-shadow:0 12px 35px rgba(0,0,0,.4),0 0 0 5px rgba(37,211,102,.07);
+}
+
+/* Mobile */
+@media(max-width:900px){
+  header{height:70px !important}
+  header > div:first-child{
+    height:70px !important;
+    padding:0 14px !important;
+  }
+  header img{width:40px !important;height:40px !important}
+  header h1{left:66px !important;top:14px !important;font-size:16px !important}
+  header p{left:66px !important;top:36px !important;font-size:7px !important}
+  header .w-full.max-w-md{display:none !important}
+  header nav{
+    display:none !important;
+  }
+  #cartBtn{right:14px !important;top:14px !important}
+  body > .h-\[300px\],
+  body > .h-\[320px\]{height:70px !important}
+  .pt-hero{padding:0 14px;margin-top:14px}
+  .pt-hero-card{min-height:470px}
+  .pt-hero-copy{width:100%;padding:38px 24px}
+  .pt-hero h2{font-size:42px}
+  .pt-hero p{font-size:13px;max-width:420px}
+  .pt-hero-visual{width:100%;height:42%;top:auto;bottom:0;opacity:.8}
+  .pt-orb{width:360px;height:360px}
+  .pt-benefits{
+    grid-template-columns:repeat(2,1fr);
+    padding:0 14px;
+  }
+  .pt-benefit:first-child{border-radius:14px 0 0 0}
+  .pt-benefit:nth-child(2){border-radius:0 14px 0 0}
+  .pt-benefit:nth-child(3){border-radius:0 0 0 14px}
+  .pt-benefit:last-child{border-radius:0 0 14px 0}
+  #tabCatalogo{padding:0 14px !important}
+  #productList{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+  .product-card{min-height:285px}
+  .product-card > div:first-child{height:150px !important}
+  .product-card > div:nth-child(2){padding:11px 11px 0 !important}
+  .product-card > div:nth-child(2) .gold-text{font-size:17px !important}
+  .product-card > div:last-child{padding:10px 11px 12px !important}
+  #combosDestacados,#tabContacto,#tabNosotros,#tabOfertas{padding-left:14px !important;padding-right:14px !important}
+  #resellerMarkupPanel{right:14px !important;left:14px !important;width:auto !important}
+}
+
 </style>
 </head>
 
@@ -285,8 +712,39 @@ h1,h2,h3,.font-display{
     </h1>
 
     <p class="text-xs sm:text-sm text-gray-400 text-center mt-0.5">
-      Venta de accesorios electrónicos por mayor
+      Distribución mayorista · catálogo para clientes y revendedores
     </p>
+
+    <div class="mt-3 w-full max-w-md">
+      <div class="flex items-center justify-center gap-1 bg-neutral-900/90 border border-gold-dark/30 rounded-xl p-1">
+        <button id="modeClientBtn" onclick="setCatalogMode('cliente')"
+          class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition bg-gold-muted text-black">
+          Cliente
+        </button>
+        <button id="modeResellerBtn" onclick="setCatalogMode('revendedor')"
+          class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition text-gray-400">
+          Revendedor
+        </button>
+      </div>
+
+      <div id="resellerMarkupPanel" class="hidden mt-2 bg-neutral-950/90 border border-gold-dark/30 rounded-xl p-3">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class="text-xs font-bold text-white">Markup de reventa</p>
+            <p class="text-[10px] text-gray-500">Se aplica sobre el precio mayorista</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="markupInput" type="number" min="0" max="500" step="1" value="30"
+              oninput="setMarkup(this.value)"
+              class="w-20 bg-neutral-900 border border-gold-dark/40 rounded-lg px-2.5 py-2 text-sm text-white text-right focus:outline-none focus:border-gold">
+            <span class="text-sm font-bold gold-text">%</span>
+          </div>
+        </div>
+        <p class="text-[10px] text-gray-500 mt-2">
+          Ejemplo: 30% convierte $10.000 mayorista en $13.000 de venta.
+        </p>
+      </div>
+    </div>
 
   </div>
 
@@ -316,7 +774,50 @@ h1,h2,h3,.font-display{
 
 </header>
 
-<div class="h-[300px] sm:h-[320px]"></div>
+
+<section class="pt-hero" aria-label="Presentación Powertech">
+  <div class="pt-hero-card">
+    <div class="pt-hero-copy">
+      <div class="pt-eyebrow">Distribuidora mayorista</div>
+      <h2>Tecnología que impulsa <span>tu negocio</span></h2>
+      <p>
+        Accesorios, productos electrónicos y tecnología para comercios y revendedores.
+        Precios mayoristas, stock y atención personalizada en un solo lugar.
+      </p>
+      <div class="pt-hero-actions">
+        <button class="pt-btn pt-btn-primary" onclick="switchTab('catalogo')">
+          Ver catálogo <span>→</span>
+        </button>
+        <button class="pt-btn pt-btn-secondary" onclick="setCatalogMode('revendedor')">
+          Soy revendedor
+        </button>
+      </div>
+    </div>
+    <div class="pt-hero-visual" aria-hidden="true">
+      <div class="pt-orb"></div>
+      <div class="pt-floating-card pt-fc1">
+        <strong>Precios mayoristas</strong>
+        <span>Especiales para reventa</span>
+      </div>
+      <div class="pt-floating-card pt-fc2">
+        <strong>+30% de margen</strong>
+        <span>Configurá tu precio de venta</span>
+      </div>
+      <div class="pt-floating-card pt-fc3">
+        <strong>WhatsApp directo</strong>
+        <span>Atención personalizada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pt-benefits" aria-label="Beneficios">
+  <div class="pt-benefit"><b>Precios mayoristas</b><span>Condiciones pensadas para comercios</span></div>
+  <div class="pt-benefit"><b>Envíos a todo el país</b><span>Despachos y entregas coordinadas</span></div>
+  <div class="pt-benefit"><b>Atención por WhatsApp</b><span>Respuesta rápida y personalizada</span></div>
+  <div class="pt-benefit"><b>Catálogo para revendedores</b><span>Tu margen, tus precios, tu negocio</span></div>
+</section>
+
 
 <!-- =====================================================
      🔥 COMBOS DESTACADOS (NUEVA SECCIÓN)
@@ -375,6 +876,14 @@ h1,h2,h3,.font-display{
 ===================================================== -->
 
 <main id="tabCatalogo" class="max-w-3xl mx-auto px-3 fade-in">
+
+  <div id="catalogModeSummary" class="mt-3 flex items-center justify-between gap-3 bg-neutral-900/60 border border-gold-dark/20 rounded-xl px-3 py-2.5">
+    <div>
+      <p class="text-[10px] uppercase tracking-wider text-gray-500">Modo de catálogo</p>
+      <p id="catalogModeLabel" class="text-xs font-bold text-white">Cliente · precios mayoristas</p><p id="catalogModeSub" class="text-[10px] text-gray-500 mt-0.5">Precios directos de Powertech</p>
+    </div>
+    <span id="markupBadge" class="hidden text-[10px] font-bold gold-text bg-gold-dark/20 border border-gold-dark/40 rounded-full px-2.5 py-1">+30%</span>
+  </div>
 
   <div class="mt-3">
 
@@ -464,12 +973,14 @@ h1,h2,h3,.font-display{
     </p>
 
     <a
-      href="https://wa.me/5491171388777?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
+      href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
       target="_blank"
       class="flex items-center gap-3 bg-neutral-900 border border-gold-dark/40 rounded-xl p-4">
 
       <div class="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center">
-        <span class="text-white font-bold text-xl">W</span>
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.198.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+</svg>
       </div>
 
       <div>
@@ -503,7 +1014,7 @@ h1,h2,h3,.font-display{
     </div>
 
     <a
-      href="https://wa.me/5491171388777?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
+      href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta."
       class="mt-6 w-full bg-[#25D366] text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2">
 
       Escribirnos por WhatsApp
@@ -626,7 +1137,7 @@ h1,h2,h3,.font-display{
       </button>
 
       <a
-        href="https://wa.me/5491171388777?text=Hola%20Powertech%2C%20quiero%20consultar%20por%20los%20combos%20y%20ofertas."
+        href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20consultar%20por%20los%20combos%20y%20ofertas."
         class="w-full mt-3 border border-gold-dark/50 text-white font-semibold py-3 rounded-xl flex items-center justify-center">
 
         Consultar por WhatsApp
@@ -854,6 +1365,10 @@ h1,h2,h3,.font-display{
 
     <div class="border-t border-gold-dark/30 p-4 space-y-3">
 
+      <div id="cartPricingNote" class="hidden text-[10px] text-gray-500 bg-neutral-900 rounded-lg px-3 py-2">
+        En modo revendedor, este total representa tu <span class="text-gray-300 font-semibold">venta estimada</span>. El pedido por WhatsApp se envía con precios mayoristas.
+      </div>
+
       <div class="flex justify-between items-center">
 
         <span class="text-sm text-gray-400">
@@ -904,9 +1419,9 @@ h1,h2,h3,.font-display{
 ===================================================== -->
 
 <a
-  href="https://wa.me/5491171388777?text=Hola%20Powertech%2C%20quisiera%20hacer%20una%20consulta."
+  href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quisiera%20hacer%20una%20consulta."
   target="_blank"
-  class="fixed bottom-5 right-5 z-30 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+  aria-label="Contactar por WhatsApp" title="Contactar por WhatsApp" class="fixed bottom-5 right-5 z-30 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
 
   <span class="text-white font-bold text-xl">
     W
@@ -1861,11 +2376,68 @@ const products = [
 ===================================================== */
 
 const MIN_PURCHASE = 50000;
-const WHATSAPP_NUMBER = "5491171388777";
+const WHATSAPP_NUMBER = "5491168878292";
 
 let cart = JSON.parse(localStorage.getItem('powertech_cart') || '{}');
 let activeCategory = null;
 let currentModalProduct = null;
+let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
+let resellerMarkup = Number(localStorage.getItem('powertech_markup') || 30);
+
+if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
+
+function displayPrice(price){
+  if(price === null || price === undefined) return price;
+  return catalogMode === 'revendedor'
+    ? Math.round(Number(price) * (1 + resellerMarkup / 100))
+    : Number(price);
+}
+
+function setCatalogMode(mode){
+  catalogMode = mode === 'revendedor' ? 'revendedor' : 'cliente';
+  localStorage.setItem('powertech_catalog_mode', catalogMode);
+  updateCatalogModeUI();
+  refreshList();
+  updateCartUI();
+}
+
+function setMarkup(value){
+  resellerMarkup = Math.max(0, Math.min(500, Number(value) || 0));
+  localStorage.setItem('powertech_markup', resellerMarkup);
+  updateCatalogModeUI();
+  refreshList();
+  updateCartUI();
+}
+
+function updateCatalogModeUI(){
+  const clientBtn = document.getElementById('modeClientBtn');
+  const resellerBtn = document.getElementById('modeResellerBtn');
+  const panel = document.getElementById('resellerMarkupPanel');
+  const label = document.getElementById('catalogModeLabel');
+  const badge = document.getElementById('markupBadge');
+  const input = document.getElementById('markupInput');
+
+  if(!clientBtn || !resellerBtn) return;
+
+  clientBtn.classList.remove('bg-gold-muted','text-black','text-gray-400');
+  resellerBtn.classList.remove('bg-gold-muted','text-black','text-gray-400');
+
+  if(catalogMode === 'revendedor'){
+    resellerBtn.classList.add('bg-gold-muted','text-black');
+    clientBtn.classList.add('text-gray-400');
+    panel.classList.remove('hidden');
+    label.textContent = `Revendedor · precio de venta con +${resellerMarkup}%`;
+    badge.textContent = `+${resellerMarkup}%`;
+    badge.classList.remove('hidden');
+    if(input) input.value = resellerMarkup;
+  }else{
+    clientBtn.classList.add('bg-gold-muted','text-black');
+    resellerBtn.classList.add('text-gray-400');
+    panel.classList.add('hidden');
+    label.textContent = 'Cliente · precios mayoristas';
+    badge.classList.add('hidden');
+  }
+}
 
 function money(n){
 
@@ -1910,10 +2482,8 @@ function renderProducts(list){
   container.innerHTML = '';
 
   if(!list.length){
-
     noResults.classList.remove('hidden');
     return;
-
   }
 
   noResults.classList.add('hidden');
@@ -1921,101 +2491,100 @@ function renderProducts(list){
   list.forEach(p => {
 
     const qty = cart[p.id] || 0;
-
-    const row = document.createElement('div');
-
-    row.className =
-      'product-card flex items-center gap-3 bg-neutral-900/70 border border-gold-dark/20 rounded-xl p-2.5';
+    const row = document.createElement('article');
+    row.className = 'product-card';
 
     const firstImage = imageName(p.images[0]);
+    const price = displayPrice(p.price);
 
     row.innerHTML = `
-
       <div
-        class="w-16 h-16 rounded-lg overflow-hidden img-placeholder flex-shrink-0 cursor-pointer"
+        class="w-full overflow-hidden img-placeholder cursor-pointer"
         onclick="openProductModal(${p.id})">
 
         <img
           src="${firstImage}"
           alt="${p.name}"
           class="w-full h-full object-cover"
+          loading="lazy"
           onerror="this.onerror=null;this.src='${placeholderSVG()}';">
 
       </div>
 
-      <div
-        class="flex-1 min-w-0 cursor-pointer"
-        onclick="openProductModal(${p.id})">
+      <div class="min-w-0 cursor-pointer" onclick="openProductModal(${p.id})">
+
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="text-[9px] uppercase tracking-wider text-gray-500">
+            ${p.categoryLabel || 'Tecnología'}
+          </span>
+          <span class="text-[9px] text-gray-600">SKU #${String(p.id).padStart(4,'0')}</span>
+        </div>
 
         <p class="text-sm font-semibold text-white leading-snug line-clamp-2">
           ${p.name}
         </p>
 
-        <div class="flex items-center gap-2 mt-1">
-
-          <span class="font-display font-bold gold-text text-[15px]">
-            ${money(p.price)}
-          </span>
-
-          <span class="text-[10px] text-gray-400 border border-gray-700 rounded-full px-1.5 py-0.5">
-            ${p.categoryLabel}
-          </span>
-
+        <div class="flex items-end justify-between gap-2 mt-3">
+          <div>
+            <span class="block font-display font-extrabold gold-text text-[19px]">
+              ${money(price)}
+            </span>
+            <span class="block text-[9px] text-gray-500 mt-0.5">
+              ${catalogMode === 'revendedor' ? 'Precio de venta estimado' : 'Precio mayorista'}
+            </span>
+          </div>
+          ${catalogMode === 'revendedor'
+            ? `<span class="text-[9px] font-bold text-green-400 bg-green-400/10 border border-green-400/20 rounded-full px-2 py-1">+${resellerMarkup}%</span>`
+            : ''}
         </div>
 
       </div>
 
-      <div class="flex items-center gap-1.5 flex-shrink-0">
+      <div class="flex items-center justify-between gap-2">
 
-        ${
-          qty > 0
+        <div class="flex items-center gap-1.5">
+          ${
+            qty > 0
+            ? `
+              <button
+                onclick="event.stopPropagation();changeQty(${p.id},-1)"
+                class="qty-btn w-8 h-8 rounded-lg bg-neutral-800 text-gray-300 flex items-center justify-center">
+                −
+              </button>
 
-          ?
+              <span class="w-5 text-center text-sm font-bold text-white">${qty}</span>
 
-          `
-          <button
-            onclick="event.stopPropagation();changeQty(${p.id},-1)"
-            class="qty-btn w-7 h-7 rounded-full bg-neutral-800 text-gray-300 flex items-center justify-center">
-            −
-          </button>
+              <button
+                onclick="event.stopPropagation();changeQty(${p.id},1)"
+                class="qty-btn w-8 h-8 rounded-lg bg-gold-muted text-black flex items-center justify-center">
+                +
+              </button>
+            `
+            : `
+              <button
+                onclick="event.stopPropagation();changeQty(${p.id},1)"
+                class="qty-btn w-9 h-9 rounded-lg bg-gold-muted text-black flex items-center justify-center"
+                aria-label="Agregar ${p.name} al carrito">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                </svg>
+              </button>
+            `
+          }
+        </div>
 
-          <span class="w-5 text-center text-sm font-bold text-white">
-            ${qty}
-          </span>
-
-          <button
-            onclick="event.stopPropagation();changeQty(${p.id},1)"
-            class="qty-btn w-7 h-7 rounded-full bg-gold-muted text-black flex items-center justify-center">
-            +
-          </button>
-          `
-
-          :
-
-          `
-          <button
-            onclick="event.stopPropagation();changeQty(${p.id},1)"
-            class="qty-btn w-8 h-8 rounded-full bg-gold-muted text-black flex items-center justify-center">
-
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
-              <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"/>
-            </svg>
-
-          </button>
-          `
-        }
+        <button
+          onclick="openProductModal(${p.id})"
+          class="text-[10px] font-semibold text-gray-500 hover:text-white transition">
+          Ver detalle
+        </button>
 
       </div>
-
     `;
 
     container.appendChild(row);
-
   });
-
 }
-
 
 /* =====================================================
    BÚSQUEDA
@@ -2504,24 +3073,12 @@ function changeQty(id,delta){
 }
 
 function cartTotal(){
-
   return Object.entries(cart)
     .reduce((sum,[id,qty])=>{
-
-      const p=
-        products.find(
-          x=>x.id===Number(id)
-        );
-
-      if(!p || p.price===null){
-        return sum;
-      }
-
-      return sum+
-        p.price*qty;
-
+      const p = products.find(x=>x.id===Number(id));
+      if(!p || p.price===null) return sum;
+      return sum + displayPrice(p.price) * qty;
     },0);
-
 }
 
 function cartCount(){
@@ -2544,6 +3101,11 @@ function updateCartUI(){
 
   document.getElementById('cartTotal').textContent=
     money(total);
+
+  const pricingNote = document.getElementById('cartPricingNote');
+  if(pricingNote){
+    pricingNote.classList.toggle('hidden', catalogMode !== 'revendedor');
+  }
 
   const btn=
     document.getElementById('checkoutBtn');
@@ -2672,7 +3234,7 @@ function renderCartItems(){
         </p>
 
         <p class="text-xs gold-text font-semibold mt-0.5">
-          ${money(p.price)} c/u
+          ${money(displayPrice(p.price))} c/u
         </p>
 
       </div>
