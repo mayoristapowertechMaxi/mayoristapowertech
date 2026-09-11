@@ -648,10 +648,16 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
         class="space-y-1.5">
       </ul>
 
+      <div class="grid grid-cols-3 gap-2 mt-5">
+        <button type="button" onclick="shareProduct(currentModalProduct?.id)" class="border border-gold-dark/40 bg-neutral-900 text-white font-semibold py-2.5 rounded-xl text-sm">Compartir</button>
+        <button type="button" onclick="shareProductWhatsApp(currentModalProduct?.id)" class="border border-green-700/50 bg-green-950/30 text-white font-semibold py-2.5 rounded-xl text-sm">WhatsApp</button>
+        <button type="button" onclick="copyProductLink(currentModalProduct?.id)" class="border border-neutral-700 bg-neutral-900 text-gray-200 font-semibold py-2.5 rounded-xl text-sm">Copiar enlace</button>
+      </div>
+
       <button
         id="modalAddBtn"
         onclick="addFromModal()"
-        class="w-full mt-5 bg-gold-muted text-black font-bold py-3 rounded-xl">
+        class="w-full mt-2 bg-gold-muted text-black font-bold py-3 rounded-xl">
 
         Agregar al pedido
 
@@ -1731,6 +1737,7 @@ let activeCategory = null;
 let currentModalProduct = null;
 let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
 let resellerMarkup = Number(localStorage.getItem('powertech_markup') || 30);
+let resellerSlug = localStorage.getItem('powertech_reseller_slug') || 'tu-catalogo';
 
 if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
 
@@ -1739,6 +1746,62 @@ function displayPrice(price){
   return catalogMode === 'revendedor'
     ? Math.round(Number(price) * (1 + resellerMarkup / 100))
     : Number(price);
+}
+
+function slugifyProduct(value){
+  return String(value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'');
+}
+
+function getResellerCatalogUrl(product){
+  const base='https://powertech.com.ar';
+  return `${base}/${encodeURIComponent(resellerSlug)}/${slugifyProduct(product.name || product.title)}`;
+}
+
+function getProductShareText(product){
+  const price=displayPrice(product.price);
+  return `${product.title || product.name}\n${product.desc}\nPrecio: ${money(price)}\n\nVer producto: ${getResellerCatalogUrl(product)}`;
+}
+
+async function shareProduct(id){
+  const product=products.find(x=>x.id===id);
+  if(!product) return;
+  const url=getResellerCatalogUrl(product);
+  const text=getProductShareText(product);
+
+  if(navigator.share){
+    try{
+      await navigator.share({title:product.title || product.name,text,url});
+      return;
+    }catch(e){
+      if(e && e.name==='AbortError') return;
+    }
+  }
+
+  try{
+    await navigator.clipboard.writeText(url);
+    showToast('Enlace del producto copiado');
+  }catch(e){
+    window.prompt('Copiá este enlace del producto:',url);
+  }
+}
+
+function shareProductWhatsApp(id){
+  const product=products.find(x=>x.id===id);
+  if(!product) return;
+  const text=getProductShareText(product);
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener');
+}
+
+function copyProductLink(id){
+  const product=products.find(x=>x.id===id);
+  if(!product) return;
+  const url=getResellerCatalogUrl(product);
+  navigator.clipboard?.writeText(url).then(()=>showToast('Enlace copiado')).catch(()=>window.prompt('Copiá este enlace:',url));
 }
 
 function showUserAccountAfterLogin(){
@@ -1976,6 +2039,15 @@ function renderProducts(list){
       </div>
 
       <div class="flex items-center gap-1.5 flex-shrink-0">
+
+        <button
+          type="button"
+          title="Compartir producto"
+          aria-label="Compartir producto"
+          onclick="event.stopPropagation();shareProduct(${p.id})"
+          class="w-8 h-8 rounded-full bg-neutral-800 border border-gold-dark/20 text-gray-300 flex items-center justify-center hover:text-white hover:border-gold-dark/60">
+          ↗
+        </button>
 
         ${
           qty > 0
