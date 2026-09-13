@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -388,6 +389,112 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 </style>
 <style id="powertech-v7-final-css">
 .pt-v7-builder{display:grid;gap:12px}.pt-v7-search{display:flex;gap:8px}.pt-v7-search input{flex:1;background:#0a1016;border:1px solid #26313a;color:#fff;border-radius:10px;padding:11px}.pt-v7-list{max-height:310px;overflow:auto;border:1px solid #202b34;border-radius:12px}.pt-v7-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #182129}.pt-v7-item:last-child{border-bottom:0}.pt-v7-item img{width:42px;height:42px;border-radius:8px;object-fit:cover}.pt-v7-item-main{flex:1;min-width:0}.pt-v7-item-main b{display:block;color:#fff;font-size:13px}.pt-v7-item-main small{color:#7f8b94}.pt-v7-btn{border:1px solid #3a4650;background:#111a22;color:#fff;border-radius:9px;padding:8px 10px;cursor:pointer}.pt-v7-btn.gold{background:#c6a15b;color:#07090b;border-color:#c6a15b;font-weight:800}.pt-v7-tag{font-size:10px;color:#c6a15b;border:1px solid #6f5a31;border-radius:99px;padding:3px 7px}.pt-v7-empty{padding:20px;text-align:center;color:#78838c}.pt-v7-phone{display:flex;gap:8px;align-items:center;margin-top:8px}.pt-v7-phone input{flex:1}.pt-v7-phone button{white-space:nowrap}.pt-v7-admin{display:none;margin:10px 16px;padding:12px;border:1px solid #493c23;border-radius:12px;background:#0d1218}.pt-v7-admin.show{display:block}.pt-v7-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pt-v7-stat{padding:10px;border:1px solid #202b34;border-radius:10px}.pt-v7-stat small{display:block;color:#7f8b94}.pt-v7-stat b{font-size:18px;color:#fff}.pt-v7-order-row{padding:12px;border:1px solid #202b34;border-radius:11px;margin-top:8px}.pt-v7-order-row b{color:#fff}.pt-v7-order-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+
+/* =========================================================
+   POWERTECH V8 · UX / TASK WORKSPACES
+========================================================= */
+.pt-task-shell{
+  width:min(1180px,100%);
+  max-height:94vh;
+  display:flex;
+  flex-direction:column;
+  background:#070b0f;
+  border:1px solid rgba(201,162,39,.28);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 30px 100px rgba(0,0,0,.7);
+}
+.pt-task-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 24px;
+  border-bottom:1px solid #1e2932;
+  background:linear-gradient(180deg,#0b1117,#080c10);
+}
+.pt-task-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#c9a227}
+.pt-task-header h2{margin:3px 0 2px;font-size:25px;color:#fff}
+.pt-task-header p{margin:0;color:#87919b;font-size:13px}
+.pt-task-close{width:42px;height:42px;border:1px solid #27333d;border-radius:12px;background:#0d141a;color:#cdd3d8;font-size:27px;cursor:pointer}
+.pt-task-body{overflow:auto;padding:22px;background:radial-gradient(circle at top right,rgba(201,162,39,.05),transparent 35%)}
+.pt-task-body .pt-v7-builder{display:grid;gap:18px}
+.pt-manage-catalog-btn{margin-top:16px;width:100%;justify-content:center}
+.pt-product-price-card{
+  background:linear-gradient(180deg,#0c1319,#091016);
+  border:1px solid #25313a;
+  border-radius:16px;
+  padding:14px;
+  margin-top:10px;
+}
+.pt-product-price-head{display:flex;align-items:center;gap:12px}
+.pt-product-price-head img{width:58px;height:58px;object-fit:contain;border-radius:11px;background:#fff}
+.pt-product-price-title{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.pt-product-price-title b{color:#fff;font-size:14px}
+.pt-product-price-title span{color:#7f8b95;font-size:11px}
+.pt-price-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.pt-price-grid>div{padding:11px;border-radius:12px;background:#0a1117;border:1px solid #1e2a33}
+.pt-price-grid small{display:block;color:#7f8b95;font-size:10px}
+.pt-price-grid strong{display:block;color:#fff;margin-top:4px;font-size:17px}
+.pt-price-effective{border-color:rgba(201,162,39,.28)!important}
+.pt-price-effective strong{color:#e0c158}
+.pt-pricing-mode{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.pt-pricing-option{display:flex;gap:9px;align-items:flex-start;padding:11px;border:1px solid #26323b;border-radius:12px;background:#0a1016;cursor:pointer}
+.pt-pricing-option.selected{border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.07)}
+.pt-pricing-option input{margin-top:3px;accent-color:#c9a227}
+.pt-pricing-option b{display:block;color:#e8edf0;font-size:12px}
+.pt-pricing-option small{display:block;color:#77838d;font-size:10px;margin-top:3px}
+.pt-manual-price-box{margin-top:10px;padding:12px;border:1px solid rgba(201,162,39,.28);border-radius:12px;background:#0b1218}
+.pt-manual-price-box label{display:block;color:#c8d0d6;font-size:11px;font-weight:700}
+.pt-manual-price-box input{display:block;width:100%;margin-top:5px;background:#070c11;border:1px solid #29353e;border-radius:9px;color:#fff;padding:10px}
+.pt-price-min{color:#737f89;font-size:10px;margin-top:6px}
+.pt-price-error{color:#f87171;font-size:11px;margin-top:6px}
+.pt-manual-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.pt-modal-price-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.pt-modal-price-modes label{display:flex;gap:8px;padding:10px;border:1px solid #27333d;border-radius:10px;background:#0b1117}
+.pt-modal-price-modes b{display:block;font-size:11px;color:#fff}
+.pt-modal-price-modes small{display:block;font-size:9px;color:#73808a;margin-top:2px}
+.pt-modal-price-modes input{accent-color:#c9a227;margin-top:2px}
+.pt-hub-order-card{background:linear-gradient(180deg,#0c1319,#091016);border:1px solid #25313a;border-radius:16px;padding:16px;margin-top:10px}
+.pt-hub-order-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.pt-hub-order-number{font-size:10px;letter-spacing:.1em;color:#8b969f;text-transform:uppercase}
+.pt-hub-order-top h3{margin:3px 0 0;color:#fff;font-size:16px}
+.pt-order-status{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;font-size:10px;font-weight:800;white-space:nowrap}
+.pt-order-status.pending{color:#f0cf6a;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.3)}
+.pt-order-status.confirmed{color:#82b9ff;background:rgba(60,130,246,.12);border:1px solid rgba(60,130,246,.28)}
+.pt-order-status.preparing{color:#ffb15c;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28)}
+.pt-order-status.dispatched{color:#c7a7ff;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.28)}
+.pt-order-status.delivered{color:#74df9b;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.28)}
+.pt-order-status.cancelled{color:#ff7777;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.28)}
+.pt-hub-order-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pt-hub-order-meta span{font-size:10px;color:#87929b;background:#0a1117;border:1px solid #1d2932;border-radius:999px;padding:6px 9px}
+.pt-hub-order-meta span:first-child{color:#e0c158;font-size:13px;font-weight:800}
+.pt-order-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.pt-order-action{border:1px solid #2a3740;background:#101820;color:#dce2e6;border-radius:9px;padding:8px 10px;font-size:11px;font-weight:700;cursor:pointer}
+.pt-order-action:hover{border-color:#c9a227}
+.pt-order-action.danger{border-color:rgba(239,68,68,.35);color:#ff9b9b}
+.pt-order-action:disabled{opacity:.5;cursor:wait}
+.pt-order-final{font-size:11px;color:#697680}
+.pt-order-history{margin-top:13px;border-top:1px solid #1d2932;padding-top:10px}
+.pt-order-history summary{cursor:pointer;color:#929da6;font-size:10px}
+.pt-order-history-list{margin-top:9px;display:grid;gap:6px}
+.pt-order-history-item{display:grid;grid-template-columns:55px 100px 1fr;gap:8px;align-items:center;font-size:10px}
+.pt-order-history-item span{color:#68747e}
+.pt-order-history-item b{color:#cfd6da}
+.pt-order-history-item small{color:#697680}
+.pt-order-history-empty{color:#697680;font-size:10px}
+.pt-order-final{padding:8px 0}
+@media(max-width:700px){
+ .pt-task-shell{max-height:100vh;border-radius:0}
+ .pt-task-header{padding:16px}
+ .pt-task-body{padding:14px}
+ .pt-pricing-mode,.pt-modal-price-modes,.pt-price-grid{grid-template-columns:1fr}
+ .pt-product-price-head{align-items:flex-start}
+ .pt-product-price-head .pt-v7-btn{padding:7px 8px}
+ .pt-hub-order-top{flex-direction:column}
+ .pt-order-status{align-self:flex-start}
+ .pt-order-history-item{grid-template-columns:48px 90px 1fr}
+}
 </style>
 <!-- POWERTECH · LIBRERÍA PDF + SUPABASE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -515,19 +622,7 @@ window.powertechSupabase = window.supabase.createClient(
 <button class="pt-account-menu-item" onclick="accountSection('orders')" type="button"><span>≡</span><div><b>Mis pedidos</b><small>Historial de pedidos</small></div></button>
 </div>
 <div class="pt-v7-admin" id="powerHubEntry"><div class="pt-account-label">Power Hub</div><div class="pt-account-muted">Administración de clientes, pedidos y ventas.</div><div class="pt-v7-stat-grid" id="powerHubStats"></div><button class="pt-v7-btn gold" onclick="openPowerHub()" style="margin-top:9px" type="button">Abrir Power Hub</button></div>
-<div class="pt-account-card" id="accountCatalogBuilder" style="margin-top:10px">
-<div class="pt-v7-builder">
-<div><div class="pt-account-label">Creá tu catálogo</div><div class="pt-account-muted">Elegí el nombre que quieras y agregá productos desde el buscador. No necesitás cargar uno por uno.</div></div>
-<label class="pt-account-label">Nombre del catálogo<input id="catalogNameInput" maxlength="80" placeholder="Ej. Maxi Celulares" style="display:block;width:100%;margin-top:6px;background:#0a1016;border:1px solid #26313a;color:#fff;border-radius:10px;padding:11px" type="text"/></label>
-<div class="pt-v7-search"><input aria-label="Buscar productos de Powertech..." id="catalogProductSearch" oninput="renderCatalogSearchResults()" placeholder="Buscar productos de Powertech..." type="search"/><button class="pt-v7-btn" onclick="addAllSearchResults()" type="button">+ Agregar resultados</button></div>
-<div class="pt-v7-list" id="catalogSearchResults"><div class="pt-v7-empty">Escribí para buscar productos.</div></div>
-<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pt-v7-btn gold" onclick="addAllPowertechProducts()" type="button">+ Agregar todo Powertech</button><button class="pt-v7-btn" onclick="saveCatalogConfiguration()" type="button">Guardar cambios</button></div>
-<div class="pt-account-muted" id="catalogSelectionSummary">0 productos seleccionados</div>
-<button class="pt-v7-btn" onclick="openManualOrderModal()" type="button">＋ Crear pedido para un cliente</button>
-<div class="pt-account-label">Mis productos</div>
-<div class="pt-v7-list" id="myCatalogProductsList"><div class="pt-v7-empty">Todavía no agregaste productos.</div></div>
-</div>
-</div>
+
 <div class="pt-account-section" id="accountSectionCatalog">
 <div class="pt-account-card">
 <div class="pt-account-row">
@@ -543,7 +638,7 @@ window.powertechSupabase = window.supabase.createClient(
 <div class="pt-account-markup-actions"><button onclick="setAccountMarkup(10)" type="button">+10%</button><button onclick="setAccountMarkup(20)" type="button">+20%</button><button onclick="setAccountMarkup(30)" type="button">+30%</button><button onclick="setAccountMarkup(40)" type="button">+40%</button></div>
 <div class="pt-account-inline"><input aria-label="markupInput" id="markupInput" max="500" min="0" step="1" type="number" value="30"/><button class="pt-account-btn" onclick="saveAccountMarkupInput()" type="button">Aplicar</button></div>
 </div>
-</div>
+<button class="pt-account-primary pt-manage-catalog-btn" onclick="openCatalogManager()" type="button">Administrar catálogo</button></div>
 </div>
 <div class="pt-account-section hidden" id="accountSectionData">
 <div class="pt-account-card"><div class="pt-account-row">
@@ -597,7 +692,19 @@ window.powertechSupabase = window.supabase.createClient(
 <!-- =====================================================
      🔥 MODAL COMBO (NUEVO)
 ===================================================== -->
-<div class="hidden fixed inset-0 z-50 items-end sm:items-center justify-center" id="comboModal">
+<div class="hidden fixed inset-0 z-[105] items-end sm:items-center justify-center bg-black/85 backdrop-blur-sm p-0 sm:p-5" id="catalogManagerView"><div class="pt-task-shell"><div class="pt-task-header"><div><div class="pt-task-eyebrow">Mi catálogo</div><h2>Administrar catálogo</h2><p>Elegí productos, configurá tu margen y definí precios personalizados.</p></div><button aria-label="Cerrar administrador de catálogo" class="pt-task-close" onclick="closeCatalogManager()" type="button">×</button></div><div class="pt-task-body"><div class="pt-account-card" id="accountCatalogBuilder" style="margin-top:10px">
+<div class="pt-v7-builder">
+<div><div class="pt-account-label">Creá tu catálogo</div><div class="pt-account-muted">Elegí el nombre que quieras y agregá productos desde el buscador. No necesitás cargar uno por uno.</div></div>
+<label class="pt-account-label">Nombre del catálogo<input id="catalogNameInput" maxlength="80" placeholder="Ej. Maxi Celulares" style="display:block;width:100%;margin-top:6px;background:#0a1016;border:1px solid #26313a;color:#fff;border-radius:10px;padding:11px" type="text"/></label>
+<div class="pt-v7-search"><input aria-label="Buscar productos de Powertech..." id="catalogProductSearch" oninput="renderCatalogSearchResults()" placeholder="Buscar productos de Powertech..." type="search"/><button class="pt-v7-btn" onclick="addAllSearchResults()" type="button">+ Agregar resultados</button></div>
+<div class="pt-v7-list" id="catalogSearchResults"><div class="pt-v7-empty">Escribí para buscar productos.</div></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pt-v7-btn gold" onclick="addAllPowertechProducts()" type="button">+ Agregar todo Powertech</button><button class="pt-v7-btn" onclick="saveCatalogConfiguration()" type="button">Guardar cambios</button></div>
+<div class="pt-account-muted" id="catalogSelectionSummary">0 productos seleccionados</div>
+<button class="pt-v7-btn" onclick="openManualOrderModal()" type="button">＋ Crear pedido para un cliente</button>
+<div class="pt-account-label">Mis productos</div>
+<div class="pt-v7-list" id="myCatalogProductsList"><div class="pt-v7-empty">Todavía no agregaste productos.</div></div>
+</div>
+</div></div></div></div><div class="hidden fixed inset-0 z-50 items-end sm:items-center justify-center" id="comboModal">
 <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" onclick="closeComboModal()">
 </div>
 <div class="relative bg-neutral-950 border border-gold-dark/50 w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl max-h-[92vh] overflow-y-auto slide-up">
@@ -611,7 +718,6 @@ window.powertechSupabase = window.supabase.createClient(
 <div class="p-4 pt-1">
 <span class="text-[10px] uppercase tracking-wider font-bold gold-text bg-gold-dark/20 border border-gold-dark/40 rounded-full px-2.5 py-1" id="comboBadge">
 </span>
-
 <p class="font-display font-extrabold text-3xl gold-text mt-2" id="comboPrice">
 </p>
 <div class="mt-5">
@@ -625,7 +731,7 @@ window.powertechSupabase = window.supabase.createClient(
 <button class="bg-gold-muted text-black font-bold py-3.5 rounded-xl flex items-center justify-center gap-2" id="comboAddBtn" onclick="addComboToCart()" type="button">
         Agregar al carrito
       </button>
-<a class="bg-[#25D366] text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2" href="https://wa.me/5491168878292" id="comboWhatsAppBtn" target="_blank" rel="noopener noreferrer">
+<a class="bg-[#25D366] text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2" href="https://wa.me/5491168878292" id="comboWhatsAppBtn" rel="noopener noreferrer" target="_blank">
 <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
 </svg>
@@ -658,7 +764,6 @@ window.powertechSupabase = window.supabase.createClient(
 </div>
 <span class="text-[10px] uppercase tracking-wider font-bold gold-text bg-gold-dark/20 border border-gold-dark/40 rounded-full px-2.5 py-1" id="modalCategory">
 </span>
-
 <p class="font-display font-extrabold text-2xl gold-text mt-1" id="modalPrice">
 </p>
 <p class="text-sm text-gray-300 leading-relaxed mt-3" id="modalDesc">
@@ -668,14 +773,23 @@ window.powertechSupabase = window.supabase.createClient(
       </h4>
 <ul class="space-y-1.5" id="modalSpecs">
 </ul>
-<div class="hidden mt-5 p-3 rounded-xl border border-gold-dark/30 bg-neutral-900/70" id="modalCustomPriceBox">
-<div class="text-[10px] uppercase tracking-wider font-bold text-gray-400">Precio personalizado de venta</div>
-<div class="text-[10px] text-gray-500 mt-1">Usá el margen general como base y corregí este producto cuando quieras.</div>
-<div class="flex gap-2 mt-2">
-<input aria-label="Ej. 12990" class="flex-1 bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-white" id="modalCustomPriceInput" min="0" placeholder="Ej. 12990" step="1" type="number"/>
-<button class="bg-gold-muted text-black font-bold px-4 rounded-lg" onclick="saveModalCustomPrice()" type="button">Guardar</button>
+<div class="hidden mt-5 p-4 rounded-xl border border-gold-dark/30 bg-neutral-900/70" id="modalCustomPriceBox">
+<div class="text-[10px] uppercase tracking-wider font-bold text-gray-400">Precio para tu catálogo</div>
+<div class="pt-modal-price-modes">
+<label><input id="modalPricingMarkup" name="modalPricingMode" onchange="setModalPricingMode('markup')" type="radio" value="markup"/><span><b>Usar margen general</b><small id="modalMarkupHint">Se actualiza con tu margen.</small></span></label>
+<label><input id="modalPricingManual" name="modalPricingMode" onchange="setModalPricingMode('manual')" type="radio" value="manual"/><span><b>Precio personalizado</b><small>Elegís el precio directamente.</small></span></label>
 </div>
-<button class="text-[10px] text-gray-400 mt-2 underline" onclick="clearModalCustomPrice()" type="button">Volver al precio calculado</button>
+<div class="hidden mt-3" id="modalManualPriceArea">
+<label class="text-xs text-gray-300">Precio para tus clientes
+<input aria-label="Precio personalizado" class="w-full mt-1 bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-white" id="modalCustomPriceInput" min="0" placeholder="Ej. 25000" step="1" type="number">
+</input></label>
+<div class="text-[10px] text-gray-500 mt-1" id="modalPriceMinimum">Precio mínimo: —</div>
+<div class="text-xs text-red-400 mt-1 hidden" id="modalPriceError"></div>
+</div>
+<div class="flex gap-2 mt-3">
+<button class="bg-gold-muted text-black font-bold px-4 py-2 rounded-lg" onclick="saveModalCustomPrice()" type="button">Guardar</button>
+<button class="text-xs text-gray-400 underline px-2" onclick="clearModalCustomPrice()" type="button">Volver al margen</button>
+</div>
 </div>
 <div class="grid grid-cols-3 gap-2 mt-5">
 <button class="border border-gold-dark/40 bg-neutral-900 text-white font-semibold py-2.5 rounded-xl text-sm" onclick="shareProduct(currentModalProduct?.id)" type="button">Compartir</button>
@@ -1729,6 +1843,7 @@ let ownerResellerMarkup = Number(localStorage.getItem('powertech_markup') || 30)
 let catalogIncludeAll = false;
 let catalogProductIds = [];
 let catalogCustomPrices = {};
+let catalogPricingModes = {};
 let accountCatalogName = localStorage.getItem('powertech_catalog_name') || '';
 let publicCatalogPhone = '';
 let publicCatalogMarkup = 0;
@@ -1854,6 +1969,25 @@ async function toggleAccountDrawer(){
   }
 }
 
+function openCatalogManager(){
+  closeAccountPanel();
+  const view=document.getElementById('catalogManagerView');
+  if(!view)return;
+  view.classList.remove('hidden');view.classList.add('flex');
+  document.body.style.overflow='hidden';
+  renderAccountPanel();
+  renderCatalogSearchResults();
+  renderMyCatalogProducts();
+  updateCatalogSelectionSummary();
+}
+function closeCatalogManager(){
+  const view=document.getElementById('catalogManagerView');
+  if(view){view.classList.add('hidden');view.classList.remove('flex');}
+  const drawerOpen=!document.getElementById('accountDrawer')?.classList.contains('hidden');
+  const cartOpen=document.getElementById('cartModal')?.classList.contains('flex');
+  const otherOpen=document.getElementById('manualOrderModal')?.classList.contains('flex');
+  if(!drawerOpen&&!cartOpen&&!otherOpen)document.body.style.overflow='';
+}
 function openAccountPanel(){
   const overlay=document.getElementById('accountDrawerOverlay');
   const drawer=document.getElementById('accountDrawer');
@@ -1951,8 +2085,66 @@ function getEffectiveProductPrice(product){
   const markup=getEffectiveMarkup();
   return markup>0 ? Math.round(base*(1+markup/100)) : base;
 }
+function getCatalogPricingMode(product){
+  if(!product) return 'markup';
+  const mode=catalogPricingModes?.[String(product.id)];
+  return mode==='manual' ? 'manual' : 'markup';
+}
+function setCatalogPricingMode(productId,mode){
+  const id=String(productId);
+  if(mode==='manual'){
+    catalogPricingModes[id]='manual';
+  }else{
+    catalogPricingModes[id]='markup';
+    delete catalogCustomPrices[id];
+  }
+  renderMyCatalogProducts();
+}
+function validateManualPrice(product,value){
+  const base=Number(product?.price);
+  const v=Number(value);
+  if(!Number.isFinite(v)||v<=0) return {ok:false,message:'Ingresá un precio válido.'};
+  if(Number.isFinite(base) && v<base) return {ok:false,message:`El precio no puede ser menor a ${money(base)}.`};
+  return {ok:true,value:Math.round(v)};
+}
+async function saveProductPricing(productId){
+  const product=products.find(p=>Number(p.id)===Number(productId));
+  if(!product || !catalogSlug || viewingAsPublicCatalog) return;
+  const mode=getCatalogPricingMode(product);
+  if(mode==='markup'){
+    delete catalogCustomPrices[String(productId)];
+    catalogPricingModes[String(productId)]='markup';
+    await activatePersonalCatalog(true);
+    showToast('Producto configurado con margen general');
+    return;
+  }
+  const input=document.getElementById(`catalogPriceInput_${productId}`);
+  const result=validateManualPrice(product,input?.value);
+  const error=document.getElementById(`catalogPriceError_${productId}`);
+  if(!result.ok){
+    if(error){error.textContent=result.message;error.classList.remove('hidden');}
+    return;
+  }
+  if(error) error.classList.add('hidden');
+  catalogPricingModes[String(productId)]='manual';
+  catalogCustomPrices[String(productId)]=result.value;
+  await activatePersonalCatalog(true);
+  showToast('Precio personalizado guardado');
+}
+async function resetProductToMarkup(productId){
+  catalogPricingModes[String(productId)]='markup';
+  delete catalogCustomPrices[String(productId)];
+  await activatePersonalCatalog(true);
+  showToast('Volvió al margen general');
+}
+function updateProductPricingMode(productId,mode){
+  setCatalogPricingMode(productId,mode);
+  const box=document.getElementById(`catalogManualBox_${productId}`);
+  if(box) box.classList.toggle('hidden',mode!=='manual');
+}
 function getCatalogCustomPrice(product){
   const map=viewingAsPublicCatalog?publicCatalogCustomPrices:catalogCustomPrices;
+  if(!viewingAsPublicCatalog && getCatalogPricingMode(product)!=='manual') return null;
   const v=map?.[String(product?.id)];
   return Number.isFinite(Number(v))&&Number(v)>0?Number(v):null;
 }
@@ -1973,7 +2165,7 @@ function renderCatalogSearchResults(){
   const box=document.getElementById('catalogSearchResults'); if(!box)return;
   if(!q){box.innerHTML='<div class="pt-v7-empty">Escribí para buscar productos.</div>';return;}
   const matches=products.filter(p=>normalizeStr(`${p.name} ${p.title||''} ${p.desc||''} ${p.categoryLabel||''}`).includes(q)).slice(0,80);
-  box.innerHTML=matches.length?matches.map(p=>{const selected=catalogProductIds.includes(Number(p.id));return `<div class="pt-v7-item"><img src="${imageName(p.images?.[0])}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'"><div class="pt-v7-item-main"><b>${p.name}</b><small>${p.price===null?'Consultar':money(p.price)}</small></div>${selected?'<span class="pt-v7-tag">Agregado</span>':'<button class="pt-v7-btn" onclick="addCatalogProduct('+p.id+')">Agregar</button>'}</div>`}).join(''):'<div class="pt-v7-empty">No encontramos productos.</div>';
+  box.innerHTML=matches.length?matches.map(p=>{const selected=catalogProductIds.includes(Number(p.id));return `<div class="pt-v7-item"><img src="${imageName(p.images?.[0])}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'"><div class="pt-v7-item-main"><b>${p.name}</b><small>${p.price===null?'Consultar':money(p.price)}</small></div>${selected?'<span class="pt-v7-tag">Agregado</span>':'<button type="button" class="pt-v7-btn" onclick="addCatalogProduct('+p.id+')">Agregar</button>'}</div>`}).join(''):'<div class="pt-v7-empty">No encontramos productos.</div>';
 }
 function addCatalogProduct(id){ if(!catalogProductIds.includes(Number(id))) catalogProductIds.push(Number(id)); renderCatalogSearchResults(); renderMyCatalogProducts(); updateCatalogSelectionSummary(); }
 function removeCatalogProduct(id){ catalogProductIds=catalogProductIds.filter(x=>Number(x)!==Number(id)); delete catalogCustomPrices[String(id)]; renderCatalogSearchResults(); renderMyCatalogProducts(); updateCatalogSelectionSummary(); }
@@ -1985,58 +2177,186 @@ function addAllSearchResults(){
 function addAllPowertechProducts(){ catalogProductIds=products.map(p=>Number(p.id)); renderCatalogSearchResults();renderMyCatalogProducts();updateCatalogSelectionSummary();showToast('Agregamos todo Powertech'); }
 function updateCatalogSelectionSummary(){const el=document.getElementById('catalogSelectionSummary');if(el)el.textContent=`${catalogProductIds.length} productos seleccionados`;}
 function renderMyCatalogProducts(){
- const box=document.getElementById('myCatalogProductsList');if(!box)return;const list=products.filter(p=>catalogProductIds.includes(Number(p.id)));
- box.innerHTML=list.length?list.map(p=>{const cp=getCatalogCustomPrice(p);const effective=getEffectiveProductPrice(p);return `<div class="pt-v7-item"><img src="${imageName(p.images?.[0])}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'"><div class="pt-v7-item-main"><b>${p.name}</b><small>${p.price===null?'Consultar':`Venta: ${money(effective)}`}${cp!==null?' · personalizado':''}</small></div><button class="pt-v7-btn" onclick="openProductModal(${p.id})">Precio</button><button class="pt-v7-btn" onclick="removeCatalogProduct(${p.id})">Quitar</button></div>`}).join(''):'<div class="pt-v7-empty">Todavía no agregaste productos.</div>';
+ const box=document.getElementById('myCatalogProductsList');if(!box)return;
+ const list=products.filter(p=>catalogProductIds.includes(Number(p.id)));
+ if(!list.length){box.innerHTML='<div class="pt-v7-empty">Todavía no agregaste productos.</div>';return;}
+ box.innerHTML=list.map(p=>{
+   const mode=getCatalogPricingMode(p);
+   const custom=getCatalogCustomPrice(p);
+   const base=Number(p.price);
+   const calculated=Number.isFinite(base)?Math.round(base*(1+(Number(resellerMarkup)||0)/100)):null;
+   const effective=getEffectiveProductPrice(p);
+   const manualBox=mode==='manual'?'':'hidden';
+   const customValue=custom!==null?custom:'';
+   return `<article class="pt-product-price-card" id="catalogProductCard_${p.id}">
+     <div class="pt-product-price-head">
+       <img src="${imageName(p.images?.[0])}" alt="${p.title||p.name}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'">
+       <div class="pt-product-price-title"><b>${p.name}</b><span>Precio Powertech: ${p.price===null?'Consultar':money(base)}</span></div>
+       <button class="pt-v7-btn" onclick="removeCatalogProduct(${p.id})" type="button">Quitar</button>
+     </div>
+     <div class="pt-price-grid">
+       <div><small>Con tu margen (${Number(resellerMarkup)||0}%)</small><strong>${calculated===null?'Consultar':money(calculated)}</strong></div>
+       <div class="pt-price-effective"><small>Precio en tu catálogo</small><strong>${effective===null?'Consultar':money(effective)}</strong></div>
+     </div>
+     <div class="pt-pricing-mode">
+       <label class="pt-pricing-option ${mode==='markup'?'selected':''}">
+         <input type="radio" name="pricingMode_${p.id}" value="markup" ${mode==='markup'?'checked':''} onchange="updateProductPricingMode(${p.id},'markup')">
+         <span><b>Usar margen general</b><small>Se actualiza cuando cambiás el margen.</small></span>
+       </label>
+       <label class="pt-pricing-option ${mode==='manual'?'selected':''}">
+         <input type="radio" name="pricingMode_${p.id}" value="manual" ${mode==='manual'?'checked':''} onchange="updateProductPricingMode(${p.id},'manual')">
+         <span><b>Precio personalizado</b><small>Queda fijo hasta que lo cambies.</small></span>
+       </label>
+     </div>
+     <div class="pt-manual-price-box ${manualBox}" id="catalogManualBox_${p.id}">
+       <label>Precio para tus clientes
+         <input id="catalogPriceInput_${p.id}" type="number" min="${Number.isFinite(base)?base:0}" step="1" value="${customValue}" placeholder="${calculated||''}" aria-label="Precio personalizado para ${p.name}">
+       </label>
+       <div class="pt-price-min">Precio mínimo permitido: <b>${Number.isFinite(base)?money(base):'Consultar'}</b></div>
+       <div class="pt-price-error hidden" id="catalogPriceError_${p.id}"></div>
+       <div class="pt-manual-actions">
+         <button class="pt-v7-btn gold" onclick="saveProductPricing(${p.id})" type="button">Guardar precio</button>
+         <button class="pt-v7-btn" onclick="resetProductToMarkup(${p.id})" type="button">Volver al margen</button>
+       </div>
+     </div>
+   </article>`;
+ }).join('');
 }
 async function saveCatalogConfiguration(){ await activatePersonalCatalog(true); }
-function saveModalCustomPrice(){
+async function saveModalCustomPrice(){
  if(!currentModalProduct||!catalogSlug||viewingAsPublicCatalog)return;
- const input=document.getElementById('modalCustomPriceInput');const value=Number(input?.value);if(!Number.isFinite(value)||value<=0){showToast('Ingresá un precio válido.');return;}
- if(!catalogProductIds.includes(Number(currentModalProduct.id))) catalogProductIds.push(Number(currentModalProduct.id));
- catalogCustomPrices[String(currentModalProduct.id)]=Math.round(value);activatePersonalCatalog(true).then(()=>{document.getElementById('modalPrice').textContent=money(value);renderMyCatalogProducts();showToast('Precio personalizado guardado');});
+ const mode=document.querySelector('input[name="modalPricingMode"]:checked')?.value||'markup';
+ if(mode==='markup'){await clearModalCustomPrice();return;}
+ const input=document.getElementById('modalCustomPriceInput');
+ const result=validateManualPrice(currentModalProduct,input?.value);
+ const error=document.getElementById('modalPriceError');
+ if(!result.ok){if(error){error.textContent=result.message;error.classList.remove('hidden');}return;}
+ if(error)error.classList.add('hidden');
+ if(!catalogProductIds.includes(Number(currentModalProduct.id)))catalogProductIds.push(Number(currentModalProduct.id));
+ catalogPricingModes[String(currentModalProduct.id)]='manual';
+ catalogCustomPrices[String(currentModalProduct.id)]=result.value;
+ await activatePersonalCatalog(true);
+ document.getElementById('modalPrice').textContent=money(result.value);
+ renderMyCatalogProducts();
+ showToast('Precio personalizado guardado');
 }
-function clearModalCustomPrice(){if(!currentModalProduct)return;delete catalogCustomPrices[String(currentModalProduct.id)];activatePersonalCatalog(true);const calculated=getEffectiveProductPrice(currentModalProduct);const el=document.getElementById('modalPrice');if(el)el.textContent=calculated===null?'Consultar':money(calculated);const input=document.getElementById('modalCustomPriceInput');if(input)input.value='';renderMyCatalogProducts();showToast('Volvió al precio calculado');}
+async function clearModalCustomPrice(){
+ if(!currentModalProduct)return;
+ catalogPricingModes[String(currentModalProduct.id)]='markup';
+ delete catalogCustomPrices[String(currentModalProduct.id)];
+ await activatePersonalCatalog(true);
+ const calculated=getEffectiveProductPrice(currentModalProduct);
+ const el=document.getElementById('modalPrice');
+ if(el)el.textContent=calculated===null?'Consultar':money(calculated);
+ const input=document.getElementById('modalCustomPriceInput');if(input)input.value='';
+ const error=document.getElementById('modalPriceError');if(error)error.classList.add('hidden');
+ setModalPricingMode('markup');
+ renderMyCatalogProducts();
+ showToast('Volvió al precio calculado');
+}
 
 async function activatePersonalCatalog(silent=false){
  try{
-  const {data:{session}}=await window.powertechSupabase.auth.getSession(); if(!session?.user){openPowertechAuth('signup');return;}
+  const {data:{session}}=await window.powertechSupabase.auth.getSession();
+  if(!session?.user){openPowertechAuth('signup');return null;}
   const catalogName=normalizeCatalogName(document.getElementById('catalogNameInput')?.value||localStorage.getItem('powertech_catalog_name')||accountBusinessName||'Mi catálogo Powertech')||'Mi catálogo Powertech';
   const {data:business}=await window.powertechSupabase.from('businesses').select('id,business_name').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();
   const slugBase=slugifyProduct(catalogName)||'mi-catalogo';
   const slug=`${slugBase}-${session.user.id.slice(0,6)}`;
   let existing=null;
-  if(catalogSlug){const r=await window.powertechSupabase.from('catalogs').select('id').eq('slug',catalogSlug).maybeSingle();existing=r.data;}
-  if(!existing){const r=await window.powertechSupabase.from('catalogs').select('id').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();existing=r.data;}
+  if(catalogSlug){
+    const r=await window.powertechSupabase.from('catalogs').select('id').eq('slug',catalogSlug).maybeSingle();
+    existing=r.data;
+  }
+  if(!existing){
+    const r=await window.powertechSupabase.from('catalogs').select('id').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();
+    existing=r.data;
+  }
   const payload={user_id:session.user.id,business_id:business?.id||null,catalog_name:catalogName,slug,general_markup:Number(ownerResellerMarkup??resellerMarkup)||0,active:true,updated_at:new Date().toISOString()};
-  let saved;
-  if(existing){saved=await window.powertechSupabase.from('catalogs').update(payload).eq('id',existing.id).select('id,slug,catalog_name,general_markup,active').single();}
-  else{saved=await window.powertechSupabase.from('catalogs').insert(payload).select('id,slug,catalog_name,general_markup,active').single();}
+  let saved=existing
+    ? await window.powertechSupabase.from('catalogs').update(payload).eq('id',existing.id).select('id,slug,catalog_name,general_markup,active').single()
+    : await window.powertechSupabase.from('catalogs').insert(payload).select('id,slug,catalog_name,general_markup,active').single();
   if(saved.error)throw saved.error;
-  catalogSlug=saved.data.slug;resellerSlug=catalogSlug;
+  catalogSlug=saved.data.slug; resellerSlug=catalogSlug; accountCatalogName=saved.data.catalog_name||catalogName;
   const catalogId=saved.data.id;
-  // Persist selection relationally, no JSONB.
-  const existingRows=await window.powertechSupabase.from('catalog_products').select('product_id').eq('catalog_id',catalogId);
-  if(existingRows.error)throw existingRows.error;
-  const selected=new Set(catalogProductIds.map(Number));
-  const oldIds=(existingRows.data||[]).map(r=>Number(r.product_id));
-  const toDelete=oldIds.filter(id=>!selected.has(id));
-  if(toDelete.length){const r=await window.powertechSupabase.from('catalog_products').delete().eq('catalog_id',catalogId).in('product_id',toDelete);if(r.error)throw r.error;}
-  const rows=products.filter(p=>selected.has(Number(p.id))).map(p=>({catalog_id:catalogId,product_id:Number(p.id),custom_price:getCatalogCustomPrice(p),active:true,updated_at:new Date().toISOString()}));
-  if(rows.length){const r=await window.powertechSupabase.from('catalog_products').upsert(rows,{onConflict:'catalog_id,product_id'});if(r.error)throw r.error;}
-  localStorage.setItem('powertech_catalog_slug',catalogSlug);localStorage.setItem('powertech_reseller_slug',resellerSlug);localStorage.setItem('powertech_catalog_name',catalogName);localStorage.setItem('powertech_markup',String(ownerResellerMarkup||0));
-  document.getElementById('catalogNameInput')?.setAttribute('value',catalogName);accountCatalogName=catalogName;
-  renderAccountPanel();renderCatalogSearchResults();renderMyCatalogProducts();updateCatalogSelectionSummary();refreshList();updateCartUI();updateSocialMetadata();
+
+  const rows=products.filter(p=>catalogProductIds.includes(Number(p.id))).map(p=>({
+    product_id:Number(p.id),
+    pricing_mode:getCatalogPricingMode(p),
+    custom_price:getCatalogPricingMode(p)==='manual'?getCatalogCustomPrice(p):null,
+    active:true
+  }));
+
+  // V8: prefer the atomic server-side sync RPC. A legacy direct-upsert fallback
+  // remains only for compatibility until the incremental V8 SQL migration is run.
+  const rpc=await window.powertechSupabase.rpc('sync_catalog_products',{
+    p_catalog_id:catalogId,
+    p_items:rows
+  });
+  if(rpc.error){
+    console.warn('V8 pricing RPC unavailable; using legacy catalog_products sync:',rpc.error);
+    const existingRows=await window.powertechSupabase.from('catalog_products').select('product_id').eq('catalog_id',catalogId);
+    if(existingRows.error)throw existingRows.error;
+    const selected=new Set(catalogProductIds.map(Number));
+    const oldIds=(existingRows.data||[]).map(r=>Number(r.product_id));
+    const toDelete=oldIds.filter(id=>!selected.has(id));
+    if(toDelete.length){
+      const r=await window.powertechSupabase.from('catalog_products').delete().eq('catalog_id',catalogId).in('product_id',toDelete);
+      if(r.error)throw r.error;
+    }
+    if(rows.length){
+      let r=await window.powertechSupabase.from('catalog_products').upsert(rows.map(x=>({...x,catalog_id:catalogId,updated_at:new Date().toISOString()})),{onConflict:'catalog_id,product_id'});
+      if(r.error && /pricing_mode|column/i.test(r.error.message||'')){
+        r=await window.powertechSupabase.from('catalog_products').upsert(rows.map(({pricing_mode,...x})=>({...x,catalog_id:catalogId,updated_at:new Date().toISOString()})),{onConflict:'catalog_id,product_id'});
+      }
+      if(r.error)throw r.error;
+    }
+  }
+
+  localStorage.setItem('powertech_catalog_slug',catalogSlug);
+  localStorage.setItem('powertech_reseller_slug',resellerSlug);
+  localStorage.setItem('powertech_catalog_name',catalogName);
+  localStorage.setItem('powertech_markup',String(ownerResellerMarkup||0));
+  renderAccountPanel();
+  renderCatalogSearchResults();
+  renderMyCatalogProducts();
+  updateCatalogSelectionSummary();
+  refreshList();
+  updateCartUI();
+  updateSocialMetadata();
   if(!silent)showToast('Catálogo guardado correctamente');
   return catalogId;
- }catch(e){console.error('Catalog save:',e);showToast('No pudimos guardar el catálogo. Revisá la migración V7 y tu sesión.');return null;}
+ }catch(e){
+  console.error('Catalog save:',e);
+  showToast('No pudimos guardar el catálogo. Revisá tu sesión y la configuración de Supabase.');
+  return null;
+ }
 }
 
 async function loadCatalogProductsFor(catalogId,target='owner'){
- const {data,error}=await window.powertechSupabase.from('catalog_products').select('product_id,custom_price,active').eq('catalog_id',catalogId).eq('active',true);if(error)throw error;
- const ids=(data||[]).map(r=>Number(r.product_id));const prices={};(data||[]).forEach(r=>{if(r.custom_price!==null)prices[String(r.product_id)]=Number(r.custom_price);});
- if(target==='public'){publicCatalogProductIds=ids;publicCatalogCustomPrices=prices;}else{catalogProductIds=ids;catalogCustomPrices=prices;}
+  let query=window.powertechSupabase.from('catalog_products').select('product_id,custom_price,active,pricing_mode').eq('catalog_id',catalogId).eq('active',true);
+  let result=await query;
+  let legacy=false;
+  if(result.error){
+    legacy=true;
+    result=await window.powertechSupabase.from('catalog_products').select('product_id,custom_price,active').eq('catalog_id',catalogId).eq('active',true);
+  }
+  if(result.error)throw result.error;
+  const ids=(result.data||[]).map(r=>Number(r.product_id));
+  const prices={}; const modes={};
+  (result.data||[]).forEach(r=>{
+    if(r.custom_price!==null)prices[String(r.product_id)]=Number(r.custom_price);
+    modes[String(r.product_id)]=(r.pricing_mode==='manual'||(legacy&&r.custom_price!==null))?'manual':'markup';
+  });
+  if(target==='public'){
+    publicCatalogProductIds=ids;
+    publicCatalogCustomPrices=prices;
+  }else{
+    catalogProductIds=ids;
+    catalogCustomPrices=prices;
+    catalogPricingModes=modes;
+  }
 }
-
 async function loadPublicCatalogFromUrl(){
  const slug=new URLSearchParams(window.location.search).get('catalogo');if(!slug)return;
  try{
@@ -2635,6 +2955,22 @@ function goToOffersCategory(){
    MODAL + GALERÍA
 ===================================================== */
 
+function setModalPricingMode(mode){
+ const manual=mode==='manual';
+ document.getElementById('modalManualPriceArea')?.classList.toggle('hidden',!manual);
+ const rm=document.getElementById('modalPricingMarkup'); if(rm)rm.checked=!manual;
+ const rmanual=document.getElementById('modalPricingManual'); if(rmanual)rmanual.checked=manual;
+ if(currentModalProduct){
+   const box=document.getElementById('modalPriceMinimum');
+   if(box && Number.isFinite(Number(currentModalProduct.price)))box.textContent=`Precio mínimo: ${money(Number(currentModalProduct.price))}`;
+   const hint=document.getElementById('modalMarkupHint');
+   if(hint)hint.textContent=`Tu margen actual es +${Number(resellerMarkup)||0}%.`;
+   if(mode==='markup'){
+     const price=getEffectiveProductPrice(currentModalProduct);
+     const el=document.getElementById('modalPrice');if(el)el.textContent=price===null?'Consultar':money(price);
+   }
+ }
+}
 function openProductModal(id){
 
   const p=
@@ -2658,7 +2994,7 @@ function openProductModal(id){
   const customInput=document.getElementById('modalCustomPriceInput');
   const canEditCustom=!viewingAsPublicCatalog && !!catalogSlug && p.price!==null;
   customBox?.classList.toggle('hidden',!canEditCustom);
-  if(customInput) customInput.value=canEditCustom && catalogCustomPrices[String(p.id)] ? catalogCustomPrices[String(p.id)] : '';
+  if(customInput) customInput.value=canEditCustom && getCatalogCustomPrice(p) ? getCatalogCustomPrice(p) : '';
 
   document.getElementById('modalDesc').textContent=
     p.desc;
@@ -2769,6 +3105,13 @@ function openProductModal(id){
   const modal=
     document.getElementById('productModal');
 
+  if(canEditCustom){
+    const mode=getCatalogPricingMode(p);
+    const rm=document.getElementById('modalPricingMarkup'); if(rm)rm.checked=mode==='markup';
+    const rmanual=document.getElementById('modalPricingManual'); if(rmanual)rmanual.checked=mode==='manual';
+    setModalPricingMode(mode);
+  }
+
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 
@@ -2784,7 +3127,10 @@ function closeProductModal(){
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 
-  document.body.style.overflow='';
+  const taskOpen=document.getElementById('catalogManagerView')?.classList.contains('flex');
+  const manualOpen=document.getElementById('manualOrderModal')?.classList.contains('flex');
+  const hubOpen=document.getElementById('powerHubModal')?.classList.contains('flex');
+  document.body.style.overflow=(taskOpen||manualOpen||hubOpen)?'hidden':'';
 
 }
 
@@ -3162,7 +3508,7 @@ async function renderBusinessPhones(){
  const box=document.getElementById('businessPhonesList');if(!box)return;const {data:{session}}=await window.powertechSupabase.auth.getSession();if(!session?.user)return;
  const b=await window.powertechSupabase.from('businesses').select('id').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();if(!b.data?.id){box.innerHTML='<div class="pt-v7-empty">Primero guardá tus datos del negocio.</div>';return;}
  const r=await window.powertechSupabase.from('business_phones').select('id,label,phone,is_primary,active').eq('business_id',b.data.id).order('is_primary',{ascending:false}).order('created_at',{ascending:true});
- box.innerHTML=(r.data||[]).map(x=>`<div class="pt-v7-phone"><span class="pt-v7-tag">${x.is_primary?'Principal':'WhatsApp'}</span><b style="color:#fff;flex:1">${x.label} · ${x.phone}</b><button class="pt-v7-btn" onclick="setPrimaryBusinessPhone('${x.id}')">Principal</button><button class="pt-v7-btn" onclick="deleteBusinessPhone('${x.id}')">Eliminar</button></div>`).join('')||'<div class="pt-v7-empty">No hay números cargados todavía.</div>';
+ box.innerHTML=(r.data||[]).map(x=>`<div class="pt-v7-phone"><span class="pt-v7-tag">${x.is_primary?'Principal':'WhatsApp'}</span><b style="color:#fff;flex:1">${x.label} · ${x.phone}</b><button type="button" class="pt-v7-btn" onclick="setPrimaryBusinessPhone('${x.id}')">Principal</button><button type="button" class="pt-v7-btn" onclick="deleteBusinessPhone('${x.id}')">Eliminar</button></div>`).join('')||'<div class="pt-v7-empty">No hay números cargados todavía.</div>';
 }
 async function addBusinessPhone(){const label=document.getElementById('newBusinessPhoneLabel')?.value.trim()||'WhatsApp';const phone=normalizePhone(document.getElementById('newBusinessPhone')?.value);if(phone.length<8){showToast('Ingresá un número válido.');return;}const {data:{session}}=await window.powertechSupabase.auth.getSession();const b=await window.powertechSupabase.from('businesses').select('id').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();if(!b.data?.id){showToast('Primero guardá los datos del negocio.');return;}const existing=await window.powertechSupabase.from('business_phones').select('id').eq('business_id',b.data.id).limit(1);const r=await window.powertechSupabase.from('business_phones').insert({business_id:b.data.id,label,phone,is_primary:!(existing.data||[]).length,active:true});if(r.error)showToast('No pudimos agregar el número.');else{document.getElementById('newBusinessPhoneLabel').value='';document.getElementById('newBusinessPhone').value='';await renderBusinessPhones();showToast('Número agregado');}}
 async function setPrimaryBusinessPhone(id){const {data:{session}}=await window.powertechSupabase.auth.getSession();const b=await window.powertechSupabase.from('businesses').select('id').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();if(!b.data?.id)return;await window.powertechSupabase.from('business_phones').update({is_primary:false}).eq('business_id',b.data.id);await window.powertechSupabase.from('business_phones').update({is_primary:true}).eq('id',id);renderBusinessPhones();showToast('Número principal actualizado');}
@@ -3172,17 +3518,98 @@ async function loadPowerHubStats(){
 }
 async function openPowerHub(){if(!isPowertechAdmin()){showToast('No tenés permisos de administrador.');return;}const m=document.getElementById('powerHubModal');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';await loadPowerHubOrders();}
 function closePowerHub(){const m=document.getElementById('powerHubModal');m.classList.add('hidden');m.classList.remove('flex');document.body.style.overflow='';}
-async function loadPowerHubOrders(){const box=document.getElementById('powerHubOrders');if(!box)return;box.innerHTML='<div class="pt-v7-empty">Cargando pedidos...</div>';const {data,error}=await window.powertechSupabase.from('orders').select('id,order_number,customer_name,customer_phone,total,status,source,shipping_label,created_at').order('created_at',{ascending:false}).limit(80);if(error){box.innerHTML='<div class="pt-v7-empty">No pudimos cargar los pedidos.</div>';return;}box.innerHTML=(data||[]).map(o=>`<div class="pt-v7-order-row"><b>#${o.order_number}</b> · ${o.customer_name||'Sin nombre'}<div class="text-sm text-gray-400 mt-1">${money(o.total)} · ${o.source} · ${o.status}<br>${o.shipping_label||''}</div><div class="pt-v7-order-actions"><button class="pt-v7-btn" onclick="changeOrderStatus('${o.id}','confirmed')">Confirmar</button><button class="pt-v7-btn" onclick="changeOrderStatus('${o.id}','preparing')">Preparando</button><button class="pt-v7-btn" onclick="changeOrderStatus('${o.id}','dispatched')">Despachado</button><button class="pt-v7-btn" onclick="changeOrderStatus('${o.id}','delivered')">Entregado</button><button class="pt-v7-btn" onclick="changeOrderStatus('${o.id}','cancelled')">Cancelar</button></div></div>`).join('')||'<div class="pt-v7-empty">Todavía no hay pedidos.</div>';}
-async function changeOrderStatus(id,status){if(!isPowertechAdmin())return;const r=await window.powertechSupabase.from('orders').update({status,updated_at:new Date().toISOString()}).eq('id',id);if(r.error){showToast('No pudimos actualizar el pedido.');return;}await window.powertechSupabase.from('order_status_history').insert({order_id:id,status,changed_by:(await window.powertechSupabase.auth.getUser()).data.user?.id||null});await loadPowerHubOrders();await loadPowerHubStats();}
+async function loadPowerHubOrders(){
+ const box=document.getElementById('powerHubOrders');if(!box)return;
+ box.innerHTML='<div class="pt-v7-empty">Cargando pedidos...</div>';
+ const {data,error}=await window.powertechSupabase.from('orders').select('id,order_number,customer_name,customer_phone,total,status,source,shipping_label,created_at').order('created_at',{ascending:false}).limit(80);
+ if(error){box.innerHTML='<div class="pt-v7-empty">No pudimos cargar los pedidos.</div>';return;}
+ const rows=data||[];
+ let historyMap={};
+ if(rows.length){
+   const hr=await window.powertechSupabase.from('order_status_history').select('order_id,status,note,created_at').in('order_id',rows.map(o=>o.id)).order('created_at',{ascending:true});
+   if(!hr.error)(hr.data||[]).forEach(h=>(historyMap[h.order_id] ||= []).push(h));
+ }
+ box.innerHTML=rows.map(o=>{
+   const meta=orderStatusMeta(o.status);
+   const next=orderNextStatuses(o.status);
+   const history=(historyMap[o.id]||[]).map(h=>`<div class="pt-order-history-item"><span>${formatShortDate(h.created_at)}</span><b>${orderStatusMeta(h.status).label}</b>${h.note?`<small>${escapeHtml(h.note)}</small>`:''}</div>`).join('');
+   const actions=next.length?next.map(s=>`<button class="pt-order-action ${s==='cancelled'?'danger':''}" onclick="changeOrderStatus('${o.id}','${s}',this)" type="button">${orderStatusMeta(s).action}</button>`).join(''):'<span class="pt-order-final">Sin acciones pendientes</span>';
+   return `<article class="pt-hub-order-card" id="hubOrder_${o.id}">
+     <div class="pt-hub-order-top">
+       <div><span class="pt-hub-order-number">#${o.order_number}</span><h3>${escapeHtml(o.customer_name||'Cliente')}</h3></div>
+       <div class="pt-order-status ${meta.className}" data-status="${o.status}"><span>${meta.icon}</span><b>${meta.label}</b></div>
+     </div>
+     <div class="pt-hub-order-meta"><span>${money(o.total)}</span><span>${o.source==='online'?'Pedido online':o.source==='admin_manual'?'Carga administrativa':'Carga del revendedor'}</span>${o.shipping_label?`<span>${escapeHtml(o.shipping_label)}</span>`:''}</div>
+     <div class="pt-order-actions">${actions}</div>
+     <details class="pt-order-history"><summary>Ver historial del pedido</summary><div class="pt-order-history-list">${history||'<div class="pt-order-history-empty">Todavía no hay historial.</div>'}</div></details>
+   </article>`;
+ }).join('')||'<div class="pt-v7-empty">Todavía no hay pedidos.</div>';
+}
+function orderStatusMeta(status){
+ const map={
+   pending:{label:'Recibido',icon:'●',className:'pending',action:'Aprobar pedido'},
+   confirmed:{label:'Aprobado',icon:'✓',className:'confirmed',action:'Pasar a preparación'},
+   preparing:{label:'Preparando',icon:'◐',className:'preparing',action:'Marcar enviado'},
+   dispatched:{label:'Enviado',icon:'➜',className:'dispatched',action:'Marcar entregado'},
+   delivered:{label:'Entregado',icon:'✓',className:'delivered',action:'Entregado'},
+   cancelled:{label:'Cancelado',icon:'×',className:'cancelled',action:'Cancelar'}
+ };
+ return map[status]||{label:status||'Desconocido',icon:'•',className:'pending',action:'Actualizar'};
+}
+function orderNextStatuses(status){
+ return ({pending:['confirmed','cancelled'],confirmed:['preparing','cancelled'],preparing:['dispatched','cancelled'],dispatched:['delivered'],delivered:[],cancelled:[]})[status]||[];
+}
+function formatShortDate(value){
+ try{return new Intl.DateTimeFormat('es-AR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(value));}catch(e){return '';}
+}
+function escapeHtml(value){
+ return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function changeOrderStatus(id,status,button){
+ if(!isPowertechAdmin())return;
+ const nextAllowed=orderNextStatuses(document.querySelector(`#hubOrder_${id} .pt-order-status`)?.dataset?.status||'');
+ const btn=button;
+ if(btn)btn.disabled=true;
+ const card=document.getElementById(`hubOrder_${id}`);
+ const badge=card?.querySelector('.pt-order-status');
+ const previousClass=badge?.className;
+ const previousHtml=badge?.innerHTML;
+ const meta=orderStatusMeta(status);
+ if(badge){badge.className=`pt-order-status ${meta.className}`;badge.dataset.status=status;badge.innerHTML=`<span>${meta.icon}</span><b>${meta.label}</b>`;}
+ showToast(`Pedido actualizado: ${meta.label}`);
+ const r=await window.powertechSupabase.from('orders').update({status,updated_at:new Date().toISOString()}).eq('id',id);
+ if(r.error){
+   if(badge){badge.className=previousClass||'pt-order-status pending';badge.innerHTML=previousHtml||'';}
+   showToast('No pudimos actualizar el pedido.');
+   if(btn)btn.disabled=false;
+   return;
+ }
+ const {data:{user}}=await window.powertechSupabase.auth.getUser();
+ const hr=await window.powertechSupabase.from('order_status_history').insert({order_id:id,status,changed_by:user?.id||null,note:`Estado actualizado a ${meta.label}.`});
+ if(hr.error)console.error('Order history:',hr.error);
+ await loadPowerHubOrders();
+ await loadPowerHubStats();
+}
 function openManualOrderModal(){
   if(!window.POWERTECH_AUTH_READY){showToast('Esperá un momento e intentá nuevamente.');return;}
-  window.powertechSupabase.auth.getSession().then(({data:{session}})=>{if(!session?.user){openPowertechAuth('signup');return;}const m=document.getElementById('manualOrderModal');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';manualOrderItems={};renderManualProductSearch();renderManualOrderItems();});
+  closeAccountPanel();
+  closePowerHub();
+  window.powertechSupabase.auth.getSession().then(({data:{session}})=>{
+    if(!session?.user){openPowertechAuth('signup');return;}
+    const m=document.getElementById('manualOrderModal');
+    m.classList.remove('hidden');m.classList.add('flex');
+    document.body.style.overflow='hidden';
+    manualOrderItems={};
+    renderManualProductSearch();
+    renderManualOrderItems();
+  });
 }
 function closeManualOrderModal(){const m=document.getElementById('manualOrderModal');m.classList.add('hidden');m.classList.remove('flex');document.body.style.overflow='';}
 let manualOrderItems={};
-function renderManualProductSearch(){const q=normalizeStr(document.getElementById('manualProductSearch')?.value||'');const box=document.getElementById('manualProductSearchResults');if(!box)return;const matches=(q?products.filter(p=>normalizeStr(`${p.name} ${p.desc||''} ${p.categoryLabel||''}`).includes(q)):products).slice(0,30);box.innerHTML=matches.map(p=>`<div class="pt-v7-item"><div class="pt-v7-item-main"><b>${p.name}</b><small>Precio: ${p.price===null?'Consultar':money(displayPrice(p.price,p))}</small></div><button class="pt-v7-btn" onclick="addManualOrderItem(${p.id})">Agregar</button></div>`).join('');}
+function renderManualProductSearch(){const q=normalizeStr(document.getElementById('manualProductSearch')?.value||'');const box=document.getElementById('manualProductSearchResults');if(!box)return;const matches=(q?products.filter(p=>normalizeStr(`${p.name} ${p.desc||''} ${p.categoryLabel||''}`).includes(q)):products).slice(0,30);box.innerHTML=matches.map(p=>`<div class="pt-v7-item"><div class="pt-v7-item-main"><b>${p.name}</b><small>Precio: ${p.price===null?'Consultar':money(displayPrice(p.price,p))}</small></div><button type="button" class="pt-v7-btn" onclick="addManualOrderItem(${p.id})">Agregar</button></div>`).join('');}
 function addManualOrderItem(id){manualOrderItems[id]=(manualOrderItems[id]||0)+1;renderManualOrderItems();}
-function renderManualOrderItems(){const box=document.getElementById('manualOrderItems');if(!box)return;let total=0;box.innerHTML=Object.entries(manualOrderItems).map(([id,qty])=>{const p=products.find(x=>x.id===Number(id));if(!p)return '';const price=displayPrice(p.price,p);if(price===null)return '';total+=price*qty;return `<div class="pt-v7-item"><div class="pt-v7-item-main"><b>${p.name}</b><small>${qty} × ${money(price)}</small></div><button class="pt-v7-btn" onclick="manualOrderItems[${id}]=Math.max(0,(manualOrderItems[${id}]||0)-1);if(!manualOrderItems[${id}])delete manualOrderItems[${id}];renderManualOrderItems()">−</button></div>`}).join('')||'<div class="pt-v7-empty">Agregá productos.</div>';document.getElementById('manualOrderTotal').textContent=money(total);}
+function renderManualOrderItems(){const box=document.getElementById('manualOrderItems');if(!box)return;let total=0;box.innerHTML=Object.entries(manualOrderItems).map(([id,qty])=>{const p=products.find(x=>x.id===Number(id));if(!p)return '';const price=displayPrice(p.price,p);if(price===null)return '';total+=price*qty;return `<div class="pt-v7-item"><div class="pt-v7-item-main"><b>${p.name}</b><small>${qty} × ${money(price)}</small></div><button type="button" class="pt-v7-btn" onclick="manualOrderItems[${id}]=Math.max(0,(manualOrderItems[${id}]||0)-1);if(!manualOrderItems[${id}])delete manualOrderItems[${id}];renderManualOrderItems()">−</button></div>`}).join('')||'<div class="pt-v7-empty">Agregá productos.</div>';document.getElementById('manualOrderTotal').textContent=money(total);}
 async function createManualOrder(){
  const {data:{user}}=await window.powertechSupabase.auth.getUser();if(!user){openPowertechAuth('signup');return;}
  const name=document.getElementById('manualCustomerName').value.trim();if(!name||!Object.keys(manualOrderItems).length){showToast('Ingresá el cliente y agregá productos.');return;}
@@ -3200,7 +3627,7 @@ async function createManualOrder(){
 async function loadMyOrders(){
  const box=document.getElementById('myOrdersList');if(!box)return;const {data:{user}}=await window.powertechSupabase.auth.getUser();if(!user){box.innerHTML='<div class="pt-v7-empty">Iniciá sesión para ver tus pedidos.</div>';return;}
  const r=await window.powertechSupabase.from('orders').select('id,order_number,customer_name,customer_phone,total,status,source,shipping_label,created_at').eq('seller_user_id',user.id).order('created_at',{ascending:false}).limit(100);if(r.error){box.innerHTML='<div class="pt-v7-empty">No pudimos cargar los pedidos.</div>';return;}
- box.innerHTML=(r.data||[]).map(o=>`<div class="pt-v7-order-row"><b>#${o.order_number}</b> · ${o.customer_name||'Cliente'}<div class="text-sm text-gray-400 mt-1">${money(o.total)} · ${o.source==='online'?'Online':'Cargado por vos'} · ${o.status}<br>${o.shipping_label||''}</div>${o.status==='pending'?`<div class="pt-v7-order-actions"><button class="pt-v7-btn gold" onclick="confirmResellerOrder('${o.id}')">Confirmar y enviar a Powertech</button></div>`:''}</div>`).join('')||'<div class="pt-v7-empty">Todavía no hay pedidos.</div>';
+ box.innerHTML=(r.data||[]).map(o=>`<div class="pt-v7-order-row"><b>#${o.order_number}</b> · ${o.customer_name||'Cliente'}<div class="text-sm text-gray-400 mt-1">${money(o.total)} · ${o.source==='online'?'Online':'Cargado por vos'} · ${o.status}<br>${o.shipping_label||''}</div>${o.status==='pending'?`<div class="pt-v7-order-actions"><button type="button" class="pt-v7-btn gold" onclick="confirmResellerOrder('${o.id}')">Confirmar y enviar a Powertech</button></div>`:''}</div>`).join('')||'<div class="pt-v7-empty">Todavía no hay pedidos.</div>';
 }
 async function confirmResellerOrder(id){
  const {data:{user}}=await window.powertechSupabase.auth.getUser();if(!user)return;
@@ -3369,9 +3796,9 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 });
 </script>
-<div class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar compra</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"/><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Recibimos todos los medios de pago.</b><br/>Las condiciones particulares se coordinan al confirmar el pedido.<br/>🚚 Envío gratis desde <b class="text-white">$200.000</b> según cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Confirmar compra</button></div></div></div><div class="fixed inset-0 z-[100] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="powerHubModal">
+<div class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar compra</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Recibimos todos los medios de pago.</b><br/>Las condiciones particulares se coordinan al confirmar el pedido.<br/>🚚 Envío gratis desde <b class="text-white">$200.000</b> según cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Confirmar compra</button></input></div></div></div><div class="fixed inset-0 z-[100] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="powerHubModal">
 <div class="w-full max-w-5xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5">
-<div class="flex items-center justify-between gap-3"><div><div class="text-xs gold-text font-bold uppercase tracking-wider">Power Hub</div><h2 class="text-xl font-bold text-white">Pedidos y ventas</h2></div><button class="text-2xl text-gray-400" onclick="closePowerHub()" type="button">×</button></div>
+<div class="flex items-center justify-between gap-3"><div><div class="text-xs gold-text font-bold uppercase tracking-wider">Administración Powertech</div><h2 class="text-xl font-bold text-white">Power Hub · Pedidos y ventas</h2></div><button class="text-2xl text-gray-400" onclick="closePowerHub()" type="button">×</button></div>
 <div class="flex gap-2 mt-4 flex-wrap"><button class="pt-v7-btn gold" onclick="openManualOrderModal()" type="button">＋ Nueva venta / pedido</button><button class="pt-v7-btn" onclick="loadPowerHubOrders()" type="button">Actualizar</button></div>
 <div class="mt-4" id="powerHubOrders"></div>
 </div>
