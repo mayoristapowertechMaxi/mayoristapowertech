@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="index,follow" name="robots"/>
+<meta content="#030507" name="theme-color"/>
 <title>Powertech Mayorista | Tecnología y accesorios al por mayor</title>
 <meta content="Powertech Distribuidora Mayorista. Accesorios electrónicos, cargadores, cables, auriculares, tecnología y productos para comercios." name="description"/>
 <link href="https://mayoristapowertechmaxi.github.io/mayoristapowertech/" rel="canonical"/>
@@ -385,6 +386,12 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 .pt-account-menu-item b{display:block;color:#eef2f5;font-size:10px}.pt-account-menu-item small{display:block;color:#69747e;font-size:8px;margin-top:2px}.pt-account-menu-item:hover,.pt-account-menu-item.active{background:rgba(230,184,63,.07);border-color:rgba(230,184,63,.16)}.pt-account-menu-item.active>span{color:#f1c64d;border-color:rgba(230,184,63,.25)}
 .pt-account-section{padding:0 10px 10px}.pt-account-catalog-preview{margin-top:13px;padding:12px;border-radius:13px;background:#080f15;border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:10px}.pt-account-catalog-preview strong{display:block;color:#fff;font-size:10px}.pt-account-catalog-preview span{display:block;color:#8d98a3;font-size:8px;line-height:1.5;margin-top:3px;max-width:180px}.pt-account-inline{display:flex;gap:7px;margin-top:9px}.pt-account-inline input{flex:1;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#070d13;color:#fff;padding:0 9px;font-size:10px}.pt-account-linkbox{display:flex;gap:6px;margin-top:12px}.pt-account-linkbox input{min-width:0;flex:1;height:37px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#070d13;color:#aab4bc;padding:0 9px;font-size:8px}.pt-account-linkbox button,.pt-account-share-actions button{border:1px solid rgba(230,184,63,.2);background:rgba(230,184,63,.07);color:#e8c153;border-radius:9px;padding:0 10px;font-size:8px;font-weight:800}.pt-account-share-actions{display:flex;gap:7px;margin-top:8px}.pt-account-share-actions button{height:34px;flex:1}.pt-account-logout{width:calc(100% - 20px);margin:4px 10px 18px;height:37px;border:1px solid rgba(255,255,255,.08);background:#080e14;color:#8b969f;border-radius:10px;font-size:9px;font-weight:800}.pt-account-logout:hover{color:#fff;border-color:rgba(255,255,255,.16)}
 
+
+#ptImageLightbox{position:fixed;inset:0;z-index:260;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:20px}
+#ptImageLightbox.show{display:flex}
+#ptImageLightbox img{max-width:min(1100px,94vw);max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:16px;box-shadow:0 30px 100px rgba(0,0,0,.65)}
+#ptImageLightbox button{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0b1218;color:#fff;font-size:24px}
+
 </style>
 <style id="powertech-v7-final-css">
 .pt-v7-builder{display:grid;gap:12px}.pt-v7-search{display:flex;gap:8px}.pt-v7-search input{flex:1;background:#0a1016;border:1px solid #26313a;color:#fff;border-radius:10px;padding:11px}.pt-v7-list{max-height:310px;overflow:auto;border:1px solid #202b34;border-radius:12px}.pt-v7-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #182129}.pt-v7-item:last-child{border-bottom:0}.pt-v7-item img{width:42px;height:42px;border-radius:8px;object-fit:cover}.pt-v7-item-main{flex:1;min-width:0}.pt-v7-item-main b{display:block;color:#fff;font-size:13px}.pt-v7-item-main small{color:#7f8b94}.pt-v7-btn{border:1px solid #3a4650;background:#111a22;color:#fff;border-radius:9px;padding:8px 10px;cursor:pointer}.pt-v7-btn.gold{background:#c6a15b;color:#07090b;border-color:#c6a15b;font-weight:800}.pt-v7-tag{font-size:10px;color:#c6a15b;border:1px solid #6f5a31;border-radius:99px;padding:3px 7px}.pt-v7-empty{padding:20px;text-align:center;color:#78838c}.pt-v7-phone{display:flex;gap:8px;align-items:center;margin-top:8px}.pt-v7-phone input{flex:1}.pt-v7-phone button{white-space:nowrap}.pt-v7-admin{display:none}.pt-v7-admin.show{display:block}.pt-v7-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pt-v7-stat{padding:10px;border:1px solid #202b34;border-radius:10px}.pt-v7-stat small{display:block;color:#7f8b94}.pt-v7-stat b{font-size:18px;color:#fff}.pt-v7-order-row{padding:12px;border:1px solid #202b34;border-radius:11px;margin-top:8px}.pt-v7-order-row b{color:#fff}.pt-v7-order-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
@@ -493,13 +500,13 @@ window.powertechSupabase = window.supabase.createClient(
 <div class="pt-section-head" style="margin-top:42px"><div><h3>Combos <span class="gold-text">destacados</span></h3><p>Armados para distintos tipos de comercios y emprendimientos.</p></div><button class="pt-link" onclick="switchTab('ofertas')" type="button">Ver todos →</button></div><div class="pt-combos"><div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div><div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div><div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div>
 <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="toggleAccountDrawer()" type="button">Crear mi catálogo  →</button></section>
 </main>
-<main aria-label="Contacto" class="pt-wrap hidden fade-in" id="tabContacto"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas y pedidos directamente con Powertech.</p></div><a class="pt-primary" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta." target="_blank">Escribir por WhatsApp →</a></div></main>
+<main aria-label="Contacto" class="pt-wrap hidden fade-in" id="tabContacto"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas y pedidos directamente con Powertech.</p></div><a class="pt-primary" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp →</a></div></main>
 <main aria-label="Sobre Powertech" class="pt-wrap hidden fade-in" id="tabNosotros"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y revendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
 <main aria-label="Ofertas y combos" class="pt-wrap hidden fade-in" id="tabOfertas"><div class="pt-section-head"><div><h3>Ofertas y <span class="gold-text">Combos</span></h3><p>Opciones armadas para empezar, ampliar o abastecer tu comercio.</p></div><span class="pt-link">Precios mayoristas</span></div><div class="pt-combos">
 <div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div>
 <div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div>
 <div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div></main>
-<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br/>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#tabCatalogo" onclick="switchTab('catalogo');return false">Inicio</a><a href="#tabCatalogo" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#tabOfertas" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><span class="pt-footer-link">Lun a Vie · 9 a 18 hs</span></div><div><h4>SEGUINOS</h4><span class="pt-footer-link">Instagram</span><span class="pt-footer-link">Facebook</span><span class="pt-footer-link">TikTok</span></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
+<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br/>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#tabCatalogo" onclick="switchTab('catalogo');return false">Inicio</a><a href="#tabCatalogo" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#tabOfertas" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank" rel="noopener noreferrer">WhatsApp: 11 6887-8292</a><span class="pt-footer-link">Lun a Vie · 9 a 18 hs</span></div><div><h4>SEGUINOS</h4><span class="pt-footer-link">Instagram</span><span class="pt-footer-link">Facebook</span><span class="pt-footer-link">TikTok</span></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
 </div>
 <!-- POWERTECH · MODAL DE ACCESO -->
 <div class="pt-auth-overlay hidden" id="ptAuthOverlay" onclick="if(event.target===this)closePowertechAuth()">
@@ -684,7 +691,7 @@ window.powertechSupabase = window.supabase.createClient(
 <!-- =====================================================
      MODAL PRODUCTO
 ===================================================== -->
-<div class="hidden fixed inset-0 z-50 items-end sm:items-center justify-center" id="productModal">
+<div aria-label="Detalle del producto" aria-modal="true" class="hidden fixed inset-0 z-50 items-end sm:items-center justify-center" id="productModal" role="dialog">
 <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" onclick="closeProductModal()">
 </div>
 <div class="relative bg-neutral-950 border border-gold-dark/50 w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl max-h-[92vh] overflow-y-auto slide-up">
@@ -793,7 +800,7 @@ window.powertechSupabase = window.supabase.createClient(
 <!-- =====================================================
      WHATSAPP
 ===================================================== -->
-<a aria-label="Contactar por WhatsApp" class="fixed bottom-5 right-5 z-30 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quisiera%20hacer%20una%20consulta." target="_blank" title="Contactar por WhatsApp">
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-5 right-5 z-30 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp">
 <span class="text-white font-bold text-xl">
     W
   </span>
@@ -1800,20 +1807,6 @@ function slugifyProduct(value){
     .replace(/^-+|-+$/g,'');
 }
 
-function getCatalogPublicUrl(slug){ return `${window.location.origin}${window.location.pathname}?catalogo=${encodeURIComponent(slug)}`; }
-function getResellerCatalogUrl(product){
-  const base=getCatalogPublicUrl(publicCatalogSlug || catalogSlug || resellerSlug);
-  return `${base}&producto=${encodeURIComponent(slugifyProduct(product.name || product.title))}`;
-}
-
-function getProductShareText(product){
-  const price=displayPrice(product.price,product);
-  return `${product.title || product.name}
-${product.desc}
-Precio: ${money(price)}
-\nVer producto: ${getResellerCatalogUrl(product)}`;
-}
-
 async function shareProduct(id){
   const product=products.find(x=>x.id===id);
   if(!product) return;
@@ -1865,8 +1858,18 @@ function isPowertechAdmin(){
 
 
 let powertechAuthMode='login';
-function openPowertechAuth(mode='login'){ powertechAuthMode=mode==='signup'?'signup':'login'; const o=document.getElementById('ptAuthOverlay'); if(!o)return; updatePowertechAuthUI(); o.classList.remove('hidden'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('ptAuthEmail')?.focus(),50); }
-function closePowertechAuth(){ const o=document.getElementById('ptAuthOverlay'); if(o)o.classList.add('hidden'); if(document.getElementById('accountDrawer')?.classList.contains('hidden')&&!document.getElementById('cartModal')?.classList.contains('flex'))document.body.style.overflow=''; }
+function openPowertechAuth(mode='login'){ powertechAuthMode=mode==='signup'?'signup':'login'; const o=document.getElementById('ptAuthOverlay'); if(!o)return; updatePowertechAuthUI(); o.classList.remove('hidden'); syncBodyScrollLock(); setTimeout(()=>document.getElementById('ptAuthEmail')?.focus(),50); }
+
+function syncBodyScrollLock(){
+  const ids=['ptAuthOverlay','accountDrawer','productModal','comboModal','cartModal','checkoutModal','manualOrderModal'];
+  const locked=ids.some(id=>{
+    const el=document.getElementById(id);
+    return el && !el.classList.contains('hidden');
+  });
+  document.body.style.overflow=locked?'hidden':'';
+}
+
+function closePowertechAuth(){ const o=document.getElementById('ptAuthOverlay'); if(o)o.classList.add('hidden'); syncBodyScrollLock(); }
 function togglePowertechAuthMode(){ powertechAuthMode=powertechAuthMode==='login'?'signup':'login'; updatePowertechAuthUI(); }
 function updatePowertechAuthUI(){ const signup=powertechAuthMode==='signup'; const t=document.getElementById('ptAuthTitle'); if(t)t.textContent=signup?'Crear tu cuenta':'Ingresá a tu cuenta'; const c=document.getElementById('ptAuthCopy'); if(c)c.textContent=signup?'Creá tu cuenta Powertech y empezá a configurar tu catálogo cuando quieras.':'Accedé a tu información y, cuando quieras, creá tu catálogo personalizado.'; const b=document.getElementById('ptAuthMain'); if(b)b.textContent=signup?'Crear cuenta':'Ingresar'; const sw=document.getElementById('ptAuthSwitch'); if(sw)sw.textContent=signup?'¿Ya tenés cuenta? Ingresar':'¿No tenés cuenta? Crear cuenta'; const p=document.getElementById('ptAuthPassword'); if(p)p.autocomplete=signup?'new-password':'current-password'; }
 function showPowertechAuthError(message){const e=document.getElementById('ptAuthError');if(e){e.textContent=message;e.style.display='block';}}
@@ -1917,7 +1920,7 @@ function closeAccountPanel(){
   if(drawer) drawer.classList.add('hidden');
   const drawerOpen=!document.getElementById('accountDrawer')?.classList.contains('hidden');
   const cartOpen=document.getElementById('cartModal')?.classList.contains('flex');
-  if(!drawerOpen && !cartOpen) document.body.style.overflow='';
+  syncBodyScrollLock();
 }
 
 function setAccountMarkup(value){
@@ -2129,6 +2132,12 @@ async function loadPublicCatalogFromUrl(){
   if(!publicCatalogPhone){const pr=await window.powertechSupabase.from('profiles').select('phone').eq('id',data.user_id).maybeSingle();publicCatalogPhone=normalizePhone(pr.data?.phone||'');}
   loadPowertechCartForContext();updateCatalogModeUI();refreshList();updateCartUI();updateSocialMetadata();
   const label=document.getElementById('catalogModeLabel');if(label)label.textContent=`Catálogo de ${publicCatalogName} · precios de venta`;
+  const productSlug=new URLSearchParams(window.location.search).get('producto');
+  if(productSlug){
+    const linkedProduct=products.find(p=>slugifyProduct(p.name||p.title)===productSlug && publicCatalogProductIds.includes(Number(p.id)));
+    if(linkedProduct) setTimeout(()=>openProductModal(linkedProduct.id),120);
+  }
+
  }catch(e){console.error('Public catalog:',e);showToast('No pudimos cargar este catálogo.');}
 }
 async function copyCatalogLink(){if(!catalogSlug){await activatePersonalCatalog();return;}const url=getCatalogPublicUrl(catalogSlug);navigator.clipboard?.writeText(url).then(()=>showToast('Link del catálogo copiado')).catch(()=>window.prompt('Copiá este link:',url));}
@@ -2192,7 +2201,10 @@ async function downloadCatalogPDF(){
   doc.setFontSize(11); doc.text('Catálogo de productos · Powertech',15,25);
   doc.setFontSize(9); doc.text(`Link: ${getCatalogPublicUrl(catalogSlug||resellerSlug)}`,15,31);
   let y=41;
-  products.forEach((p,i)=>{
+  const pdfProducts = catalogProductIds.length
+    ? products.filter(p=>catalogProductIds.includes(Number(p.id)))
+    : products;
+  pdfProducts.forEach((p,i)=>{
     if(y>275){doc.addPage(); y=18;}
     doc.setFontSize(11); doc.text(`${i+1}. ${p.name}`,15,y);
     doc.setFontSize(9); doc.text(p.price===null?'Precio: Consultar':`Precio de venta: ${money(displayPrice(p.price,p))}`,18,y+5);
@@ -2326,6 +2338,8 @@ function renderProducts(list=getFilteredProducts()){
           src="${firstImage}"
           alt="${p.name}"
           class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
           onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
 
       </div>
@@ -2716,6 +2730,22 @@ function goToOffersCategory(){
    MODAL + GALERÍA
 ===================================================== */
 
+
+function openImageLightbox(src,alt=''){
+  const box=document.getElementById('ptImageLightbox');
+  const img=document.getElementById('ptImageLightboxImg');
+  if(!box||!img)return;
+  img.src=src;
+  img.alt=alt;
+  box.classList.add('show');
+  syncBodyScrollLock();
+}
+function closeImageLightbox(){
+  const box=document.getElementById('ptImageLightbox');
+  if(box)box.classList.remove('show');
+  syncBodyScrollLock();
+}
+
 function openProductModal(id){
 
   const p=
@@ -2761,11 +2791,16 @@ function openProductModal(id){
     const slide=document.createElement('div');
 
     slide.innerHTML=`
-      <img
-        src="${imageName(num)}"
-        alt="${p.title} - imagen ${index+1}"
-        draggable="false"
-        onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
+      <button type="button" class="w-full h-full block cursor-zoom-in" aria-label="Ampliar imagen ${index+1}" onclick="openImageLightbox(this.querySelector('img').src,this.querySelector('img').alt)">
+        <img
+          src="${imageName(num)}"
+          alt="${p.title} - imagen ${index+1}"
+          draggable="false"
+          loading="eager"
+          decoding="async"
+          class="pointer-events-none"
+          onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
+      </button>
     `;
 
     gallery.appendChild(slide);
@@ -2853,7 +2888,7 @@ function openProductModal(id){
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 
-  document.body.style.overflow='hidden';
+  syncBodyScrollLock();
 
 }
 
@@ -3118,6 +3153,8 @@ function renderCartItems(){
           src="${imageName(p.images[0])}"
           alt="${p.name}"
           class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
           onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
 
       </div>
@@ -3220,7 +3257,7 @@ async function submitCheckoutOrder(){
 WhatsApp: ${phone}
 Dirección: ${address}
 \nGracias.`;
-  clearPowertechCart();closeCheckoutModal();updateCartUI();window.open(`https://wa.me/${target}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');showToast('¡Gracias por tu compra! Tu pedido ya está en proceso de preparación.');
+  clearPowertechCart();closeCheckoutModal();updateCartUI();window.open(`https://wa.me/${target}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');showToast('¡Pedido enviado! Powertech lo recibió y se coordina por WhatsApp.');
  }catch(e){console.error('Checkout:',e);showToast('No pudimos registrar el pedido. Intentá nuevamente.');}
 }
 async function getPublicCatalogId(){const slug=publicCatalogSlug;const {data}=await window.powertechSupabase.from('catalogs').select('id').eq('slug',slug).eq('active',true).maybeSingle();if(!data?.id)throw new Error('CATALOG_NOT_FOUND');return data.id;}
@@ -3450,7 +3487,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 });
 </script>
-<div class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar compra</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"/><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Recibimos todos los medios de pago.</b><br/>Las condiciones particulares se coordinan al confirmar el pedido.<br/>🚚 Envío gratis desde <b class="text-white">$200.000</b> según cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Confirmar compra</button></div></div></div><div class="fixed inset-0 z-[110] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="manualOrderModal">
+<div aria-label="Confirmar pedido" aria-modal="true" class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal" role="dialog"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar pedido</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"/><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Pago a coordinar.</b><br/>Las condiciones particulares se confirman por WhatsApp.<br/>🚚 El costo de envío se informa según la zona y cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Enviar pedido</button></div></div></div><div class="fixed inset-0 z-[110] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="manualOrderModal">
 <div class="w-full max-w-2xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5">
 <div class="flex justify-between"><h2 class="text-xl font-bold text-white">Crear pedido para cliente</h2><button class="text-2xl text-gray-400" onclick="closeManualOrderModal()" type="button">×</button></div>
 <div class="grid gap-3 mt-4">
@@ -3469,5 +3506,21 @@ document.addEventListener('DOMContentLoaded',async()=>{
 </div>
 </div>
 </div>
+
+<noscript>
+  <div style="position:fixed;inset:0;z-index:9999;background:#030507;color:#fff;display:grid;place-items:center;padding:24px;font-family:Arial,sans-serif;text-align:center">
+    <div>
+      <strong style="font-size:20px">Powertech</strong>
+      <p style="color:#aab3bb;max-width:420px;line-height:1.6">Necesitás activar JavaScript para usar el catálogo, tu cuenta y realizar pedidos.</p>
+    </div>
+  </div>
+</noscript>
+
+
+<div aria-label="Imagen ampliada del producto" aria-modal="true" class="hidden" id="ptImageLightbox" role="dialog" onclick="if(event.target===this)closeImageLightbox()">
+  <button aria-label="Cerrar imagen ampliada" onclick="closeImageLightbox()" type="button">×</button>
+  <img alt="" id="ptImageLightboxImg" src=""/>
+</div>
+
 </body>
 </html>
