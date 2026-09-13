@@ -320,6 +320,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 #productList{min-height:80px;margin-top:15px}
 #noResults{background:#080f16;border:1px solid rgba(255,255,255,.07);border-radius:16px}
 /* Modal sizes adapted to the new desktop layout */
+#productModal{z-index:180!important}
 #productModal>div.relative{width:min(1000px,94vw)!important;max-width:none!important;max-height:90vh!important;border-radius:24px!important;overflow:hidden!important}
 #productModal .p-4.pt-1{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;padding:30px!important;align-items:start}
 #productModal .p-4.pt-1>#modalGallery{grid-column:1;grid-row:1 / span 8;height:500px!important;border-radius:18px!important}
@@ -419,7 +420,22 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 .pt-phone-add-title{font-size:11px;font-weight:900;color:#fff;margin-bottom:10px}.pt-phone-add-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pt-phone-add-grid label span{display:block;font-size:8px;color:#89949e;margin:0 0 5px}.pt-phone-add-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:10px}
 .pt-v9-phone-card{display:flex;align-items:center;gap:10px;margin:8px 14px;padding:11px;border:1px solid rgba(255,255,255,.08);background:#080f15;border-radius:12px}.pt-v9-phone-card.is-primary{border-color:rgba(230,184,63,.28);background:linear-gradient(135deg,rgba(230,184,63,.08),rgba(8,15,21,.96))}
 .pt-v9-phone-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#101922;border:1px solid rgba(255,255,255,.07);color:#d7b457;flex:0 0 auto}.pt-v9-phone-main{min-width:0;flex:1}.pt-v9-phone-title{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.pt-v9-phone-title b{font-size:10px;color:#f4f6f7}.pt-v9-phone-main>span{display:block;color:#89949e;font-size:9px;margin-top:3px}.pt-v9-primary-pill{font-size:7px;text-transform:uppercase;letter-spacing:.06em;color:#d9b75f;border:1px solid rgba(230,184,63,.24);border-radius:99px;padding:3px 6px}.pt-v9-phone-actions{display:flex;gap:5px}.pt-v9-icon-action{border:1px solid rgba(255,255,255,.09);background:#101820;color:#cbd3d8;border-radius:8px;padding:6px 8px;font-size:8px;font-weight:800;cursor:pointer}.pt-v9-icon-action:hover{border-color:rgba(230,184,63,.25);color:#f1c961}.pt-v9-icon-action.danger:hover{border-color:rgba(255,90,90,.25);color:#ff9b9b}.pt-v9-empty-card{margin:8px 14px 14px;padding:18px 12px;text-align:center;color:#76828c;border:1px dashed rgba(255,255,255,.09);border-radius:11px;font-size:9px}
-@media(max-width:720px){.pt-account-drawer{width:100%!important;display:flex!important;flex-direction:column;overflow-y:auto}.pt-account-top{flex:none}.pt-account-menu{flex:none;display:grid!important;grid-template-columns:1fr 1fr;overflow:visible}.pt-account-menu-item{min-height:52px!important}.pt-account-drawer #powerHubEntry{order:2}.pt-account-drawer #accountCatalogBuilder,.pt-account-drawer #accountSectionCatalog,.pt-account-drawer #accountSectionData,.pt-account-drawer #accountSectionShare,.pt-account-drawer #accountSectionPdf,.pt-account-drawer #accountSectionOrders{order:3;overflow:visible}.pt-account-wa-copy{order:4}.pt-account-logout{order:5}.pt-phone-add-grid{grid-template-columns:1fr}.pt-v9-phone-card{align-items:flex-start}.pt-v9-phone-actions{flex-direction:column}.pt-v9-workspace-head{align-items:flex-start}.pt-v9-secondary-action,.pt-v9-primary-action{font-size:9px}}
+@media(max-width:720px){
+.pt-account-drawer{width:100%!important;display:flex!important;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 10px calc(12px + env(safe-area-inset-bottom))!important}
+.pt-account-top{flex:none;position:sticky;top:0;z-index:30;background:linear-gradient(180deg,#071018 0%,rgba(7,16,24,.97) 78%,rgba(7,16,24,0) 100%);padding:2px 2px 14px!important;margin:0!important}
+.pt-account-menu{flex:none;display:grid!important;grid-template-columns:1fr 1fr;overflow:visible;gap:6px}
+.pt-account-menu-item{min-height:52px!important;padding:9px 8px!important}
+.pt-account-menu-item b{font-size:10px}.pt-account-menu-item small{font-size:7.5px}
+.pt-account-drawer #powerHubEntry{order:2}
+.pt-account-drawer #accountCatalogBuilder,.pt-account-drawer #accountSectionCatalog,.pt-account-drawer #accountSectionData,.pt-account-drawer #accountSectionShare,.pt-account-drawer #accountSectionPdf,.pt-account-drawer #accountSectionOrders{order:3;overflow:visible}
+.pt-account-wa-copy{order:4;margin-top:8px!important;padding:12px 4px 4px!important}
+.pt-account-logout{order:5;position:sticky;bottom:0;z-index:25;width:100%!important;height:44px!important;min-height:44px;margin:8px 0 0!important;flex:none;background:rgba(8,14,20,.97)!important;box-shadow:0 -12px 28px rgba(0,0,0,.38);border-color:rgba(255,255,255,.12)!important;padding-bottom:env(safe-area-inset-bottom)}
+.pt-phone-add-grid{grid-template-columns:1fr}.pt-v9-phone-card{align-items:flex-start}.pt-v9-phone-actions{flex-direction:column}.pt-v9-workspace-head{align-items:flex-start}.pt-v9-secondary-action,.pt-v9-primary-action{font-size:9px}
+.pt-account-section{padding:0 4px 10px}
+.pt-account-card{border-radius:13px}
+.pt-account-row{padding:14px}
+.pt-account-data-grid{grid-template-columns:1fr!important}
+}
 </style>
 <!-- POWERTECH · LIBRERÍA PDF + SUPABASE -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -2068,9 +2084,16 @@ function addAllSearchResults(){
 }
 function addAllPowertechProducts(){ catalogProductIds=products.map(p=>Number(p.id)); renderCatalogSearchResults();renderMyCatalogProducts();updateCatalogSelectionSummary();showToast('Agregamos todo Powertech'); }
 function updateCatalogSelectionSummary(){const el=document.getElementById('catalogSelectionSummary');if(el)el.textContent=`${catalogProductIds.length} productos seleccionados`;}
+function openCatalogProductPriceModal(id){
+  // Desde el administrador de catálogo, el detalle/precio se trabaja en un modal independiente.
+  // Cerramos primero el panel contextual para evitar que el modal quede por debajo del drawer.
+  closeAccountPanel();
+  requestAnimationFrame(()=>openProductModal(id));
+}
+
 function renderMyCatalogProducts(){
  const box=document.getElementById('myCatalogProductsList');if(!box)return;const list=products.filter(p=>catalogProductIds.includes(Number(p.id)));
- box.innerHTML=list.length?list.map(p=>{const cp=getCatalogCustomPrice(p);const effective=getEffectiveProductPrice(p);return `<div class="pt-v7-item"><img src="${imageName(p.images?.[0])}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'"><div class="pt-v7-item-main"><b>${p.name}</b><small>${p.price===null?'Consultar':`Venta: ${money(effective)}`}${cp!==null?' · personalizado':''}</small></div><button class="pt-v7-btn" onclick="openProductModal(${p.id})">Precio</button><button class="pt-v7-btn" onclick="removeCatalogProduct(${p.id})">Quitar</button></div>`}).join(''):'<div class="pt-v7-empty">Todavía no agregaste productos.</div>';
+ box.innerHTML=list.length?list.map(p=>{const cp=getCatalogCustomPrice(p);const effective=getEffectiveProductPrice(p);return `<div class="pt-v7-item"><img src="${imageName(p.images?.[0])}" onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}'"><div class="pt-v7-item-main"><b>${p.name}</b><small>${p.price===null?'Consultar':`Venta: ${money(effective)}`}${cp!==null?' · personalizado':''}</small></div><button class="pt-v7-btn" onclick="openCatalogProductPriceModal(${p.id})">Precio</button><button class="pt-v7-btn" onclick="removeCatalogProduct(${p.id})">Quitar</button></div>`}).join(''):'<div class="pt-v7-empty">Todavía no agregaste productos.</div>';
 }
 async function saveCatalogConfiguration(){ await activatePersonalCatalog(true); }
 function saveModalCustomPrice(){
