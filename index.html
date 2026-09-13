@@ -372,9 +372,18 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 .pt-auth-error{display:none;margin:0 0 12px;padding:10px 11px;border-radius:10px;background:rgba(190,55,55,.10);border:1px solid rgba(220,80,80,.22);color:#ff9c9c;font-size:9px;line-height:1.5}
 .pt-auth-foot{font-size:8px;color:#5f6b75;text-align:center;line-height:1.5;margin-top:10px}
 
+
+/* === POWERTECH · NUEVO CENTRO DE CATÁLOGO === */
+.pt-account-menu{padding:10px 10px 4px;display:grid;gap:6px}
+.pt-account-menu-item{width:100%;display:flex;align-items:center;gap:10px;padding:11px 10px;border:1px solid transparent;border-radius:13px;background:transparent;color:#9ba6af;text-align:left;cursor:pointer;transition:.18s ease}
+.pt-account-menu-item>span{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#0b131a;border:1px solid rgba(255,255,255,.06);color:#bfc8cf;font-size:13px;flex-shrink:0}
+.pt-account-menu-item b{display:block;color:#eef2f5;font-size:10px}.pt-account-menu-item small{display:block;color:#69747e;font-size:8px;margin-top:2px}.pt-account-menu-item:hover,.pt-account-menu-item.active{background:rgba(230,184,63,.07);border-color:rgba(230,184,63,.16)}.pt-account-menu-item.active>span{color:#f1c64d;border-color:rgba(230,184,63,.25)}
+.pt-account-section{padding:0 10px 10px}.pt-account-catalog-preview{margin-top:13px;padding:12px;border-radius:13px;background:#080f15;border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:10px}.pt-account-catalog-preview strong{display:block;color:#fff;font-size:10px}.pt-account-catalog-preview span{display:block;color:#65717b;font-size:8px;line-height:1.5;margin-top:3px;max-width:180px}.pt-account-inline{display:flex;gap:7px;margin-top:9px}.pt-account-inline input{flex:1;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#070d13;color:#fff;padding:0 9px;font-size:10px}.pt-account-linkbox{display:flex;gap:6px;margin-top:12px}.pt-account-linkbox input{min-width:0;flex:1;height:37px;border-radius:9px;border:1px solid rgba(255,255,255,.08);background:#070d13;color:#aab4bc;padding:0 9px;font-size:8px}.pt-account-linkbox button,.pt-account-share-actions button{border:1px solid rgba(230,184,63,.2);background:rgba(230,184,63,.07);color:#e8c153;border-radius:9px;padding:0 10px;font-size:8px;font-weight:800}.pt-account-share-actions{display:flex;gap:7px;margin-top:8px}.pt-account-share-actions button{height:34px;flex:1}.pt-account-logout{width:calc(100% - 20px);margin:4px 10px 18px;height:37px;border:1px solid rgba(255,255,255,.08);background:#080e14;color:#8b969f;border-radius:10px;font-size:9px;font-weight:800}.pt-account-logout:hover{color:#fff;border-color:rgba(255,255,255,.16)}
+
 </style>
 
-<!-- POWERTECH · SUPABASE -->
+<!-- POWERTECH · LIBRERÍA PDF + SUPABASE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 window.POWERTECH_SUPABASE_URL = "https://ldhqryyorffenqotkrqn.supabase.co";
@@ -407,7 +416,7 @@ window.powertechSupabase = window.supabase.createClient(
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3m0 0A7 7 0 1 0 6.8 6.8a7 7 0 0 0 9.9 9.9Z"/></svg>
       <input placeholder="Buscar productos, marcas, categorías..." oninput="document.getElementById('searchInput').value=this.value;onSearchInput();">
     </div>
-    <button class="pt-mode" onclick="toggleAccountDrawer()"><span>◉</span><b id="ptModeText">Mi cuenta</b><span id="ptModeMarkup"></span></button>
+    <button class="pt-mode" onclick="toggleAccountDrawer()"><span>◉</span><b id="ptModeText">Mi catálogo</b><span id="ptModeMarkup"></span></button>
     <button id="cartBtn" class="pt-cart" onclick="openCart()" aria-label="Abrir carrito">
       <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.078-.324-.145-.633-.478-.633H5.106M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm12.75 0a.75.75 0 1 0-1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
       <span id="cartCount">0</span>
@@ -425,7 +434,7 @@ window.powertechSupabase = window.supabase.createClient(
       <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas y atención personalizada.</p>
       <div class="pt-actions">
         <button class="pt-primary" onclick="switchTab('catalogo');document.getElementById('productList').scrollIntoView({behavior:'smooth'})">Ver catálogo&nbsp; →</button>
-        <button class="pt-secondary" onclick="toggleAccountDrawer()">Mi cuenta / Crear catálogo</button>
+        <button class="pt-secondary" onclick="toggleAccountDrawer()">Mi catálogo / Crear catálogo</button>
       </div>
     </div>
   </div>
@@ -475,7 +484,7 @@ window.powertechSupabase = window.supabase.createClient(
   <div class="pt-auth-card" style="position:relative">
     <button class="pt-auth-close" type="button" onclick="closePowertechAuth()">×</button>
     <div class="pt-auth-head">
-      <div class="pt-auth-kicker">POWERTECH · MI CUENTA</div>
+      <div class="pt-auth-kicker">POWERTECH · TU CATÁLOGO</div>
       <div id="ptAuthTitle" class="pt-auth-title">Ingresá a tu cuenta</div>
       <div id="ptAuthCopy" class="pt-auth-copy">Accedé a tu información y, cuando quieras, creá tu catálogo personalizado.</div>
     </div>
@@ -494,24 +503,44 @@ window.powertechSupabase = window.supabase.createClient(
      POWERTECH · PANEL DE CUENTA / REVENDEDOR
 ===================================================== -->
 <div id="accountDrawerOverlay" class="pt-account-overlay hidden" onclick="closeAccountPanel()"></div>
-<aside id="accountDrawer" class="pt-account-drawer hidden" aria-label="Panel de cuenta y catálogo personalizado">
+<aside id="accountDrawer" class="pt-account-drawer hidden" aria-label="Centro de catálogo Powertech">
   <div class="pt-account-top">
     <div class="pt-account-mode">
-      <div class="pt-account-icon">♙</div>
-      <div><b id="accountDrawerMode">Mi cuenta</b><span id="accountDrawerSub">Catálogo de ventas Powertech</span></div>
+      <div class="pt-account-icon">✦</div>
+      <div><b id="accountDrawerMode">Mi catálogo</b><span id="accountDrawerSub">Tu espacio de venta Powertech</span></div>
     </div>
     <button class="pt-account-close" onclick="closeAccountPanel()" aria-label="Cerrar">×</button>
   </div>
 
-  <div class="pt-account-card">
-    
-    <div class="pt-account-row">
-      <div class="pt-account-row-head">
-        <div>
-          <div class="pt-account-label">Datos de tu negocio</div>
-          <div class="pt-account-muted">Los usaremos para tu catálogo y, más adelante, para logística.</div>
+  <div class="pt-account-menu">
+    <button class="pt-account-menu-item active" type="button" onclick="accountSection('catalog')"><span>▣</span><div><b>Mi catálogo</b><small>Productos y precios para vender</small></div></button>
+    <button class="pt-account-menu-item" type="button" onclick="accountSection('data')"><span>◉</span><div><b>Mis datos</b><small>Tu información y negocio</small></div></button>
+    <button class="pt-account-menu-item" type="button" onclick="accountSection('share')"><span>↗</span><div><b>Compartir catálogo</b><small>Link para WhatsApp y redes</small></div></button>
+    <button class="pt-account-menu-item" type="button" onclick="accountSection('pdf')"><span>▤</span><div><b>Descargar catálogo PDF</b><small>Una versión lista para enviar</small></div></button>
+    <button class="pt-account-menu-item" type="button" onclick="accountSection('orders')"><span>≡</span><div><b>Mis pedidos</b><small>Historial de pedidos</small></div></button>
+  </div>
+
+  <div id="accountSectionCatalog" class="pt-account-section">
+    <div class="pt-account-card">
+      <div class="pt-account-row">
+        <div class="pt-account-label">Creá tu catálogo</div>
+        <div class="pt-account-muted">Powertech mantiene productos, fotos y descripciones. Vos definís cuánto querés ganar.</div>
+        <div class="pt-account-catalog-preview">
+          <div><strong id="accountCatalogName">Todavía no configurado</strong><span id="accountCatalogStatus">Tu catálogo todavía no tiene un link público.</span></div>
+          <button class="pt-account-primary" type="button" onclick="activatePersonalCatalog()">Crear / actualizar</button>
         </div>
       </div>
+      <div class="pt-account-row">
+        <div class="pt-account-row-head"><div><div class="pt-account-label">Margen general</div><div class="pt-account-muted">Se aplica a tus precios de venta.</div></div><strong id="accountMarkupValue" class="pt-account-big">+30%</strong></div>
+        <div class="pt-account-markup-actions"><button onclick="setAccountMarkup(10)">+10%</button><button onclick="setAccountMarkup(20)">+20%</button><button onclick="setAccountMarkup(30)">+30%</button><button onclick="setAccountMarkup(40)">+40%</button></div>
+        <div class="pt-account-inline"><input id="markupInput" type="number" min="0" max="500" step="1" value="30"><button class="pt-account-btn" onclick="saveAccountMarkupInput()">Aplicar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="accountSectionData" class="pt-account-section hidden">
+    <div class="pt-account-card"><div class="pt-account-row">
+      <div class="pt-account-label">Mis datos</div><div class="pt-account-muted">Estos datos quedan asociados a tu cuenta Powertech.</div>
       <div class="pt-account-data-grid">
         <label>Nombre y apellido<input id="accountFullName" type="text" autocomplete="name" placeholder="Ej. Juan Pérez"></label>
         <label>Negocio / tienda / kiosco<input id="accountBusinessName" type="text" autocomplete="organization" placeholder="Ej. Kiosco El Sol"></label>
@@ -522,58 +551,29 @@ window.powertechSupabase = window.supabase.createClient(
         <label>Provincia<input id="accountProvince" type="text" autocomplete="address-level1" placeholder="Ej. Buenos Aires"></label>
         <label>Referencia <span>(opcional)</span><input id="accountReference" type="text" placeholder="Ej. Frente a la plaza"></label>
       </div>
-      <button class="pt-account-primary" type="button" onclick="saveAccountBusinessData()">Guardar datos</button>
-      <div class="pt-account-note">La ubicación exacta (latitud y longitud) no se pide ahora. Quedará preparada para que el cliente pueda confirmarla más adelante desde la app.</div>
-    </div>
-<div class="pt-account-row">
-      <div class="pt-account-row-head">
-        <div><div class="pt-account-label">Tu cuenta</div><div class="pt-account-muted gold-text">Catálogo de ventas Powertech</div></div>
-      </div>
-    </div>
-
-    <div class="pt-account-row">
-      <div class="pt-account-row-head">
-        <div><div class="pt-account-label">Tu margen general</div><div id="accountMarkupValue" class="pt-account-big">+30%</div></div>
-        <button class="pt-account-btn" onclick="editAccountMarkup()">Editar</button>
-      </div>
-      <div class="pt-account-markup-actions">
-        <button onclick="setAccountMarkup(10)">+10%</button>
-        <button onclick="setAccountMarkup(20)">+20%</button>
-        <button onclick="setAccountMarkup(30)">+30%</button>
-        <button onclick="setAccountMarkup(40)">+40%</button>
-      </div>
-    </div>
-
-    <div class="pt-account-row">
-      <div class="pt-account-row-head">
-        <div><div class="pt-account-label">Ajuste por producto</div><div class="pt-account-muted">Podés personalizar el margen de cada producto.</div></div>
-        <button class="pt-account-btn" onclick="openProductMarkupNotice()">Configurar</button>
-      </div>
-    </div>
-
-    <div class="pt-account-row">
-      <div class="pt-account-feature">
-        <div class="pt-account-feature-icon">♧</div>
-        <div><div class="pt-account-label">Tu catálogo personalizado</div><div class="pt-account-muted">Compartí tu catálogo con tus precios de venta.</div><button class="pt-account-btn" style="margin-top:9px;color:var(--pt-gold2)" onclick="openPersonalCatalog()">Ver catálogo →</button></div>
-      </div>
-    </div>
+      <button class="pt-account-primary" type="button" onclick="saveAccountBusinessData()">Guardar mis datos</button>
+      <div class="pt-account-note">La ubicación exacta se preparará más adelante para logística y mapas.</div>
+    </div></div>
   </div>
 
-  <a class="pt-account-wa" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20necesito%20ayuda%20con%20mi%20cat%C3%A1logo." target="_blank" rel="noopener">
-    <div class="pt-account-wa-copy"><b>¿Necesitás ayuda?</b><span>Escribinos por WhatsApp</span><strong>11 6887-8292 →</strong></div>
-    <div class="pt-account-wa-icon">◉</div>
-  </a>
+  <div id="accountSectionShare" class="pt-account-section hidden"><div class="pt-account-card"><div class="pt-account-row">
+    <div class="pt-account-label">Tu link de catálogo</div><div class="pt-account-muted">Compartilo completo: tus clientes podrán ver tu catálogo con tus precios de venta.</div>
+    <div class="pt-account-linkbox"><input id="catalogPublicUrl" readonly placeholder="Primero creá tu catálogo"><button onclick="copyCatalogLink()">Copiar</button></div>
+    <div class="pt-account-share-actions"><button onclick="shareCatalogWhatsApp()">WhatsApp</button><button onclick="shareCatalogNative()">Compartir</button></div>
+  </div></div></div>
 
-  <div class="pt-account-card" style="margin-top:14px">
-    <div class="pt-account-row">
-      <div class="pt-account-cart-head"><b>🛒 Tu carrito</b><button onclick="closeAccountPanel();openCart()">Ver todos →</button></div>
-      <div class="pt-account-muted"><span id="accountCartCount">0</span> productos</div>
-      <div id="accountCartItems" class="pt-account-cart-items"></div>
-      <div class="pt-account-cart-total"><span>Total mayorista</span><strong id="accountWholesaleTotal">$0</strong></div>
-      <button class="pt-account-primary" onclick="closeAccountPanel();openCart()">Ver carrito →</button>
-    </div>
-  </div>
-  <div class="pt-account-note">Los precios mostrados en este panel son informativos. El pedido enviado por WhatsApp mantiene los precios mayoristas de Powertech.</div>
+  <div id="accountSectionPdf" class="pt-account-section hidden"><div class="pt-account-card"><div class="pt-account-row">
+    <div class="pt-account-label">Catálogo PDF</div><div class="pt-account-muted">Generá una versión de tu catálogo con tus precios de venta para descargar, enviar por WhatsApp o guardar.</div>
+    <button class="pt-account-primary" type="button" onclick="downloadCatalogPDF()">Descargar PDF</button>
+  </div></div></div>
+
+  <div id="accountSectionOrders" class="pt-account-section hidden"><div class="pt-account-card"><div class="pt-account-row">
+    <div class="pt-account-label">Mis pedidos</div><div class="pt-account-muted">Acá aparecerán tus pedidos realizados. En esta primera etapa, el pedido se confirma por WhatsApp y luego conectaremos el historial automático a Supabase.</div>
+    <div class="pt-account-empty">Todavía no hay pedidos registrados en tu cuenta.</div>
+  </div></div></div>
+
+  <div class="pt-account-wa-copy"><b>¿Necesitás ayuda?</b><span>Escribinos por WhatsApp</span><strong>11 6887-8292 →</strong></div>
+  <button class="pt-account-logout" type="button" onclick="powertechSignOut()">Cerrar sesión</button>
 </aside>
 
 <!-- =====================================================
@@ -798,7 +798,7 @@ window.powertechSupabase = window.supabase.createClient(
     <div class="border-t border-gold-dark/30 p-4 space-y-3">
 
       <div id="cartPricingNote" class="hidden text-[10px] text-gray-500 bg-neutral-900 rounded-lg px-3 py-2">
-        En modo revendedor, este total representa tu <span class="text-gray-300 font-semibold">venta estimada</span>. El pedido por WhatsApp se envía con precios mayoristas.
+        El total de abajo es el precio de tu pedido a Powertech. Tu catálogo puede mostrar precios de venta diferentes.
       </div>
 
       <div class="flex justify-between items-center">
@@ -836,7 +836,7 @@ window.powertechSupabase = window.supabase.createClient(
         disabled
         class="w-full py-3.5 rounded-xl font-bold text-sm bg-neutral-800 text-gray-400 cursor-not-allowed">
 
-        Finalizar pedido por WhatsApp
+        Enviar pedido por WhatsApp
 
       </button>
 
@@ -1818,6 +1818,8 @@ let currentModalProduct = null;
 let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
 let resellerMarkup = Number(localStorage.getItem('powertech_markup') || 30);
 let resellerSlug = localStorage.getItem('powertech_reseller_slug') || 'tu-catalogo';
+let catalogSlug = localStorage.getItem('powertech_catalog_slug') || '';
+let accountBusinessName = localStorage.getItem('powertech_business_name') || '';
 
 if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
 
@@ -1837,9 +1839,10 @@ function slugifyProduct(value){
     .replace(/^-+|-+$/g,'');
 }
 
+function getCatalogPublicUrl(slug){ return `${window.location.origin}${window.location.pathname}?catalogo=${encodeURIComponent(slug)}`; }
 function getResellerCatalogUrl(product){
-  const base='https://powertech.com.ar';
-  return `${base}/${encodeURIComponent(resellerSlug)}/${slugifyProduct(product.name || product.title)}`;
+  const base=getCatalogPublicUrl(catalogSlug || resellerSlug);
+  return `${base}&producto=${encodeURIComponent(slugifyProduct(product.name || product.title))}`;
 }
 
 function getProductShareText(product){
@@ -1939,43 +1942,100 @@ function editAccountMarkup(){
   setAccountMarkup(Math.min(500,n));
 }
 
-function openProductMarkupNotice(){
-  alert('La personalización de margen por producto será la próxima etapa. La sección ya queda preparada para incorporarla.');
+function openProductMarkupNotice(){ accountSection('catalog'); }
+function accountSection(section){
+  ['catalog','data','share','pdf','orders'].forEach(name=>{
+    document.getElementById('accountSection'+name.charAt(0).toUpperCase()+name.slice(1))?.classList.toggle('hidden',name!==section);
+  });
+  document.querySelectorAll('.pt-account-menu-item').forEach((b,i)=>b.classList.toggle('active',['catalog','data','share','pdf','orders'][i]===section));
 }
-
 function openPersonalCatalog(){
   closeAccountPanel();
-  setCatalogMode('revendedor');
-  document.getElementById('productList')?.scrollIntoView({behavior:'smooth',block:'start'});
+  if(catalogSlug) window.location.href=getCatalogPublicUrl(catalogSlug);
+  else activatePersonalCatalog();
 }
-
 function renderAccountPanel(){
   const mode=document.getElementById('accountDrawerMode');
   const sub=document.getElementById('accountDrawerSub');
   const value=document.getElementById('accountMarkupValue');
-  const count=document.getElementById('accountCartCount');
-  const items=document.getElementById('accountCartItems');
-  const total=document.getElementById('accountWholesaleTotal');
-  if(mode) mode.textContent=catalogMode==='revendedor'?'Revendedor':'Cliente';
-  if(sub) sub.textContent=catalogMode==='revendedor'?`+${resellerMarkup}% de margen`:'Precios mayoristas';
+  const input=document.getElementById('markupInput');
+  if(mode) mode.textContent='Mi catálogo';
+  if(sub) sub.textContent=catalogSlug?'Catálogo activo':'Tu espacio de venta Powertech';
   if(value) value.textContent=`+${resellerMarkup}%`;
-  const entries=Object.entries(cart);
-  const qty=entries.reduce((sum,[,q])=>sum+Number(q||0),0);
-  if(count) count.textContent=qty;
-  if(!items || !total) return;
-  let wholesaleTotal=0;
-  if(!entries.length){
-    items.innerHTML='<div class="pt-account-empty">Todavía no agregaste productos.</div>';
-    total.textContent='$0';
-    return;
-  }
-  items.innerHTML=entries.slice(0,4).map(([id,qty])=>{
-    const p=products.find(x=>x.id===Number(id));
-    if(!p) return '';
-    if(p.price!==null) wholesaleTotal += Number(p.price)*Number(qty);
-    return `<div class="pt-account-cart-item"><img src="${imageName(p.image)}" alt=""><div><div class="pt-account-cart-name">${p.name}</div><div class="pt-account-cart-meta">x${qty}</div></div><div class="pt-account-cart-price">${p.price===null?'Consultar':money(Number(p.price)*Number(qty))}</div></div>`;
-  }).join('');
-  total.textContent=money(wholesaleTotal);
+  if(input) input.value=resellerMarkup;
+  const name=document.getElementById('accountCatalogName');
+  const status=document.getElementById('accountCatalogStatus');
+  if(name) name.textContent=accountBusinessName || (catalogSlug?'Mi catálogo Powertech':'Todavía no configurado');
+  if(status) status.textContent=catalogSlug?'Tu catálogo tiene un link público listo para compartir.':'Creá tu catálogo para obtener un link público.';
+  const url=document.getElementById('catalogPublicUrl');
+  if(url) url.value=catalogSlug?getCatalogPublicUrl(catalogSlug):'';
+}
+function setAccountMarkup(value){ setMarkup(value); if(catalogSlug) activatePersonalCatalog(true); }
+function saveAccountMarkupInput(){ const v=Number(document.getElementById('markupInput')?.value||30); setMarkup(v); if(catalogSlug) activatePersonalCatalog(true); showToast('Margen actualizado'); }
+
+async function activatePersonalCatalog(silent=false){
+  try{
+    const {data:{session}}=await window.powertechSupabase.auth.getSession();
+    if(!session?.user){ openPowertechAuth('signup'); return; }
+    const slugBase=slugifyProduct(accountBusinessName||'mi-catalogo') || 'mi-catalogo';
+    const slug=`${slugBase}-${session.user.id.slice(0,6)}`;
+    const payload={user_id:session.user.id,name:accountBusinessName||'Mi catálogo Powertech',slug,general_markup:Number(resellerMarkup)||0,active:true,updated_at:new Date().toISOString()};
+    const {error}=await window.powertechSupabase.from('catalogs').upsert(payload,{onConflict:'user_id'});
+    if(error) throw error;
+    catalogSlug=slug; resellerSlug=slug; catalogMode='revendedor';
+    localStorage.setItem('powertech_catalog_slug',slug); localStorage.setItem('powertech_reseller_slug',slug); localStorage.setItem('powertech_business_name',accountBusinessName||''); localStorage.setItem('powertech_catalog_mode','revendedor');
+    updateCatalogModeUI(); refreshList(); updateCartUI(); renderAccountPanel();
+    if(!silent){ accountSection('share'); showToast('Tu catálogo está listo para compartir'); }
+  }catch(e){ console.error(e); showToast('No pudimos crear el catálogo. Revisá las políticas de Supabase.'); }
+}
+async function loadPublicCatalogFromUrl(){
+  const slug=new URLSearchParams(window.location.search).get('catalogo');
+  if(!slug) return;
+  try{
+    const {data,error}=await window.powertechSupabase.from('catalogs').select('name,slug,general_markup,active').eq('slug',slug).eq('active',true).maybeSingle();
+    if(error) throw error;
+    if(!data) return;
+    catalogSlug=data.slug; resellerSlug=data.slug; resellerMarkup=Number(data.general_markup)||0; catalogMode='revendedor'; accountBusinessName=data.name||'';
+    localStorage.setItem('powertech_catalog_slug',catalogSlug); localStorage.setItem('powertech_reseller_slug',resellerSlug); localStorage.setItem('powertech_markup',String(resellerMarkup)); localStorage.setItem('powertech_catalog_mode','revendedor'); localStorage.setItem('powertech_business_name',accountBusinessName);
+    updateCatalogModeUI(); refreshList(); updateCartUI();
+    const label=document.getElementById('catalogModeLabel'); if(label) label.textContent=`Catálogo de ${accountBusinessName||'Powertech'} · precios de venta`;
+  }catch(e){ console.error('Public catalog:',e); }
+}
+async function copyCatalogLink(){
+  if(!catalogSlug){ await activatePersonalCatalog(); return; }
+  const url=getCatalogPublicUrl(catalogSlug);
+  navigator.clipboard?.writeText(url).then(()=>showToast('Link del catálogo copiado')).catch(()=>window.prompt('Copiá este link:',url));
+}
+function shareCatalogWhatsApp(){
+  if(!catalogSlug){ activatePersonalCatalog(); return; }
+  const text=`Hola! 👋 Te comparto mi catálogo Powertech con mis precios de venta:
+${getCatalogPublicUrl(catalogSlug)}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener');
+}
+async function shareCatalogNative(){
+  if(!catalogSlug){ await activatePersonalCatalog(); return; }
+  const url=getCatalogPublicUrl(catalogSlug);
+  if(navigator.share){ try{ await navigator.share({title:accountBusinessName||'Mi catálogo Powertech',text:'Te comparto mi catálogo Powertech',url}); }catch(e){} }
+  else copyCatalogLink();
+}
+async function downloadCatalogPDF(){
+  if(!catalogSlug){ await activatePersonalCatalog(true); }
+  const jsPDF=window.jspdf?.jsPDF;
+  if(!jsPDF){ showToast('No se pudo cargar el generador PDF'); return; }
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const title=accountBusinessName||'Catálogo Powertech';
+  doc.setFontSize(22); doc.text(title,15,18);
+  doc.setFontSize(11); doc.text('Catálogo de productos · Powertech',15,25);
+  doc.setFontSize(9); doc.text(`Link: ${getCatalogPublicUrl(catalogSlug||resellerSlug)}`,15,31);
+  let y=41;
+  products.forEach((p,i)=>{
+    if(y>275){doc.addPage(); y=18;}
+    doc.setFontSize(11); doc.text(`${i+1}. ${p.name}`,15,y);
+    doc.setFontSize(9); doc.text(p.price===null?'Precio: Consultar':`Precio de venta: ${money(displayPrice(p.price))}`,18,y+5);
+    y+=11;
+  });
+  doc.save(`${slugifyProduct(title)||'catalogo-powertech'}.pdf`);
+  showToast('PDF generado');
 }
 
 function setCatalogMode(mode){
@@ -2049,17 +2109,9 @@ function imageName(num){
   return `prod${num}.jpg`;
 }
 
-function placeholderSVG(){
-
-  return 'data:image/svg+xml;utf8,' +
-    encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <rect width="100" height="100" fill="#0d0d0d"/>
-        <path d="M30 65 L45 45 L55 55 L70 35 L75 65 Z" fill="#2a2210"/>
-        <circle cx="40" cy="38" r="6" fill="#2a2210"/>
-      </svg>
-    `);
-
+function placeholderSVG(label='Powertech'){
+  const safe=String(label||'Powertech').slice(0,16);
+  return 'data:image/svg+xml;utf8='+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="14" fill="#0b1117"/><rect x="8" y="8" width="84" height="84" rx="12" fill="#101a22" stroke="#6b531d"/><circle cx="50" cy="39" r="17" fill="#171f26" stroke="#d8ad38"/><path d="M42 40h16M50 32v16" stroke="#d8ad38" stroke-width="3" stroke-linecap="round"/><text x="50" y="78" text-anchor="middle" font-family="Arial" font-size="8" fill="#bda64e">${safe}</text></svg>`);
 }
 
 
@@ -2104,7 +2156,7 @@ function renderProducts(list){
           src="${firstImage}"
           alt="${p.name}"
           class="w-full h-full object-cover"
-          onerror="this.onerror=null;this.src='${placeholderSVG()}';">
+          onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
 
       </div>
 
@@ -2513,7 +2565,7 @@ function openProductModal(id){
         src="${imageName(num)}"
         alt="${p.title} - imagen ${index+1}"
         draggable="false"
-        onerror="this.onerror=null;this.src='${placeholderSVG()}';">
+        onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
     `;
 
     gallery.appendChild(slide);
@@ -2819,7 +2871,7 @@ function renderCartItems(){
           src="${imageName(p.images[0])}"
           alt="${p.name}"
           class="w-full h-full object-cover"
-          onerror="this.onerror=null;this.src='${placeholderSVG()}';">
+          onerror="this.onerror=null;this.src='${placeholderSVG(p.categoryLabel)}';">
 
       </div>
 
@@ -2894,57 +2946,49 @@ function closeCart(){
    WHATSAPP
 ===================================================== */
 
-function sendOrder(){
+async function sendOrder(){
+  const total=cartTotal();
+  if(total===0){showToast('Agregá productos al pedido');return;}
+  if(total<MIN_PURCHASE){showToast(`El pedido mínimo es ${money(MIN_PURCHASE)}.`);return;}
+  let customer={};
+  try{
+    const {data:{session}}=await window.powertechSupabase.auth.getSession();
+    if(session?.user){
+      const {data:profile}=await window.powertechSupabase.from('profiles').select('full_name,phone').eq('id',session.user.id).maybeSingle();
+      const {data:business}=await window.powertechSupabase.from('businesses').select('business_name,address,neighborhood,city,province,reference').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();
+      customer={...(profile||{}),...(business||{})};
+    }
+  }catch(e){console.warn(e);}
+  let msg=`¡Hola Powertech! 👋 Quiero hacer el siguiente pedido:
 
-  const total=
-    cartTotal();
+`;
+  Object.entries(cart).forEach(([id,qty])=>{const p=products.find(x=>x.id===Number(id));if(!p)return;msg+=`▪️ ${qty}x ${p.name}
+    ${money(p.price)} c/u
 
-  if(
-    total<MIN_PURCHASE ||
-    total===0
-  ){
-    return;
-  }
+`;});
+  msg+=`------------------------------
+*TOTAL: ${money(total)}*
+`;
+  if(customer.full_name)msg+=`
+Cliente: ${customer.full_name}`;
+  if(customer.business_name)msg+=`
+Negocio: ${customer.business_name}`;
+  if(customer.phone)msg+=`
+WhatsApp: ${customer.phone}`;
+  if(customer.address)msg+=`
+Dirección: ${customer.address}`;
+  if(customer.neighborhood)msg+=`
+Barrio: ${customer.neighborhood}`;
+  if(customer.city)msg+=`
+Localidad: ${customer.city}`;
+  if(customer.province)msg+=`
+Provincia: ${customer.province}`;
+  if(customer.reference)msg+=`
+Referencia: ${customer.reference}`;
+  msg+=`
 
-  let msg=
-    `¡Hola Powertech! 👋 Quiero hacer el siguiente pedido:\n\n`;
-
-  Object.entries(cart)
-    .forEach(([id,qty])=>{
-
-      const p=
-        products.find(
-          x=>x.id===Number(id)
-        );
-
-      if(!p)return;
-
-      msg+=
-        `▪️ ${qty}x ${p.name}\n`;
-
-      msg+=
-        `    ${money(p.price)} c/u\n\n`;
-
-    });
-
-  msg+=
-    `------------------------------\n`;
-
-  msg+=
-    `*TOTAL: ${money(total)}*\n\n`;
-
-  msg+=
-    `Quedo a la espera de la confirmación. ¡Gracias!`;
-
-  const url=
-    `https://wa.me/${WHATSAPP_NUMBER}?text=`+
-    encodeURIComponent(msg);
-
-  window.open(
-    url,
-    '_blank'
-  );
-
+Quedo a la espera de la confirmación. ¡Gracias!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=`+encodeURIComponent(msg),'_blank');
 }
 
 
@@ -3068,63 +3112,28 @@ function populateAccountBusinessData(){
   Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val!=null)el.value=val});
 }
 async function saveAccountBusinessData(){
+  const saveBtn=document.querySelector('#accountSectionData .pt-account-primary');
+  if(saveBtn){saveBtn.disabled=true;saveBtn.textContent='Guardando…';}
   const d={
-    full_name:document.getElementById('accountFullName')?.value.trim()||'',
-    business_name:document.getElementById('accountBusinessName')?.value.trim()||'',
-    phone:document.getElementById('accountPhone')?.value.trim()||'',
-    address:document.getElementById('accountAddress')?.value.trim()||'',
-    neighborhood:document.getElementById('accountNeighborhood')?.value.trim()||'',
-    city:document.getElementById('accountCity')?.value.trim()||'',
-    province:document.getElementById('accountProvince')?.value.trim()||'',
-    reference:document.getElementById('accountReference')?.value.trim()||''
+    full_name:document.getElementById('accountFullName')?.value.trim()||'', business_name:document.getElementById('accountBusinessName')?.value.trim()||'', phone:document.getElementById('accountPhone')?.value.trim()||'', address:document.getElementById('accountAddress')?.value.trim()||'', neighborhood:document.getElementById('accountNeighborhood')?.value.trim()||'', city:document.getElementById('accountCity')?.value.trim()||'', province:document.getElementById('accountProvince')?.value.trim()||'', reference:document.getElementById('accountReference')?.value.trim()||''
   };
   localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
-
+  accountBusinessName=d.business_name; localStorage.setItem('powertech_business_name',accountBusinessName);
   try{
     const {data:{session}}=await window.powertechSupabase.auth.getSession();
-    if(!session?.user){
-      showToast('Datos guardados en este dispositivo');
-      return;
-    }
+    if(!session?.user){showToast('Iniciá sesión para guardar tus datos');return;}
     const userId=session.user.id;
-    const {error:profileError}=await window.powertechSupabase
-      .from('profiles')
-      .update({full_name:d.full_name,phone:d.phone,updated_at:new Date().toISOString()})
-      .eq('id',userId);
+    const {error:profileError}=await window.powertechSupabase.from('profiles').upsert({id:userId,full_name:d.full_name,phone:d.phone,updated_at:new Date().toISOString()},{onConflict:'id'});
     if(profileError) throw profileError;
-
-    const {data:existing,error:selectError}=await window.powertechSupabase
-      .from('businesses')
-      .select('id')
-      .eq('user_id',userId)
-      .limit(1)
-      .maybeSingle();
+    const {data:existing,error:selectError}=await window.powertechSupabase.from('businesses').select('id').eq('user_id',userId).order('created_at',{ascending:true}).limit(1).maybeSingle();
     if(selectError) throw selectError;
-
-    let businessError=null;
-    if(existing?.id){
-      ({error:businessError}=await window.powertechSupabase
-        .from('businesses')
-        .update({
-          business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,
-          city:d.city,province:d.province,reference:d.reference,
-          updated_at:new Date().toISOString()
-        })
-        .eq('id',existing.id).eq('user_id',userId));
-    }else{
-      ({error:businessError}=await window.powertechSupabase
-        .from('businesses')
-        .insert({
-          user_id:userId,business_name:d.business_name,address:d.address,
-          neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference
-        }));
-    }
+    let businessError;
+    if(existing?.id){({error:businessError}=await window.powertechSupabase.from('businesses').update({business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference,updated_at:new Date().toISOString()}).eq('id',existing.id).eq('user_id',userId));}
+    else{({error:businessError}=await window.powertechSupabase.from('businesses').insert({user_id:userId,business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference}));}
     if(businessError) throw businessError;
-    showToast('Datos guardados en tu cuenta');
-  }catch(e){
-    console.error(e);
-    showToast('Se guardaron localmente. Revisá la conexión de Supabase.');
-  }
+    renderAccountPanel(); showToast('Tus datos quedaron guardados en Powertech');
+  }catch(e){console.error('Save account:',e);showToast(`No se pudieron guardar los datos: ${e.message||'revisá Supabase'}`);}
+  finally{if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='Guardar mis datos';}}
 }</script>
 
 
@@ -3223,35 +3232,16 @@ async function submitPowertechAuth(){
 }
 async function loadPowertechAccountData(){
   try{
-    const {data:{session}}=await window.powertechSupabase.auth.getSession();
-    if(!session?.user)return;
+    const {data:{session}}=await window.powertechSupabase.auth.getSession(); if(!session?.user)return;
     const userId=session.user.id;
-    const {data:profile}=await window.powertechSupabase
-      .from('profiles').select('full_name,phone').eq('id',userId).maybeSingle();
-    const {data:business}=await window.powertechSupabase
-      .from('businesses').select('business_name,address,neighborhood,city,province,reference')
-      .eq('user_id',userId).order('created_at',{ascending:true}).limit(1).maybeSingle();
-
-    const d={
-      full_name:profile?.full_name||'',
-      phone:profile?.phone||'',
-      business_name:business?.business_name||'',
-      address:business?.address||'',
-      neighborhood:business?.neighborhood||'',
-      city:business?.city||'',
-      province:business?.province||'',
-      reference:business?.reference||''
-    };
-    localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
-    populateAccountBusinessData();
-    const mode=document.getElementById('accountDrawerMode');
-    const sub=document.getElementById('accountDrawerSub');
-    if(mode)mode.textContent='Mi cuenta';
-    if(sub)sub.textContent=session.user.email||'Cuenta Powertech';
-  }catch(e){
-    console.error('Powertech account load:',e);
-    populateAccountBusinessData();
-  }
+    const {data:profile,error:profileError}=await window.powertechSupabase.from('profiles').select('full_name,phone').eq('id',userId).maybeSingle(); if(profileError) throw profileError;
+    const {data:business,error:businessError}=await window.powertechSupabase.from('businesses').select('business_name,address,neighborhood,city,province,reference').eq('user_id',userId).order('created_at',{ascending:true}).limit(1).maybeSingle(); if(businessError) throw businessError;
+    const d={full_name:profile?.full_name||'',phone:profile?.phone||'',business_name:business?.business_name||'',address:business?.address||'',neighborhood:business?.neighborhood||'',city:business?.city||'',province:business?.province||'',reference:business?.reference||''};
+    localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d)); accountBusinessName=d.business_name||''; localStorage.setItem('powertech_business_name',accountBusinessName); populateAccountBusinessData();
+    const {data:catalog}=await window.powertechSupabase.from('catalogs').select('slug,general_markup,name,active').eq('user_id',userId).maybeSingle();
+    if(catalog?.slug){catalogSlug=catalog.slug;resellerSlug=catalog.slug;resellerMarkup=Number(catalog.general_markup)||0;localStorage.setItem('powertech_catalog_slug',catalogSlug);localStorage.setItem('powertech_markup',String(resellerMarkup));if(catalog.active)catalogMode='revendedor';}
+    renderAccountPanel(); updateCatalogModeUI(); refreshList(); updateCartUI();
+  }catch(e){console.error('Powertech account load:',e);populateAccountBusinessData();}
 }
 async function powertechSignOut(){
   try{await window.powertechSupabase.auth.signOut();}catch(e){console.error(e);}
@@ -3264,6 +3254,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const {data:{session}}=await window.powertechSupabase.auth.getSession();
     window.POWERTECH_AUTH_READY=true;
     if(session?.user) await loadPowertechAccountData();
+    await loadPublicCatalogFromUrl();
     window.powertechSupabase.auth.onAuthStateChange((event,newSession)=>{
       if(event==='SIGNED_OUT'){
         const mode=document.getElementById('accountDrawerMode');
