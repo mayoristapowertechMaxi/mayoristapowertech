@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- POWERTECH V8: V5 BASE + V6/V7 FEATURES | product/image catalog preserved -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -2351,10 +2352,15 @@ function money(n){
 }
 
 function imageName(num){
+  let fileName;
   if(typeof num === 'string'){
-    return num.includes('.') ? num : `${num}.jpg`;
+    fileName = num.includes('.') ? num : `${num}.jpg`;
+  }else{
+    fileName = `prod${num}.jpg`;
   }
-  return `prod${num}.jpg`;
+  // Mantiene las imágenes del repositorio y las resuelve contra la URL real
+  // de la página (GitHub Pages hoy, dominio propio mañana).
+  try{ return new URL(fileName, document.baseURI).href; }catch(e){ return fileName; }
 }
 
 function placeholderSVG(label='Powertech'){
@@ -3278,7 +3284,7 @@ async function submitCheckoutOrder(){
   if(!viewingAsPublicCatalog){showToast('Este formulario es para compras desde un catálogo público.');return;}
   const {data,error}=await window.powertechSupabase.rpc('create_public_order',{p_catalog_id:await getPublicCatalogId(),p_customer_name:name,p_customer_phone:phone,p_address:address,p_neighborhood:document.getElementById('checkoutNeighborhood')?.value.trim(),p_city:document.getElementById('checkoutCity')?.value.trim(),p_province:document.getElementById('checkoutProvince')?.value.trim(),p_reference:document.getElementById('checkoutReference')?.value.trim(),p_shipping_type:shipping,p_shipping_cost:shippingCost,p_shipping_label:shippingLabel,p_payment_method:document.getElementById('checkoutPayment')?.value||'consultar',p_subtotal:total,p_total:total+shippingCost,p_items:items});if(error)throw error;
   const orderNumber=data?.order_number||'PT';const target=publicCatalogPhone||WHATSAPP_NUMBER;const msg=`Hola! 👋\n\nQuiero confirmar el pedido *#${orderNumber}*.\n\nTotal: *${money(total+shippingCost)}*\nEnvío: ${shippingLabel}\n\nCliente: ${name}\nWhatsApp: ${phone}\nDirección: ${address}\n\nGracias.`;
-  clearPowertechCart();closeCheckoutModal();updateCartUI();window.open(`https://wa.me/${target}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');showToast('¡Gracias por tu compra! Tu pedido ya está en proceso de preparación.');
+  clearPowertechCart();closeCheckoutModal();updateCartUI();window.open(`https://wa.me/${target}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');showToast('¡Gracias por tu compra! Recibimos tu pedido y lo enviamos al revendedor para su confirmación.');
  }catch(e){console.error('Checkout:',e);showToast('No pudimos registrar el pedido. Intentá nuevamente.');}
 }
 async function getPublicCatalogId(){const slug=publicCatalogSlug;const {data}=await window.powertechSupabase.from('catalogs').select('id').eq('slug',slug).eq('active',true).maybeSingle();if(!data?.id)throw new Error('CATALOG_NOT_FOUND');return data.id;}
