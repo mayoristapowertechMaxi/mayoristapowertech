@@ -485,7 +485,7 @@ window.powertechSupabase = window.supabase.createClient(
       <label class="pt-auth-field"><span>Contraseña</span><input id="ptAuthPassword" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></label>
       <button id="ptAuthMain" class="pt-auth-main" type="button" onclick="submitPowertechAuth()">Ingresar</button>
       <button id="ptAuthSwitch" class="pt-auth-switch" type="button" onclick="togglePowertechAuthMode()">¿No tenés cuenta? Crear cuenta</button>
-      <div class="pt-auth-foot">Tu cuenta se guarda de forma segura en Powertech. Nunca pongas aquí una contraseña que uses para otro servicio.</div>
+      <div class="pt-auth-foot">Tu cuenta se guarda de forma segura en Powertech. Usá una contraseña exclusiva para este sitio.</div>
     </div>
   </div>
 </div>
@@ -1920,7 +1920,9 @@ function closeAccountPanel(){
   const drawer=document.getElementById('accountDrawer');
   if(overlay) overlay.classList.add('hidden');
   if(drawer) drawer.classList.add('hidden');
-  if(!document.getElementById('cartModal')?.classList.contains('flex')) document.body.style.overflow='';
+  const drawerOpen=!document.getElementById('accountDrawer')?.classList.contains('hidden');
+  const cartOpen=document.getElementById('cartModal')?.classList.contains('flex');
+  if(!drawerOpen && !cartOpen) document.body.style.overflow='';
 }
 
 function setAccountMarkup(value){
@@ -3159,7 +3161,7 @@ function updatePowertechAuthUI(){
   const sw=document.getElementById('ptAuthSwitch');
   if(title)title.textContent=signup?'Crear tu cuenta':'Ingresá a tu cuenta';
   if(copy)copy.textContent=signup
-    ?'Creá tu cuenta Powertech y después podés activar tu catálogo personalizado.'
+    ?'Creá tu cuenta Powertech y empezá a configurar tu catálogo cuando quieras.'
     :'Accedé a tu información y, cuando quieras, creá tu catálogo personalizado.';
   if(main)main.textContent=signup?'Crear cuenta':'Ingresar';
   if(sw)sw.textContent=signup?'¿Ya tenés cuenta? Ingresar':'¿No tenés cuenta? Crear cuenta';
@@ -3181,6 +3183,7 @@ function friendlyPowertechAuthError(error){
   if(/invalid login credentials/i.test(m))return'El email o la contraseña no son correctos.';
   if(/already registered|already been registered/i.test(m))return'Ese email ya tiene una cuenta. Probá iniciar sesión.';
   if(/password/i.test(m)&&/6/i.test(m))return'La contraseña debe tener al menos 6 caracteres.';
+  if(/rate limit|too many requests|email rate limit/i.test(m))return'El servicio de email de prueba alcanzó su límite temporal. Para el lanzamiento gratuito, dejá “Confirm email” desactivado en Supabase.';
   if(/email/i.test(m))return'Revisá que el email esté escrito correctamente.';
   return m||'No pudimos completar la operación. Intentá nuevamente.';
 }
@@ -3201,7 +3204,7 @@ async function submitPowertechAuth(){
         await loadPowertechAccountData();
         showToast('Cuenta creada correctamente');
       }else{
-        showPowertechAuthError('Cuenta creada. Revisá tu email para confirmar la cuenta y después ingresá.');
+        showPowertechAuthError('La cuenta fue creada, pero Supabase está pidiendo confirmar el email. Revisá Authentication → Providers → Email y desactivá “Confirm email” para el lanzamiento gratuito.');
       }
     }else{
       const {data,error}=await window.powertechSupabase.auth.signInWithPassword({email,password});
