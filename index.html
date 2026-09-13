@@ -354,6 +354,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 
 /* === POWERTECH · DATOS DE CUENTA / NEGOCIO === */
 .pt-account-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.pt-account-readonly{display:flex;flex-direction:column;gap:18px}.pt-account-readonly .pt-account-data-grid>div{display:flex;flex-direction:column;gap:5px}.pt-account-readonly .pt-account-data-grid span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#8d98a3}.pt-account-readonly .pt-account-data-grid strong{font-size:14px;color:#fff;font-weight:600;overflow-wrap:anywhere}.pt-account-data-form{display:block}
 .pt-account-data-grid label{font-size:8px;color:#9aa4ac;display:flex;flex-direction:column;gap:5px}
 .pt-account-data-grid label span{color:#8d98a3}
 .pt-account-data-grid input{width:100%;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.09);background:#070d13;color:#eef2f5;padding:0 9px;font-size:9px;outline:none}
@@ -547,6 +548,20 @@ window.powertechSupabase = window.supabase.createClient(
   <div id="accountSectionData" class="pt-account-section hidden">
     <div class="pt-account-card"><div class="pt-account-row">
       <div class="pt-account-label">Mis datos</div><div class="pt-account-muted">Estos datos quedan asociados a tu cuenta Powertech.</div>
+      <div id="accountDataReadonly" class="pt-account-readonly hidden">
+        <div class="pt-account-data-grid">
+          <div><span>Nombre y apellido</span><strong id="accountViewFullName">—</strong></div>
+          <div><span>Negocio / tienda / kiosco</span><strong id="accountViewBusinessName">—</strong></div>
+          <div><span>WhatsApp / teléfono</span><strong id="accountViewPhone">—</strong></div>
+          <div><span>Dirección</span><strong id="accountViewAddress">—</strong></div>
+          <div><span>Barrio</span><strong id="accountViewNeighborhood">—</strong></div>
+          <div><span>Localidad / ciudad</span><strong id="accountViewCity">—</strong></div>
+          <div><span>Provincia</span><strong id="accountViewProvince">—</strong></div>
+          <div><span>Referencia</span><strong id="accountViewReference">—</strong></div>
+        </div>
+        <button class="pt-account-primary" type="button" onclick="editAccountBusinessData()">Editar mis datos</button>
+      </div>
+      <div id="accountDataForm" class="pt-account-data-form">
       <div class="pt-account-data-grid">
         <label>Nombre y apellido<input id="accountFullName" type="text" autocomplete="name" placeholder="Ej. Juan Pérez"></label>
         <label>Negocio / tienda / kiosco<input id="accountBusinessName" type="text" autocomplete="organization" placeholder="Ej. Kiosco El Sol"></label>
@@ -557,7 +572,8 @@ window.powertechSupabase = window.supabase.createClient(
         <label>Provincia<input id="accountProvince" type="text" autocomplete="address-level1" placeholder="Ej. Buenos Aires"></label>
         <label>Referencia <span>(opcional)</span><input id="accountReference" type="text" placeholder="Ej. Frente a la plaza"></label>
       </div>
-      <button class="pt-account-primary" type="button" onclick="saveAccountBusinessData()">Guardar mis datos</button>
+      <button id="saveAccountDataBtn" class="pt-account-primary" type="button" onclick="saveAccountBusinessData()">Guardar mis datos</button>
+      </div>
       <div class="pt-account-note">La ubicación exacta se preparará más adelante para logística y mapas.</div>
     </div></div>
   </div>
@@ -949,7 +965,7 @@ function openComboModal(comboId){
 
   document.getElementById('comboBadge').textContent = combo.badge;
   document.getElementById('comboTitle').textContent = combo.name;
-  document.getElementById('comboPrice').textContent = money(combo.price);
+  document.getElementById('comboPrice').textContent = money(displayPrice(combo.price));
 
   const itemsList = document.getElementById('comboItems');
   itemsList.innerHTML = '';
@@ -1824,11 +1840,17 @@ const products = [
 const MIN_PURCHASE = 50000;
 const WHATSAPP_NUMBER = "5491168878292";
 
-let cart = JSON.parse(localStorage.getItem('powertech_cart') || '{}');
+let cart = JSON.parse(JSON.stringify(readPowertechCart()) || '{}');
 let activeCategory = null;
 let currentModalProduct = null;
 let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
+// Estado separado: solo true cuando esta pestaña está mostrando un catálogo público por URL.
+let viewingAsPublicCatalog = false;
+let publicCatalogSlug = '';
+let publicCatalogName = '';
+let powertechUserRole = 'user';
 let resellerMarkup = Number(localStorage.getItem('powertech_markup') || 30);
+    ownerResellerMarkup = resellerMarkup;
 let resellerSlug = localStorage.getItem('powertech_reseller_slug') || 'tu-catalogo';
 let catalogSlug = localStorage.getItem('powertech_catalog_slug') || '';
 let accountBusinessName = localStorage.getItem('powertech_business_name') || '';
@@ -1844,7 +1866,10 @@ if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
  */
 function displayPrice(price){
   if(price === null || price === undefined) return price;
-  return catalogMode === 'revendedor'
+  // Un catálogo público SIEMPRE muestra precio de venta; el modo manual solo
+  // controla la previsualización del dueño/admin en su propia sesión.
+  const useResellerPrice = viewingAsPublicCatalog || catalogMode === 'revendedor';
+  return useResellerPrice
     ? Math.round(Number(price) * (1 + resellerMarkup / 100))
     : Number(price);
 }
@@ -1860,7 +1885,7 @@ function slugifyProduct(value){
 
 function getCatalogPublicUrl(slug){ return `${window.location.origin}${window.location.pathname}?catalogo=${encodeURIComponent(slug)}`; }
 function getResellerCatalogUrl(product){
-  const base=getCatalogPublicUrl(catalogSlug || resellerSlug);
+  const base=getCatalogPublicUrl(publicCatalogSlug || catalogSlug || resellerSlug);
   return `${base}&producto=${encodeURIComponent(slugifyProduct(product.name || product.title))}`;
 }
 
@@ -1909,6 +1934,18 @@ function copyProductLink(id){
   if(!product) return;
   const url=getResellerCatalogUrl(product);
   navigator.clipboard?.writeText(url).then(()=>showToast('Enlace copiado')).catch(()=>window.prompt('Copiá este enlace:',url));
+}
+
+function isPowertechAdmin(){
+  return powertechUserRole === 'admin' || powertechUserRole === 'super_admin';
+}
+// FUTURO POWER HUB: cuando exista el selector de revendedores, este permiso permitirá
+// al admin abrir/editar el catálogo de cualquier revendedor usando las mismas funciones
+// de margen, datos, compartir y PDF, sin duplicar el sistema de catálogo.
+
+
+function powertechAdminLabel(){
+  return powertechUserRole === 'super_admin' ? 'Super Admin' : powertechUserRole === 'admin' ? 'Admin' : '';
 }
 
 function showUserAccountAfterLogin(){
@@ -1970,6 +2007,7 @@ function editAccountMarkup(){
 
 function openProductMarkupNotice(){ accountSection('catalog'); }
 function accountSection(section){
+  if(section==='data') renderAccountDataView();
   ['catalog','data','share','pdf','orders'].forEach(name=>{
     document.getElementById('accountSection'+name.charAt(0).toUpperCase()+name.slice(1))?.classList.toggle('hidden',name!==section);
   });
@@ -1986,7 +2024,7 @@ function renderAccountPanel(){
   const value=document.getElementById('accountMarkupValue');
   const input=document.getElementById('markupInput');
   if(mode) mode.textContent='Mi catálogo';
-  if(sub) sub.textContent=catalogSlug?'Catálogo activo':'Tu espacio de venta Powertech';
+  if(sub) sub.textContent=isPowertechAdmin() ? `${powertechAdminLabel()} · todas las funciones de catálogo` : (catalogSlug?'Catálogo activo':'Tu espacio de venta Powertech');
   if(value) value.textContent=`+${resellerMarkup}%`;
   if(input) input.value=resellerMarkup;
   const name=document.getElementById('accountCatalogName');
@@ -2007,19 +2045,24 @@ async function activatePersonalCatalog(silent=false){
     const payload={user_id:session.user.id,name:accountBusinessName||'Mi catálogo Powertech',slug,general_markup:Number(resellerMarkup)||0,active:true,updated_at:new Date().toISOString()};
     const {error}=await window.powertechSupabase.from('catalogs').upsert(payload,{onConflict:'user_id'});
     if(error) throw error;
-    catalogSlug=slug; resellerSlug=slug; catalogMode='revendedor';
-    localStorage.setItem('powertech_catalog_slug',slug); localStorage.setItem('powertech_reseller_slug',slug); localStorage.setItem('powertech_business_name',accountBusinessName||''); localStorage.setItem('powertech_catalog_mode','revendedor');
+    catalogSlug=slug; resellerSlug=slug;
+    // Crear/actualizar el catálogo NO cambia la vista de trabajo del dueño/admin.
+    // El margen queda guardado para el catálogo público, pero catalogMode sigue siendo
+    // exclusivamente el selector manual de previsualización del dueño.
+    localStorage.setItem('powertech_catalog_slug',slug); localStorage.setItem('powertech_reseller_slug',slug); localStorage.setItem('powertech_business_name',accountBusinessName||''); ownerResellerMarkup = Number(resellerMarkup || 30); localStorage.setItem('powertech_markup',String(ownerResellerMarkup));
     updateCatalogModeUI(); refreshList(); updateCartUI(); renderAccountPanel(); updateSocialMetadata();
     if(!silent){ accountSection('share'); showToast('Tu catálogo está listo para compartir'); }
-  }catch(e){ console.error(e); showToast('No pudimos crear el catálogo. Revisá las políticas de Supabase.'); }
+  }catch(e){ console.error('Powertech catalog activation:',e); showToast(e?.code==='23505'?'Ese link de catálogo ya está en uso. Intentá nuevamente.':'No pudimos crear o actualizar tu catálogo. Revisá tu sesión y la configuración de Supabase.'); }
 }
 function updateSocialMetadata(){
   const currentUrl=window.location.href;
-  const title=catalogMode==='revendedor' && accountBusinessName
-    ? `${accountBusinessName} · Catálogo Powertech`
+  const publicMode = viewingAsPublicCatalog;
+  const publicName = publicCatalogName || accountBusinessName;
+  const title=(publicMode || catalogMode==='revendedor') && publicName
+    ? `${publicName} · Catálogo Powertech`
     : 'Powertech Mayorista | Tecnología y accesorios al por mayor';
-  const description=catalogMode==='revendedor' && accountBusinessName
-    ? `Catálogo de ${accountBusinessName} con precios de venta. Productos Powertech listos para compartir.`
+  const description=(publicMode || catalogMode==='revendedor') && publicName
+    ? `Catálogo de ${publicName} con precios de venta. Productos Powertech listos para compartir.`
     : 'Accesorios electrónicos, cargadores, cables, auriculares, tecnología y productos para comercios.';
   const setMeta=(selector,content)=>{
     const el=document.querySelector(selector);
@@ -2032,6 +2075,25 @@ function updateSocialMetadata(){
   setMeta('meta[name="twitter:description"]',description);
 }
 
+function exitPublicCatalogView() {
+  viewingAsPublicCatalog = false;
+  publicCatalogSlug = '';
+  publicCatalogName = '';
+  publicCatalogMarkup = 30;
+
+  const storedMarkup = Number(localStorage.getItem('powertech_markup'));
+  ownerResellerMarkup = Number.isFinite(storedMarkup) ? storedMarkup : 30;
+  resellerMarkup = ownerResellerMarkup;
+
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+  updateCatalogModeUI();
+  updateSocialMetadata();
+  renderProducts();
+  updateCartUI();
+  updateAccountUI();
+}
+
 async function loadPublicCatalogFromUrl(){
   const slug=new URLSearchParams(window.location.search).get('catalogo');
   if(!slug) return;
@@ -2039,10 +2101,12 @@ async function loadPublicCatalogFromUrl(){
     const {data,error}=await window.powertechSupabase.from('catalogs').select('name,slug,general_markup,active').eq('slug',slug).eq('active',true).maybeSingle();
     if(error) throw error;
     if(!data) return;
-    catalogSlug=data.slug; resellerSlug=data.slug; resellerMarkup=Number(data.general_markup)||0; catalogMode='revendedor'; accountBusinessName=data.name||'';
-    localStorage.setItem('powertech_catalog_slug',catalogSlug); localStorage.setItem('powertech_reseller_slug',resellerSlug); localStorage.setItem('powertech_markup',String(resellerMarkup)); localStorage.setItem('powertech_catalog_mode','revendedor'); localStorage.setItem('powertech_business_name',accountBusinessName);
+    viewingAsPublicCatalog=true;
+    publicCatalogSlug=data.slug;
+    publicCatalogName=data.name||'';
+    publicCatalogMarkup=Number(data.general_markup)||0;
     updateCatalogModeUI(); refreshList(); updateCartUI(); updateSocialMetadata();
-    const label=document.getElementById('catalogModeLabel'); if(label) label.textContent=`Catálogo de ${accountBusinessName||'Powertech'} · precios de venta`;
+    const label=document.getElementById('catalogModeLabel'); if(label) label.textContent=`Catálogo de ${publicCatalogName||'Powertech'} · precios de venta`;
   }catch(e){ console.error('Public catalog:',e); showToast('No pudimos cargar este catálogo. El enlace puede estar vencido o no existir.'); }
 }
 async function copyCatalogLink(){
@@ -2059,7 +2123,7 @@ ${getCatalogPublicUrl(catalogSlug)}`;
 async function shareCatalogNative(){
   if(!catalogSlug){ await activatePersonalCatalog(); return; }
   const url=getCatalogPublicUrl(catalogSlug);
-  if(navigator.share){ try{ await navigator.share({title:accountBusinessName||'Mi catálogo Powertech',text:'Te comparto mi catálogo Powertech',url}); }catch(e){} }
+  if(navigator.share){ try{ await navigator.share({title:accountBusinessName||'Mi catálogo Powertech',text:'Te comparto mi catálogo Powertech',url}); }catch(e){ if(e?.name!=='AbortError') showToast('No pudimos abrir el menú de compartir.'); } }
   else copyCatalogLink();
 }
 async function downloadCatalogPDF(){
@@ -2088,6 +2152,7 @@ function setCatalogMode(mode){
   updateCatalogModeUI();
   refreshList();
   updateCartUI();
+  updateSocialMetadata();
 }
 
 function setMarkup(value){
@@ -2108,11 +2173,12 @@ function updateCatalogModeUI(){
   const topMode = document.getElementById('ptModeText');
   const topMarkup = document.getElementById('ptModeMarkup');
 
-  if(topMode) topMode.textContent = catalogMode === 'revendedor' ? 'Revendedor' : 'Cliente';
-  if(topMarkup) topMarkup.textContent = catalogMode === 'revendedor' ? `+${resellerMarkup}%` : 'Mayorista';
-  if(label) label.textContent = catalogMode === 'revendedor' ? `Revendedor · precio de venta con +${resellerMarkup}%` : 'Cliente · precios mayoristas';
-  if(badge){ badge.textContent = `+${resellerMarkup}%`; badge.classList.toggle('hidden',catalogMode !== 'revendedor'); }
-  if(panel) panel.classList.toggle('hidden',catalogMode !== 'revendedor');
+  const effectiveResellerView = viewingAsPublicCatalog || catalogMode === 'revendedor';
+  if(topMode) topMode.textContent = viewingAsPublicCatalog ? 'Catálogo público' : (catalogMode === 'revendedor' ? 'Revendedor' : 'Cliente');
+  if(topMarkup) topMarkup.textContent = effectiveResellerView ? `+${resellerMarkup}%` : 'Mayorista';
+  if(label) label.textContent = viewingAsPublicCatalog ? `Catálogo de ${publicCatalogName||'Powertech'} · precios de venta` : (catalogMode === 'revendedor' ? `Revendedor · precio de venta con +${resellerMarkup}%` : 'Cliente · precios mayoristas');
+  if(badge){ badge.textContent = `+${resellerMarkup}%`; badge.classList.toggle('hidden',!effectiveResellerView); }
+  if(panel) panel.classList.toggle('hidden',catalogMode !== 'revendedor' || viewingAsPublicCatalog);
   if(input) input.value = resellerMarkup;
   if(!clientBtn || !resellerBtn) return;
 
@@ -2772,6 +2838,32 @@ function changeQty(id,delta){
 
 }
 
+function getCartStorageKey() {
+  return viewingAsPublicCatalog && publicCatalogSlug
+    ? `powertech_cart_${publicCatalogSlug}`
+    : 'powertech_cart';
+}
+
+function readPowertechCart() {
+  try {
+    return JSON.parse(localStorage.getItem(getCartStorageKey()) || '[]');
+  } catch (error) {
+    console.warn('No se pudo leer el carrito:', error);
+    return [];
+  }
+}
+
+function writePowertechCart(items) {
+  localStorage.setItem(getCartStorageKey(), JSON.stringify(items || []));
+}
+
+function clearPowertechCart(){
+  cart={};
+  localStorage.removeItem('powertech_cart');
+  updateCartUI();
+  refreshList();
+}
+
 function cartTotal(){
   return Object.entries(cart)
     .reduce((sum,[id,qty])=>{
@@ -2804,7 +2896,7 @@ function updateCartUI(){
 
   const pricingNote = document.getElementById('cartPricingNote');
   if(pricingNote){
-    pricingNote.classList.toggle('hidden', catalogMode !== 'revendedor');
+    pricingNote.classList.toggle('hidden', !(viewingAsPublicCatalog || catalogMode === 'revendedor'));
   }
 
   const btn=
@@ -3171,10 +3263,31 @@ const POWERTECH_ACCOUNT_STORAGE_KEY='powertech_account_business_data';
 function getStoredAccountBusinessData(){
   try{return JSON.parse(localStorage.getItem(POWERTECH_ACCOUNT_STORAGE_KEY)||'{}')}catch(e){return {}}
 }
+function accountBusinessDataHasValues(d){
+  return Object.values(d||{}).some(v=>String(v||'').trim()!=='');
+}
+function renderAccountDataView(edit=false){
+  const d=getStoredAccountBusinessData();
+  const hasData=accountBusinessDataHasValues(d);
+  const readonly=document.getElementById('accountDataReadonly');
+  const form=document.getElementById('accountDataForm');
+  if(readonly){
+    const map={accountViewFullName:d.full_name,accountViewBusinessName:d.business_name,accountViewPhone:d.phone,accountViewAddress:d.address,accountViewNeighborhood:d.neighborhood,accountViewCity:d.city,accountViewProvince:d.province,accountViewReference:d.reference};
+    Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.textContent=String(val||'—')});
+    readonly.classList.toggle('hidden',!hasData || edit);
+  }
+  if(form) form.classList.toggle('hidden',hasData && !edit);
+}
 function populateAccountBusinessData(){
   const d=getStoredAccountBusinessData();
   const map={accountFullName:d.full_name,accountBusinessName:d.business_name,accountPhone:d.phone,accountAddress:d.address,accountNeighborhood:d.neighborhood,accountCity:d.city,accountProvince:d.province,accountReference:d.reference};
-  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val!=null)el.value=val});
+  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val||''});
+  renderAccountDataView();
+}
+function editAccountBusinessData(){
+  populateAccountBusinessData();
+  renderAccountDataView(true);
+  document.getElementById('accountFullName')?.focus();
 }
 async function saveAccountBusinessData(){
   const saveBtn=document.querySelector('#accountSectionData .pt-account-primary');
@@ -3182,11 +3295,9 @@ async function saveAccountBusinessData(){
   const d={
     full_name:document.getElementById('accountFullName')?.value.trim()||'', business_name:document.getElementById('accountBusinessName')?.value.trim()||'', phone:document.getElementById('accountPhone')?.value.trim()||'', address:document.getElementById('accountAddress')?.value.trim()||'', neighborhood:document.getElementById('accountNeighborhood')?.value.trim()||'', city:document.getElementById('accountCity')?.value.trim()||'', province:document.getElementById('accountProvince')?.value.trim()||'', reference:document.getElementById('accountReference')?.value.trim()||''
   };
-  localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
-  accountBusinessName=d.business_name; localStorage.setItem('powertech_business_name',accountBusinessName);
   try{
     const {data:{session}}=await window.powertechSupabase.auth.getSession();
-    if(!session?.user){showToast('Iniciá sesión para guardar tus datos');return;}
+    if(!session?.user){showToast('Tu sesión expiró. Iniciá sesión nuevamente para guardar tus datos.');return;}
     const userId=session.user.id;
     const {error:profileError}=await window.powertechSupabase.from('profiles').upsert({id:userId,full_name:d.full_name,phone:d.phone,updated_at:new Date().toISOString()},{onConflict:'id'});
     if(profileError) throw profileError;
@@ -3196,8 +3307,15 @@ async function saveAccountBusinessData(){
     if(existing?.id){({error:businessError}=await window.powertechSupabase.from('businesses').update({business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference,updated_at:new Date().toISOString()}).eq('id',existing.id).eq('user_id',userId));}
     else{({error:businessError}=await window.powertechSupabase.from('businesses').insert({user_id:userId,business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference}));}
     if(businessError) throw businessError;
-    renderAccountPanel(); showToast('Tus datos quedaron guardados en Powertech');
-  }catch(e){console.error('Save account:',e);showToast(`No se pudieron guardar los datos: ${e.message||'revisá Supabase'}`);}
+    // Guardamos localmente SOLO después de confirmar que Supabase aceptó ambos cambios.
+    localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
+    accountBusinessName=d.business_name;
+    localStorage.setItem('powertech_business_name',accountBusinessName);
+    populateAccountBusinessData();
+    renderAccountPanel();
+    renderAccountDataView();
+    showToast('Tus datos quedaron guardados en Powertech');
+  }catch(e){console.error('Save account:',e);showToast(e?.code==='42501'?'No tenés permiso para guardar estos datos. Revisá las políticas de Supabase.':`No se pudieron guardar los datos: ${e.message||'revisá tu sesión y Supabase'}`);}
   finally{if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='Guardar mis datos';}}
 }</script>
 
@@ -3254,6 +3372,7 @@ function clearPowertechAuthError(){
 }
 function friendlyPowertechAuthError(error){
   const m=String(error?.message||error||'');
+  if(/email not confirmed/i.test(m))return'Todavía no confirmaste tu email. Revisá tu casilla de correo (y spam) para activar tu cuenta.';
   if(/invalid login credentials/i.test(m))return'El email o la contraseña no son correctos.';
   if(/already registered|already been registered/i.test(m))return'Ese email ya tiene una cuenta. Probá iniciar sesión.';
   if(/password/i.test(m)&&/6/i.test(m))return'La contraseña debe tener al menos 6 caracteres.';
@@ -3299,17 +3418,43 @@ async function loadPowertechAccountData(){
   try{
     const {data:{session}}=await window.powertechSupabase.auth.getSession(); if(!session?.user)return;
     const userId=session.user.id;
-    const {data:profile,error:profileError}=await window.powertechSupabase.from('profiles').select('full_name,phone').eq('id',userId).maybeSingle(); if(profileError) throw profileError;
+    const {data:profile,error:profileError}=await window.powertechSupabase.from('profiles').select('full_name,phone,role').eq('id',userId).maybeSingle(); if(profileError) throw profileError;
     const {data:business,error:businessError}=await window.powertechSupabase.from('businesses').select('business_name,address,neighborhood,city,province,reference').eq('user_id',userId).order('created_at',{ascending:true}).limit(1).maybeSingle(); if(businessError) throw businessError;
+    powertechUserRole=profile?.role||'user';
     const d={full_name:profile?.full_name||'',phone:profile?.phone||'',business_name:business?.business_name||'',address:business?.address||'',neighborhood:business?.neighborhood||'',city:business?.city||'',province:business?.province||'',reference:business?.reference||''};
     localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d)); accountBusinessName=d.business_name||''; localStorage.setItem('powertech_business_name',accountBusinessName); populateAccountBusinessData();
     const {data:catalog}=await window.powertechSupabase.from('catalogs').select('slug,general_markup,name,active').eq('user_id',userId).maybeSingle();
-    if(catalog?.slug){catalogSlug=catalog.slug;resellerSlug=catalog.slug;resellerMarkup=Number(catalog.general_markup)||0;localStorage.setItem('powertech_catalog_slug',catalogSlug);localStorage.setItem('powertech_markup',String(resellerMarkup));if(catalog.active)catalogMode='revendedor';}
-    renderAccountPanel(); updateCatalogModeUI(); refreshList(); updateCartUI();
-  }catch(e){console.error('Powertech account load:',e);populateAccountBusinessData();showToast('No pudimos cargar tus datos desde Powertech.');}
+    if(catalog?.slug){catalogSlug=catalog.slug;resellerSlug=catalog.slug;resellerMarkup=Number(catalog.general_markup)||0;localStorage.setItem('powertech_catalog_slug',catalogSlug);localStorage.setItem('powertech_reseller_slug',resellerSlug);ownerResellerMarkup = Number(resellerMarkup || 30); localStorage.setItem('powertech_markup',String(ownerResellerMarkup));}
+    // Nunca alterar catalogMode por existir um catálogo ativo: é o modo manual del dueño/admin.
+    renderAccountPanel(); populateAccountBusinessData(); updateCatalogModeUI(); refreshList(); updateCartUI();
+  }catch(e){console.error('Powertech account load:',e);populateAccountBusinessData();showToast(e?.code==='PGRST301'?'Tu sesión expiró. Iniciá sesión nuevamente.':'No pudimos cargar tus datos desde Powertech. Revisá tu sesión e intentá nuevamente.');}
 }
+function resetPowertechSessionState() {
+  catalogSlug = '';
+  resellerSlug = '';
+  resellerMarkup = 30;
+  ownerResellerMarkup = 30;
+  publicCatalogMarkup = 30;
+  accountBusinessName = '';
+  powertechUserRole = 'user';
+  viewingAsPublicCatalog = false;
+  publicCatalogSlug = '';
+  publicCatalogName = '';
+
+  [
+    'powertech_catalog_slug',
+    'powertech_reseller_slug',
+    'powertech_markup',
+    'powertech_business_name',
+    'powertech_catalog_mode',
+    'POWERTECH_ACCOUNT_STORAGE_KEY'
+  ].forEach((key) => localStorage.removeItem(key));
+}
+
 async function powertechSignOut(){
   try{await window.powertechSupabase.auth.signOut();}catch(e){console.error('Sign out:',e);showToast('No pudimos cerrar la sesión. Intentá nuevamente.');return;}
+  clearPowertechCart();
+  currentModalProduct=null;
   closeAccountPanel();
   showToast('Sesión cerrada');
 }
@@ -3322,6 +3467,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
     await loadPublicCatalogFromUrl();
     window.powertechSupabase.auth.onAuthStateChange((event,newSession)=>{
       if(event==='SIGNED_OUT'){
+        clearPowertechCart();
+        currentModalProduct=null;
         const mode=document.getElementById('accountDrawerMode');
         const sub=document.getElementById('accountDrawerSub');
         if(mode)mode.textContent='Mi catálogo';
