@@ -345,6 +345,15 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 .pt-account-wa{min-height:78px;}
 .pt-account-primary{font-size:10px;letter-spacing:.01em;}
 @media(max-width:720px){.pt-account-drawer{width:100%!important;}}
+
+/* === POWERTECH · DATOS DE CUENTA / NEGOCIO === */
+.pt-account-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.pt-account-data-grid label{font-size:8px;color:#9aa4ac;display:flex;flex-direction:column;gap:5px}
+.pt-account-data-grid label span{color:#66727c}
+.pt-account-data-grid input{width:100%;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.09);background:#070d13;color:#eef2f5;padding:0 9px;font-size:9px;outline:none}
+.pt-account-data-grid input:focus{border-color:rgba(230,184,63,.55);box-shadow:0 0 0 2px rgba(230,184,63,.08)}
+@media(max-width:720px){.pt-account-data-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 
@@ -361,7 +370,6 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <button onclick="switchTab('catalogo')">Catálogo</button>
       <button onclick="switchTab('catalogo');document.getElementById('categoryChipsRow').scrollIntoView({behavior:'smooth'})">Categorías</button>
       <button onclick="goToOffersCategory()">Ofertas</button>
-      <button onclick="openAccountPanel()">Mi cuenta</button>
       <button onclick="switchTab('nosotros')">Nosotros</button>
       <button onclick="switchTab('contacto')">Contacto</button>
     </nav>
@@ -369,7 +377,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3m0 0A7 7 0 1 0 6.8 6.8a7 7 0 0 0 9.9 9.9Z"/></svg>
       <input placeholder="Buscar productos, marcas, categorías..." oninput="document.getElementById('searchInput').value=this.value;onSearchInput();">
     </div>
-    <button class="pt-mode" onclick="toggleAccountDrawer()"><span>◉</span><b id="ptModeText">Mi cuenta</b><span id="ptModeMarkup">Ingresar</span></button>
+    <button class="pt-mode" onclick="toggleAccountDrawer()"><span>◉</span><b id="ptModeText">Mi cuenta</b><span id="ptModeMarkup"></span></button>
     <button id="cartBtn" class="pt-cart" onclick="openCart()" aria-label="Abrir carrito">
       <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.693 2.602-7.152.078-.324-.145-.633-.478-.633H5.106M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm12.75 0a.75.75 0 1 0-1.5 0 .75.75 0 0 0-1.5 0Z"/></svg>
       <span id="cartCount">0</span>
@@ -387,7 +395,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <p class="pt-hero-desc">Accesorios, productos electrónicos y tecnología para comercios y revendedores. Los mejores precios mayoristas y atención personalizada.</p>
       <div class="pt-actions">
         <button class="pt-primary" onclick="switchTab('catalogo');document.getElementById('productList').scrollIntoView({behavior:'smooth'})">Ver catálogo&nbsp; →</button>
-        <button class="pt-secondary" onclick="openAccountPanel()">Creá tu catálogo</button>
+        <button class="pt-secondary" onclick="setCatalogMode('revendedor');openAccountPanel()">Soy revendedor</button>
       </div>
     </div>
   </div>
@@ -395,7 +403,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
     <div class="pt-benefit"><b>Precios mayoristas</b><span>Condiciones especiales para comercios</span></div>
     <div class="pt-benefit"><b>Envíos a todo el país</b><span>Despachos y entregas coordinadas</span></div>
     <div class="pt-benefit"><b>Atención personalizada</b><span>WhatsApp directo con Powertech</span></div>
-    <div class="pt-benefit"><b>Tu catálogo de ventas</b><span>Configurá tu margen y compartilo con tus clientes</span></div>
+    <div class="pt-benefit"><b>Catálogo para revendedores</b><span>Configurá tu margen de ganancia</span></div>
   </div>
 </section>
 
@@ -412,23 +420,23 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
     <div class="pt-tabs"><button class="active" onclick="clearCategory()">Más vendidos</button><button onclick="goToOffersCategory()">Ofertas</button><button onclick="clearCategory()">Nuevos</button></div>
   </div>
   <div id="activeFilterChip" class="hidden items-center gap-2 mt-3"><span class="text-xs text-gray-500">Filtrando por:</span><span id="activeFilterLabel" class="text-xs font-semibold gold-text"></span><button onclick="clearCategory()" class="text-xs text-gray-500 underline">Quitar</button></div>
-  <div id="catalogModeSummary" class="mt-5 p-4 flex items-center justify-between"><div><p id="catalogModeLabel" class="text-xs font-bold text-white">Precios mayoristas Powertech</p><p class="text-[10px] text-gray-500 mt-1">El precio de venta personalizado aparece al activar tu catálogo.</p></div><div id="markupBadge" class="hidden text-xs font-bold gold-text"></div></div>
+  <div id="catalogModeSummary" class="mt-5 p-4 flex items-center justify-between"><div><p id="catalogModeLabel" class="text-xs font-bold text-white">Cliente · precios mayoristas</p><p class="text-[10px] text-gray-500 mt-1">Precios directos de Powertech</p></div><div id="markupBadge" class="hidden text-xs font-bold gold-text"></div></div>
   <section id="productList" class="pb-3"></section>
   <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">No encontramos productos que coincidan con tu búsqueda.</p>
 <div class="pt-section-head" style="margin-top:42px"><div><h3>Combos <span class="gold-text">destacados</span></h3><p>Armados para distintos tipos de comercios y emprendimientos.</p></div><button class="pt-link" onclick="switchTab('ofertas')">Ver todos →</button></div><div class="pt-combos"><div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div><div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div><div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div>
-  <section class="pt-reseller"><div><h3>Creá tu <strong>catálogo</strong> de ventas</h3><p>Vos vendés. Nosotros mantenemos tu catálogo actualizado. Activá tu cuenta, definí tu margen y compartí tus productos por WhatsApp o redes.</p></div><button class="pt-primary" onclick="openAccountPanel()">Crear mi catálogo&nbsp; →</button></section>
+  <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="setCatalogMode('revendedor');openAccountPanel()">Configurar mi margen&nbsp; →</button></section>
 </main>
 
 <main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
 
-<main id="tabNosotros" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y emprendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
+<main id="tabNosotros" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Powertech</h3><p>Tecnología para comercios y revendedores.</p></div></div><div class="pt-reseller"><div><h3>Una distribuidora pensada para tu negocio</h3><p>Catálogo, precios mayoristas y herramientas para ayudarte a vender más.</p></div></div></main>
 
 <main id="tabOfertas" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Ofertas y <span class="gold-text">Combos</span></h3><p>Opciones armadas para empezar, ampliar o abastecer tu comercio.</p></div><span class="pt-link">Precios mayoristas</span></div><div class="pt-combos">
 <div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div>
 <div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div>
 <div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div></main>
 
-<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y emprendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
+<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
 </div>
 
 <!-- =====================================================
@@ -439,28 +447,42 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
   <div class="pt-account-top">
     <div class="pt-account-mode">
       <div class="pt-account-icon">♙</div>
-      <div><b id="accountDrawerMode">Mi cuenta</b><span id="accountDrawerSub">Creá tu cuenta para activar tu catálogo</span></div>
+      <div><b id="accountDrawerMode">Mi cuenta</b><span id="accountDrawerSub">Catálogo de ventas Powertech</span></div>
     </div>
     <button class="pt-account-close" onclick="closeAccountPanel()" aria-label="Cerrar">×</button>
   </div>
 
   <div class="pt-account-card">
+    
     <div class="pt-account-row">
+      <div class="pt-account-row-head">
+        <div>
+          <div class="pt-account-label">Datos de tu negocio</div>
+          <div class="pt-account-muted">Los usaremos para tu catálogo y, más adelante, para logística.</div>
+        </div>
+      </div>
+      <div class="pt-account-data-grid">
+        <label>Nombre y apellido<input id="accountFullName" type="text" autocomplete="name" placeholder="Ej. Juan Pérez"></label>
+        <label>Negocio / tienda / kiosco<input id="accountBusinessName" type="text" autocomplete="organization" placeholder="Ej. Kiosco El Sol"></label>
+        <label>WhatsApp / teléfono<input id="accountPhone" type="tel" autocomplete="tel" placeholder="Ej. 11 6887-8292"></label>
+        <label>Dirección<input id="accountAddress" type="text" autocomplete="street-address" placeholder="Calle y número"></label>
+        <label>Barrio<input id="accountNeighborhood" type="text" autocomplete="address-level3" placeholder="Ej. Centro"></label>
+        <label>Localidad / ciudad<input id="accountCity" type="text" autocomplete="address-level2" placeholder="Ej. San Juan Bautista"></label>
+        <label>Provincia<input id="accountProvince" type="text" autocomplete="address-level1" placeholder="Ej. Buenos Aires"></label>
+        <label>Referencia <span>(opcional)</span><input id="accountReference" type="text" placeholder="Ej. Frente a la plaza"></label>
+      </div>
+      <button class="pt-account-primary" type="button" onclick="saveAccountBusinessData()">Guardar datos</button>
+      <div class="pt-account-note">La ubicación exacta (latitud y longitud) no se pide ahora. Quedará preparada para que el cliente pueda confirmarla más adelante desde la app.</div>
+    </div>
+<div class="pt-account-row">
       <div class="pt-account-row-head">
         <div><div class="pt-account-label">Tu cuenta</div><div class="pt-account-muted gold-text">Catálogo de ventas Powertech</div></div>
       </div>
     </div>
 
-    <div id="accountCatalogGate" class="pt-account-row">
-      <div class="pt-account-feature">
-        <div class="pt-account-feature-icon">✦</div>
-        <div><div class="pt-account-label">Activá tu catálogo</div><div class="pt-account-muted">En la versión final, tu cuenta Powertech guardará tu margen, tu catálogo y tus preferencias de venta.</div><button class="pt-account-primary" style="margin-top:10px" onclick="activateCatalogPreview()">Vista previa del catálogo</button></div>
-      </div>
-    </div>
-
-    <div id="accountMarkupSection" class="pt-account-row">
+    <div class="pt-account-row">
       <div class="pt-account-row-head">
-        <div><div class="pt-account-label">Tu margen general</div><div id="accountMarkupValue" class="pt-account-big">—</div></div>
+        <div><div class="pt-account-label">Tu margen general</div><div id="accountMarkupValue" class="pt-account-big">+30%</div></div>
         <button class="pt-account-btn" onclick="editAccountMarkup()">Editar</button>
       </div>
       <div class="pt-account-markup-actions">
@@ -473,7 +495,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
 
     <div class="pt-account-row">
       <div class="pt-account-row-head">
-        <div><div class="pt-account-label">Ajuste por producto</div><div class="pt-account-muted">Definí un margen diferente para productos específicos.</div></div>
+        <div><div class="pt-account-label">Ajuste por producto</div><div class="pt-account-muted">Podés personalizar el margen de cada producto.</div></div>
         <button class="pt-account-btn" onclick="openProductMarkupNotice()">Configurar</button>
       </div>
     </div>
@@ -481,7 +503,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
     <div class="pt-account-row">
       <div class="pt-account-feature">
         <div class="pt-account-feature-icon">♧</div>
-        <div><div class="pt-account-label">Tu catálogo personalizado</div><div class="pt-account-muted">Compartí tu catálogo y cada producto con tus precios de venta.</div><button class="pt-account-btn" style="margin-top:9px;color:var(--pt-gold2)" onclick="openPersonalCatalog()">Ver mi catálogo →</button></div>
+        <div><div class="pt-account-label">Tu catálogo personalizado</div><div class="pt-account-muted">Compartí tu catálogo con tus precios de venta.</div><button class="pt-account-btn" style="margin-top:9px;color:var(--pt-gold2)" onclick="openPersonalCatalog()">Ver catálogo →</button></div>
       </div>
     </div>
   </div>
@@ -500,7 +522,7 @@ body>.h-\[300px\],body>.h-\[320px\]{display:none!important}#combosDestacados{dis
       <button class="pt-account-primary" onclick="closeAccountPanel();openCart()">Ver carrito →</button>
     </div>
   </div>
-  <div class="pt-account-note">Tu margen modifica únicamente el precio de venta que ven tus clientes. Los pedidos a Powertech se calculan sobre el precio mayorista.</div>
+  <div class="pt-account-note">Los precios mostrados en este panel son informativos. El pedido enviado por WhatsApp mantiene los precios mayoristas de Powertech.</div>
 </aside>
 
 <!-- =====================================================
@@ -1742,12 +1764,11 @@ const WHATSAPP_NUMBER = "5491168878292";
 let cart = JSON.parse(localStorage.getItem('powertech_cart') || '{}');
 let activeCategory = null;
 let currentModalProduct = null;
-let catalogMode = localStorage.getItem('powertech_catalog_active') === '1' ? 'revendedor' : 'cliente';
+let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
 let resellerMarkup = Number(localStorage.getItem('powertech_markup') || 30);
 let resellerSlug = localStorage.getItem('powertech_reseller_slug') || 'tu-catalogo';
 
 if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
-if(!Number.isFinite(resellerMarkup) || resellerMarkup > 500) resellerMarkup = 30;
 
 function displayPrice(price){
   if(price === null || price === undefined) return price;
@@ -1841,10 +1862,9 @@ function closeAccountPanel(){
 }
 
 function setAccountMarkup(value){
-  setMarkup(value);
   setCatalogMode('revendedor');
+  setMarkup(value);
   renderAccountPanel();
-  showToast(`Tu catálogo ahora usa +${resellerMarkup}%`);
 }
 
 function editAccountMarkup(){
@@ -1860,19 +1880,9 @@ function openProductMarkupNotice(){
 }
 
 function openPersonalCatalog(){
-  if(catalogMode !== 'revendedor'){
-    showToast('Activá tu catálogo para verlo');
-    return;
-  }
   closeAccountPanel();
-  document.getElementById('productList')?.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function activateCatalogPreview(){
-  // Vista funcional temporal: Supabase reemplazará esta activación por el alta/login real.
   setCatalogMode('revendedor');
-  renderAccountPanel();
-  showToast('Vista previa activada. Definí tu margen y los precios se actualizarán.');
+  document.getElementById('productList')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function renderAccountPanel(){
@@ -1882,13 +1892,9 @@ function renderAccountPanel(){
   const count=document.getElementById('accountCartCount');
   const items=document.getElementById('accountCartItems');
   const total=document.getElementById('accountWholesaleTotal');
-  if(mode) mode.textContent='Mi cuenta';
-  if(sub) sub.textContent=catalogMode==='revendedor'?`Catálogo activo · +${resellerMarkup}%`:'Creá tu cuenta para activar tu catálogo';
-  if(value) value.textContent=catalogMode==='revendedor'?`+${resellerMarkup}%`:'—';
-  const gate=document.getElementById('accountCatalogGate');
-  const markupSection=document.getElementById('accountMarkupSection');
-  if(gate) gate.classList.toggle('hidden', catalogMode==='revendedor');
-  if(markupSection) markupSection.classList.toggle('hidden', catalogMode!=='revendedor');
+  if(mode) mode.textContent=catalogMode==='revendedor'?'Revendedor':'Cliente';
+  if(sub) sub.textContent=catalogMode==='revendedor'?`+${resellerMarkup}% de margen`:'Precios mayoristas';
+  if(value) value.textContent=`+${resellerMarkup}%`;
   const entries=Object.entries(cart);
   const qty=entries.reduce((sum,[,q])=>sum+Number(q||0),0);
   if(count) count.textContent=qty;
@@ -1910,40 +1916,56 @@ function renderAccountPanel(){
 
 function setCatalogMode(mode){
   catalogMode = mode === 'revendedor' ? 'revendedor' : 'cliente';
-  localStorage.setItem('powertech_catalog_active', catalogMode === 'revendedor' ? '1' : '0');
+  localStorage.setItem('powertech_catalog_mode', catalogMode);
   updateCatalogModeUI();
   refreshList();
   updateCartUI();
 }
 
 function setMarkup(value){
-  const parsed=Number(String(value).replace(',','.'));
-  if(!Number.isFinite(parsed) || parsed < 0){
-    alert('Ingresá un porcentaje válido.');
-    return;
-  }
-  resellerMarkup = Math.max(0, Math.min(500, parsed));
+  resellerMarkup = Math.max(0, Math.min(500, Number(value) || 0));
   localStorage.setItem('powertech_markup', resellerMarkup);
-  setCatalogMode('revendedor');
+  updateCatalogModeUI();
+  refreshList();
+  updateCartUI();
 }
 
 function updateCatalogModeUI(){
+  const clientBtn = document.getElementById('modeClientBtn');
+  const resellerBtn = document.getElementById('modeResellerBtn');
+  const panel = document.getElementById('resellerMarkupPanel');
   const label = document.getElementById('catalogModeLabel');
   const badge = document.getElementById('markupBadge');
   const input = document.getElementById('markupInput');
   const topMode = document.getElementById('ptModeText');
   const topMarkup = document.getElementById('ptModeMarkup');
 
-  if(topMode) topMode.textContent = 'Mi cuenta';
-  if(topMarkup) topMarkup.textContent = catalogMode === 'revendedor' ? `+${resellerMarkup}%` : 'Ingresar';
-  if(label) label.textContent = catalogMode === 'revendedor'
-    ? `Catálogo activo · precio de venta con +${resellerMarkup}%`
-    : 'Precios mayoristas Powertech';
-  if(badge){
-    badge.textContent = `+${resellerMarkup}%`;
-    badge.classList.toggle('hidden',catalogMode !== 'revendedor');
-  }
+  if(topMode) topMode.textContent = catalogMode === 'revendedor' ? 'Revendedor' : 'Cliente';
+  if(topMarkup) topMarkup.textContent = catalogMode === 'revendedor' ? `+${resellerMarkup}%` : 'Mayorista';
+  if(label) label.textContent = catalogMode === 'revendedor' ? `Revendedor · precio de venta con +${resellerMarkup}%` : 'Cliente · precios mayoristas';
+  if(badge){ badge.textContent = `+${resellerMarkup}%`; badge.classList.toggle('hidden',catalogMode !== 'revendedor'); }
+  if(panel) panel.classList.toggle('hidden',catalogMode !== 'revendedor');
   if(input) input.value = resellerMarkup;
+  if(!clientBtn || !resellerBtn) return;
+
+  clientBtn.classList.remove('bg-gold-muted','text-black','text-gray-400');
+  resellerBtn.classList.remove('bg-gold-muted','text-black','text-gray-400');
+
+  if(catalogMode === 'revendedor'){
+    resellerBtn.classList.add('bg-gold-muted','text-black');
+    clientBtn.classList.add('text-gray-400');
+    panel.classList.remove('hidden');
+    label.textContent = `Revendedor · precio de venta con +${resellerMarkup}%`;
+    badge.textContent = `+${resellerMarkup}%`;
+    badge.classList.remove('hidden');
+    if(input) input.value = resellerMarkup;
+  }else{
+    clientBtn.classList.add('bg-gold-muted','text-black');
+    resellerBtn.classList.add('text-gray-400');
+    panel.classList.add('hidden');
+    label.textContent = 'Cliente · precios mayoristas';
+    badge.classList.add('hidden');
+  }
 }
 
 function money(n){
@@ -2969,12 +2991,33 @@ document.addEventListener(
   }
 );
 
-
-document.addEventListener('DOMContentLoaded',()=>{
-  updateCatalogModeUI();
-  renderAccountPanel();
-  updateCartUI();
-});
 </script>
+
+<script>
+const POWERTECH_ACCOUNT_STORAGE_KEY='powertech_account_business_data';
+function getStoredAccountBusinessData(){
+  try{return JSON.parse(localStorage.getItem(POWERTECH_ACCOUNT_STORAGE_KEY)||'{}')}catch(e){return {}}
+}
+function populateAccountBusinessData(){
+  const d=getStoredAccountBusinessData();
+  const map={accountFullName:d.full_name,accountBusinessName:d.business_name,accountPhone:d.phone,accountAddress:d.address,accountNeighborhood:d.neighborhood,accountCity:d.city,accountProvince:d.province,accountReference:d.reference};
+  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val!=null)el.value=val});
+}
+function saveAccountBusinessData(){
+  const d={
+    full_name:document.getElementById('accountFullName')?.value.trim()||'',
+    business_name:document.getElementById('accountBusinessName')?.value.trim()||'',
+    phone:document.getElementById('accountPhone')?.value.trim()||'',
+    address:document.getElementById('accountAddress')?.value.trim()||'',
+    neighborhood:document.getElementById('accountNeighborhood')?.value.trim()||'',
+    city:document.getElementById('accountCity')?.value.trim()||'',
+    province:document.getElementById('accountProvince')?.value.trim()||'',
+    reference:document.getElementById('accountReference')?.value.trim()||''
+  };
+  localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
+  if(typeof showToast==='function')showToast('Datos del negocio guardados');
+}
+</script>
+
 </body>
 </html>
