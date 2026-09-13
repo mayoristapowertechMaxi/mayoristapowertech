@@ -1714,6 +1714,7 @@ const products = [
 const MIN_PURCHASE = 50000;
 const WHATSAPP_NUMBER = "5491168878292";
 
+let cart = readPowertechCart();
 let activeCategory = null;
 let currentModalProduct = null;
 let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
@@ -1734,10 +1735,6 @@ let publicCatalogMarkup = 0;
 let resellerSlug = localStorage.getItem('powertech_reseller_slug') || 'tu-catalogo';
 let catalogSlug = localStorage.getItem('powertech_catalog_slug') || '';
 let accountBusinessName = localStorage.getItem('powertech_business_name') || '';
-const POWERTECH_ACCOUNT_STORAGE_KEY = 'powertech_account_data';
-
-// IMPORTANTE: leer el carrito después de inicializar viewingAsPublicCatalog.
-let cart = readPowertechCart();
 
 if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
 
@@ -3246,7 +3243,7 @@ function resetPowertechSessionState() {
     'powertech_markup',
     'powertech_business_name',
     'powertech_catalog_mode',
-    'POWERTECH_ACCOUNT_STORAGE_KEY'
+    'powertech_account_business_data'
   ].forEach((key) => localStorage.removeItem(key));
 }
 
@@ -3258,6 +3255,92 @@ async function powertechSignOut(){
   showToast('Sesión cerrada');
 }
 window.POWERTECH_AUTH_READY=false;
+/* =====================================================
+   RESTAURADO — funciones que faltaban en esta versión
+   (getEffectiveMarkup, showToast, capitalize, "Mis datos")
+===================================================== */
+function getEffectiveMarkup(){
+  let m;
+  if(viewingAsPublicCatalog) m=publicCatalogMarkup;
+  else if(catalogMode==='revendedor') m=resellerMarkup;
+  else m=0;
+  m=Number(m);
+  return (Number.isFinite(m) && m>=0) ? m : 0;
+}
+
+function capitalize(str){
+  return str.charAt(0).toUpperCase()+str.slice(1);
+}
+
+let toastTimeout;
+function showToast(text){
+  const toast=document.getElementById('toast');
+  if(!toast)return;
+  toast.textContent=text;
+  toast.classList.remove('hidden');
+  clearTimeout(toastTimeout);
+  toastTimeout=setTimeout(()=>{toast.classList.add('hidden');},1800);
+}
+
+const POWERTECH_ACCOUNT_STORAGE_KEY='powertech_account_business_data';
+function getStoredAccountBusinessData(){
+  try{return JSON.parse(localStorage.getItem(POWERTECH_ACCOUNT_STORAGE_KEY)||'{}')}catch(e){return {}}
+}
+function accountBusinessDataHasValues(d){
+  return Object.values(d||{}).some(v=>String(v||'').trim()!=='');
+}
+function renderAccountDataView(edit=false){
+  const d=getStoredAccountBusinessData();
+  const hasData=accountBusinessDataHasValues(d);
+  const readonly=document.getElementById('accountDataReadonly');
+  const form=document.getElementById('accountDataForm');
+  if(readonly){
+    const map={accountViewFullName:d.full_name,accountViewBusinessName:d.business_name,accountViewPhone:d.phone,accountViewAddress:d.address,accountViewNeighborhood:d.neighborhood,accountViewCity:d.city,accountViewProvince:d.province,accountViewReference:d.reference};
+    Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.textContent=String(val||'—')});
+    readonly.classList.toggle('hidden',!hasData || edit);
+  }
+  if(form) form.classList.toggle('hidden',hasData && !edit);
+}
+function populateAccountBusinessData(){
+  const d=getStoredAccountBusinessData();
+  const map={accountFullName:d.full_name,accountBusinessName:d.business_name,accountPhone:d.phone,accountAddress:d.address,accountNeighborhood:d.neighborhood,accountCity:d.city,accountProvince:d.province,accountReference:d.reference};
+  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val||''});
+  renderAccountDataView();
+}
+function editAccountBusinessData(){
+  populateAccountBusinessData();
+  renderAccountDataView(true);
+  document.getElementById('accountFullName')?.focus();
+}
+async function saveAccountBusinessData(){
+  const saveBtn=document.getElementById('saveAccountDataBtn');
+  if(saveBtn){saveBtn.disabled=true;saveBtn.textContent='Guardando…';}
+  const d={
+    full_name:document.getElementById('accountFullName')?.value.trim()||'', business_name:document.getElementById('accountBusinessName')?.value.trim()||'', phone:document.getElementById('accountPhone')?.value.trim()||'', address:document.getElementById('accountAddress')?.value.trim()||'', neighborhood:document.getElementById('accountNeighborhood')?.value.trim()||'', city:document.getElementById('accountCity')?.value.trim()||'', province:document.getElementById('accountProvince')?.value.trim()||'', reference:document.getElementById('accountReference')?.value.trim()||''
+  };
+  try{
+    const {data:{session}}=await window.powertechSupabase.auth.getSession();
+    if(!session?.user){showToast('Tu sesión expiró. Iniciá sesión nuevamente para guardar tus datos.');return;}
+    const userId=session.user.id;
+    const {error:profileError}=await window.powertechSupabase.from('profiles').upsert({id:userId,full_name:d.full_name,phone:d.phone,updated_at:new Date().toISOString()},{onConflict:'id'});
+    if(profileError) throw profileError;
+    const {data:existing,error:selectError}=await window.powertechSupabase.from('businesses').select('id').eq('user_id',userId).order('created_at',{ascending:true}).limit(1).maybeSingle();
+    if(selectError) throw selectError;
+    let businessError;
+    if(existing?.id){({error:businessError}=await window.powertechSupabase.from('businesses').update({business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference,updated_at:new Date().toISOString()}).eq('id',existing.id).eq('user_id',userId));}
+    else{({error:businessError}=await window.powertechSupabase.from('businesses').insert({user_id:userId,business_name:d.business_name,address:d.address,neighborhood:d.neighborhood,city:d.city,province:d.province,reference:d.reference}));}
+    if(businessError) throw businessError;
+    localStorage.setItem(POWERTECH_ACCOUNT_STORAGE_KEY,JSON.stringify(d));
+    accountBusinessName=d.business_name;
+    localStorage.setItem('powertech_business_name',accountBusinessName);
+    populateAccountBusinessData();
+    renderAccountPanel();
+    renderAccountDataView();
+    showToast('Tus datos quedaron guardados en Powertech');
+  }catch(e){console.error('Save account:',e);showToast(e?.code==='42501'?'No tenés permiso para guardar estos datos. Revisá las políticas de Supabase.':`No se pudieron guardar los datos: ${e.message||'revisá tu sesión y Supabase'}`);}
+  finally{if(saveBtn){saveBtn.disabled=false;saveBtn.textContent='Guardar mis datos';}}
+}
+
 document.addEventListener('DOMContentLoaded',async()=>{
   try{
     renderCategoryChips();
