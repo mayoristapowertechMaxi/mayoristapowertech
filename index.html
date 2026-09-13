@@ -394,6 +394,19 @@ window.powertechSupabase = window.supabase.createClient(
 );
 </script>
 
+
+<style>
+/* POWERTECH V4 · POWER HUB */
+.pt-admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.86);backdrop-filter:blur(10px);z-index:80;display:flex;align-items:stretch;justify-content:center}
+.pt-admin-shell{width:100%;max-width:1400px;background:#080d12;border:1px solid rgba(201,162,39,.25);display:flex;min-height:100vh;color:#e8edf1}
+.pt-admin-sidebar{width:245px;border-right:1px solid #1d2730;padding:24px 14px;display:flex;flex-direction:column;background:#090f14}
+.pt-admin-brand{font:800 20px Manrope,sans-serif;letter-spacing:.08em;color:#e0c158;padding:8px 12px 26px}.pt-admin-brand span{display:block;font:500 10px Inter,sans-serif;color:#69747e;letter-spacing:.12em;margin-top:5px}
+.pt-admin-nav button{width:100%;border:0;background:transparent;color:#aab4bc;text-align:left;padding:11px 12px;border-radius:10px;margin:2px 0;cursor:pointer}.pt-admin-nav button.active,.pt-admin-nav button:hover{background:#111a22;color:#fff}.pt-admin-nav b{font-size:13px}.pt-admin-nav small{display:block;font-size:10px;color:#69747e;margin-top:2px}
+.pt-admin-main{flex:1;min-width:0;overflow:auto;padding:28px}.pt-admin-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}.pt-admin-head h2{font:800 28px Manrope;margin:0;color:#fff}.pt-admin-head p{margin:5px 0 0;color:#69747e;font-size:12px}.pt-admin-close{border:1px solid #303b44;background:#0f171e;color:#fff;border-radius:10px;padding:9px 13px;cursor:pointer}.pt-admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.pt-admin-stat{background:#0d151c;border:1px solid #1d2932;border-radius:14px;padding:16px}.pt-admin-stat span{display:block;color:#69747e;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.pt-admin-stat strong{display:block;color:#fff;font:800 23px Manrope;margin-top:7px}.pt-admin-card{background:#0d151c;border:1px solid #1d2932;border-radius:14px;padding:18px;margin-top:16px}.pt-admin-card h3{font:800 16px Manrope;margin:0 0 12px;color:#fff}.pt-admin-table{width:100%;border-collapse:collapse;font-size:12px}.pt-admin-table th,.pt-admin-table td{padding:10px 8px;border-bottom:1px solid #1d2730;text-align:left}.pt-admin-table th{color:#69747e;font-size:10px;text-transform:uppercase}.pt-admin-badge{display:inline-flex;padding:4px 7px;border-radius:99px;background:#152019;color:#8ed5a3;font-size:9px;font-weight:700}.pt-admin-actions{display:flex;gap:8px;flex-wrap:wrap}.pt-admin-btn{border:1px solid #39454e;background:#111a22;color:#fff;padding:8px 11px;border-radius:9px;cursor:pointer;font-size:11px}.pt-admin-btn.gold{background:#c9a227;color:#080d12;border-color:#c9a227;font-weight:800}.pt-admin-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pt-admin-form label{font-size:10px;color:#89949d}.pt-admin-form input,.pt-admin-form select{display:block;width:100%;margin-top:5px;background:#080e13;border:1px solid #26333d;border-radius:8px;padding:10px;color:#fff;outline:none}.pt-admin-product-img{width:38px;height:38px;border-radius:8px;object-fit:cover;background:#111820}.pt-admin-empty{padding:22px;text-align:center;color:#69747e;font-size:12px}.pt-order-status{cursor:pointer}
+.pt-account-section .pt-account-card{box-shadow:0 10px 30px rgba(0,0,0,.12)}
+@media(max-width:900px){.pt-admin-sidebar{width:190px}.pt-admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pt-admin-main{padding:18px}}
+@media(max-width:640px){.pt-admin-shell{display:block}.pt-admin-sidebar{width:auto;border-right:0;border-bottom:1px solid #1d2730}.pt-admin-nav{display:flex;overflow:auto}.pt-admin-nav button{min-width:125px}.pt-admin-grid,.pt-admin-form{grid-template-columns:1fr}.pt-admin-main{padding:14px}}
+</style>
 </head>
 
 
@@ -442,7 +455,7 @@ window.powertechSupabase = window.supabase.createClient(
     <div class="pt-benefit"><b>Precios mayoristas</b><span>Condiciones especiales para comercios</span></div>
     <div class="pt-benefit"><b>Envíos a todo el país</b><span>Despachos y entregas coordinadas</span></div>
     <div class="pt-benefit"><b>Atención personalizada</b><span>WhatsApp directo con Powertech</span></div>
-    <div class="pt-benefit"><b>Catálogo para revendedores</b><span>Configurá tu margen de ganancia</span></div>
+    <div class="pt-benefit"><b>Catálogo para tu negocio</b><span>Configurá tu margen de ganancia</span></div>
   </div>
 </section>
 
@@ -463,7 +476,7 @@ window.powertechSupabase = window.supabase.createClient(
   <section id="productList" class="pb-3"></section>
   <p id="noResults" class="hidden text-center text-gray-500 text-sm py-10">No encontramos productos que coincidan con tu búsqueda.</p>
 <div class="pt-section-head" style="margin-top:42px"><div><h3>Combos <span class="gold-text">destacados</span></h3><p>Armados para distintos tipos de comercios y emprendimientos.</p></div><button class="pt-link" onclick="switchTab('ofertas')">Ver todos →</button></div><div class="pt-combos"><div class="pt-combo-card" onclick="openComboModal(1)"><span class="pt-combo-badge">Popular</span><div class="pt-combo-icon">💼</div><h4>Combo Emprendedor</h4><p>30 productos esenciales para iniciar tu negocio.</p><div class="pt-combo-price">$50.000</div></div><div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div><div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div>
-  <section class="pt-reseller"><div><h3>¿Sos <strong>revendedor</strong>?</h3><p>Configurá tu margen general y personalizá el precio de cada producto según tu negocio.</p></div><button class="pt-primary" onclick="toggleAccountDrawer()">Crear mi catálogo&nbsp; →</button></section>
+  <section class="pt-reseller"><div><h3>¿Querés vender con tu propio catálogo?</h3><p>Creá tu catálogo, definí tu margen y compartilo con tus clientes.</p></div><button class="pt-primary" onclick="toggleAccountDrawer()">Crear mi catálogo&nbsp; →</button></section>
 </main>
 
 <main id="tabContacto" class="pt-wrap hidden fade-in"><div class="pt-section-head"><div><h3>Contacto</h3><p>Estamos para ayudarte con tu pedido mayorista.</p></div></div><div class="pt-reseller"><div><h3>Atención personalizada por WhatsApp</h3><p>Consultas y pedidos directamente con Powertech.</p></div><a class="pt-primary" target="_blank" href="https://wa.me/5491168878292?text=Hola%20Powertech%2C%20quiero%20hacer%20una%20consulta.">Escribir por WhatsApp →</a></div></main>
@@ -475,7 +488,7 @@ window.powertechSupabase = window.supabase.createClient(
 <div class="pt-combo-card" onclick="openComboModal(2)"><span class="pt-combo-badge">Premium</span><div class="pt-combo-icon">📱</div><h4>Combo iPhone</h4><p>Todo para dispositivos Apple y 16 Pro Max.</p><div class="pt-combo-price">$200.000</div></div>
 <div class="pt-combo-card" onclick="openComboModal(3)"><span class="pt-combo-badge">Completo</span><div class="pt-combo-icon">🏪</div><h4>Combo Full Comercio</h4><p>El pack completo para abastecer tu mostrador.</p><div class="pt-combo-price">$200.000</div></div></div></main>
 
-<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><a href="#">Lun a Vie · 9 a 18 hs</a></div><div><h4>SEGUINOS</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
+<footer class="pt-footer"><div class="pt-wrap pt-footer-grid"><div><strong>POWERTECH</strong><p>Tecnología al por mayor.<br>Soluciones para comercios y revendedores.</p></div><div><h4>ENLACES</h4><a href="#" onclick="switchTab('catalogo');return false">Inicio</a><a href="#" onclick="switchTab('catalogo');return false">Catálogo</a><a href="#" onclick="switchTab('ofertas');return false">Ofertas</a></div><div><h4>ATENCIÓN</h4><a href="https://wa.me/5491168878292" target="_blank">WhatsApp: 11 6887-8292</a><span style="display:block;color:#69747e;font-size:12px;margin-top:8px">Lun a Vie · 9 a 18 hs</span></div><div><h4>SEGUINOS</h4><span style="display:block;color:#69747e;font-size:12px">Redes sociales · Próximamente</span></div></div><div class="pt-wrap" style="border-top:1px solid var(--pt-line);margin-top:25px;padding-top:16px;font-size:8px">© 2026 Powertech. Catálogo mayorista.</div></footer>
 </div>
 
 
@@ -568,13 +581,35 @@ window.powertechSupabase = window.supabase.createClient(
   </div></div></div>
 
   <div id="accountSectionOrders" class="pt-account-section hidden"><div class="pt-account-card"><div class="pt-account-row">
-    <div class="pt-account-label">Mis pedidos</div><div class="pt-account-muted">Acá aparecerán tus pedidos realizados. En esta primera etapa, el pedido se confirma por WhatsApp y luego conectaremos el historial automático a Supabase.</div>
+    <div class="pt-account-label">Mis pedidos</div><div class="pt-account-muted">Acá vas a ver los pedidos que enviaste desde este catálogo. Cada pedido queda guardado en Powertech y se puede seguir desde administración.</div>
     <div class="pt-account-empty">Todavía no hay pedidos registrados en tu cuenta.</div>
   </div></div></div>
 
   <div class="pt-account-wa-copy"><b>¿Necesitás ayuda?</b><span>Escribinos por WhatsApp</span><strong>11 6887-8292 →</strong></div>
   <button class="pt-account-logout" type="button" onclick="powertechSignOut()">Cerrar sesión</button>
 </aside>
+
+
+<!-- POWERTECH · PANEL ADMINISTRACIÓN -->
+<div id="ptAdminOverlay" class="pt-admin-overlay hidden" aria-hidden="true">
+  <div class="pt-admin-shell">
+    <aside class="pt-admin-sidebar">
+      <div class="pt-admin-brand">POWERTECH<span>POWER HUB · ADMIN</span></div>
+      <nav class="pt-admin-nav">
+        <button class="active" data-admin-tab="dashboard" onclick="powertechAdminTab('dashboard')"><b>📊 Inicio</b><small>Resumen general</small></button>
+        <button data-admin-tab="orders" onclick="powertechAdminTab('orders')"><b>🛒 Pedidos</b><small>Ventas y estados</small></button>
+        <button data-admin-tab="clients" onclick="powertechAdminTab('clients')"><b>👥 Clientes</b><small>Cuentas y negocios</small></button>
+        <button data-admin-tab="catalogs" onclick="powertechAdminTab('catalogs')"><b>📚 Catálogos</b><small>Catálogos activos</small></button>
+        <button data-admin-tab="products" onclick="powertechAdminTab('products')"><b>📦 Productos</b><small>Precios e imágenes</small></button>
+      </nav>
+      <div style="margin-top:auto"><button class="pt-admin-btn" style="width:100%" onclick="closePowertechAdmin()">Volver a la web</button></div>
+    </aside>
+    <section class="pt-admin-main">
+      <div class="pt-admin-head"><div><h2 id="ptAdminTitle">Inicio</h2><p id="ptAdminSubtitle">Control general de Powertech</p></div><button class="pt-admin-close" onclick="closePowertechAdmin()">× Cerrar</button></div>
+      <div id="ptAdminContent"></div>
+    </section>
+  </div>
+</div>
 
 <!-- =====================================================
      🔥 MODAL COMBO (NUEVO)
@@ -3269,5 +3304,94 @@ document.addEventListener('DOMContentLoaded',async()=>{
 });
 </script>
 
+
+<script>
+/* POWERTECH V4 · POWER HUB + ORDERS */
+const PT_PUBLIC_URL=window.location.origin+window.location.pathname;
+let ptCurrentUser=null, ptCurrentRole='user', ptAdminData={orders:[],clients:[],catalogs:[],products:[]};
+function ptMoney(n){return typeof money==='function'?money(n):new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(Number(n)||0)}
+function ptEscape(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+async function ptGetSession(){try{return (await window.powertechSupabase.auth.getSession()).data.session||null}catch(e){return null}}
+async function ptRefreshIdentity(){
+  const session=await ptGetSession(); ptCurrentUser=session?.user||null; ptCurrentRole='user';
+  if(ptCurrentUser){try{const {data}=await window.powertechSupabase.from('profiles').select('full_name,phone,role').eq('id',ptCurrentUser.id).maybeSingle();ptCurrentRole=data?.role||'user'}catch(e){console.warn(e)}}
+  return ptCurrentUser;
+}
+function ptIsAdmin(){return ['admin','super_admin'].includes(ptCurrentRole)}
+function addAdminMenuButton(){
+  const menu=document.querySelector('.pt-account-menu'); if(!menu||document.getElementById('ptAdminMenuBtn')||!ptIsAdmin())return;
+  const b=document.createElement('button');b.id='ptAdminMenuBtn';b.className='pt-account-menu-item';b.type='button';b.onclick=openPowertechAdmin;b.innerHTML='<span>◆</span><div><b>Administración Powertech</b><small>Pedidos, clientes y productos</small></div>';menu.appendChild(b);
+}
+async function openPowertechAdmin(){
+  await ptRefreshIdentity(); if(!ptIsAdmin()){showToast('No tenés permisos de administración.');return}
+  document.getElementById('ptAdminOverlay')?.classList.remove('hidden');document.body.style.overflow='hidden';await powertechAdminTab('dashboard');
+}
+function closePowertechAdmin(){document.getElementById('ptAdminOverlay')?.classList.add('hidden');document.body.style.overflow=''}
+async function powertechAdminTab(tab){
+  document.querySelectorAll('[data-admin-tab]').forEach(b=>b.classList.toggle('active',b.dataset.adminTab===tab));
+  const titles={dashboard:['Inicio','Control general de Powertech'],orders:['Pedidos','Ventas, estados y datos de entrega'],clients:['Clientes','Usuarios y negocios registrados'],catalogs:['Catálogos','Catálogos personalizados activos'],products:['Productos','Precios e imágenes del catálogo']};
+  document.getElementById('ptAdminTitle').textContent=titles[tab][0];document.getElementById('ptAdminSubtitle').textContent=titles[tab][1];
+  const c=document.getElementById('ptAdminContent');c.innerHTML='<div class="pt-admin-card"><div class="pt-admin-empty">Cargando…</div></div>';
+  try{
+    if(tab==='dashboard') await renderAdminDashboard();
+    if(tab==='orders') await renderAdminOrders();
+    if(tab==='clients') await renderAdminClients();
+    if(tab==='catalogs') await renderAdminCatalogs();
+    if(tab==='products') await renderAdminProducts();
+  }catch(e){console.error(e);c.innerHTML='<div class="pt-admin-card"><div class="pt-admin-empty">No se pudo cargar esta sección. Verificá la migración SQL de Powertech.</div></div>'}
+}
+async function ptQueryAll(table,select='*'){const {data,error}=await window.powertechSupabase.from(table).select(select);if(error)throw error;return data||[]}
+async function renderAdminDashboard(){
+  const [orders,clients,catalogs,products]=await Promise.all([ptQueryAll('powertech_orders','id,total,status,payment_status,created_at'),ptQueryAll('profiles','id,full_name,phone,created_at'),ptQueryAll('catalogs','id,name,slug,active,general_markup,created_at'),ptQueryAll('powertech_products','legacy_id,name,price,image_url,active')]);
+  ptAdminData={orders,clients,catalogs,products}; const pending=orders.filter(x=>!['delivered','cancelled'].includes(x.status)).length; const sales=orders.filter(x=>x.payment_status==='paid'||x.status==='confirmed'||x.status==='delivered').reduce((a,x)=>a+Number(x.total||0),0);
+  document.getElementById('ptAdminContent').innerHTML=`<div class="pt-admin-grid"><div class="pt-admin-stat"><span>Pedidos</span><strong>${orders.length}</strong></div><div class="pt-admin-stat"><span>Pendientes</span><strong>${pending}</strong></div><div class="pt-admin-stat"><span>Clientes</span><strong>${clients.length}</strong></div><div class="pt-admin-stat"><span>Ventas registradas</span><strong>${ptMoney(sales)}</strong></div></div><div class="pt-admin-card"><h3>Últimos pedidos</h3>${adminOrdersTable(orders.slice().sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,8))}</div>`;
+}
+function adminOrdersTable(rows){if(!rows.length)return '<div class="pt-admin-empty">Todavía no hay pedidos.</div>';return `<div style="overflow:auto"><table class="pt-admin-table"><thead><tr><th>Pedido</th><th>Total</th><th>Estado</th><th>Pago</th><th>Fecha</th></tr></thead><tbody>${rows.map(o=>`<tr><td>#${String(o.id).slice(0,8)}</td><td>${ptMoney(o.total)}</td><td><span class="pt-admin-badge">${ptEscape(o.status||'pending')}</span></td><td>${ptEscape(o.payment_status||'pending')}</td><td>${new Date(o.created_at).toLocaleString('es-AR')}</td></tr>`).join('')}</tbody></table></div>`}
+async function renderAdminOrders(){const orders=await ptQueryAll('powertech_orders','id,user_id,total,status,payment_status,customer_name,business_name,phone,address,city,created_at');ptAdminData.orders=orders;document.getElementById('ptAdminContent').innerHTML=`<div class="pt-admin-card"><div class="pt-admin-actions"><button class="pt-admin-btn" onclick="powertechAdminTab('orders')">Actualizar</button></div>${adminOrdersTableFull(orders)}</div>`}
+function adminOrdersTableFull(rows){if(!rows.length)return '<div class="pt-admin-empty">No hay pedidos todavía.</div>';return `<div style="overflow:auto;margin-top:12px"><table class="pt-admin-table"><thead><tr><th>Pedido</th><th>Cliente</th><th>Negocio</th><th>Total</th><th>Estado</th><th>Pago</th><th></th></tr></thead><tbody>${rows.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).map(o=>`<tr><td>#${String(o.id).slice(0,8)}</td><td>${ptEscape(o.customer_name||'—')}<br><small>${ptEscape(o.phone||'')}</small></td><td>${ptEscape(o.business_name||'—')}</td><td>${ptMoney(o.total)}</td><td><select onchange="adminUpdateOrder('${o.id}',this.value)" style="background:#080e13;color:#fff;border:1px solid #26333d;border-radius:7px;padding:6px"><option value="pending" ${o.status==='pending'?'selected':''}>Pendiente</option><option value="confirmed" ${o.status==='confirmed'?'selected':''}>Confirmado</option><option value="preparing" ${o.status==='preparing'?'selected':''}>Preparando</option><option value="ready" ${o.status==='ready'?'selected':''}>Listo</option><option value="delivered" ${o.status==='delivered'?'selected':''}>Entregado</option><option value="cancelled" ${o.status==='cancelled'?'selected':''}>Cancelado</option></select></td><td>${ptEscape(o.payment_status||'pending')}</td><td><button class="pt-admin-btn" onclick="adminWhatsApp('${o.id}')">WhatsApp</button></td></tr>`).join('')}</tbody></table></div>`}
+async function adminUpdateOrder(id,status){const {error}=await window.powertechSupabase.from('powertech_orders').update({status,updated_at:new Date().toISOString()}).eq('id',id);if(error){showToast('No se pudo actualizar el pedido');return}showToast('Pedido actualizado')}
+async function adminWhatsApp(id){const o=ptAdminData.orders.find(x=>x.id===id);if(!o)return;let t=`Hola ${o.customer_name||''}, te escribimos desde Powertech por tu pedido #${String(id).slice(0,8)}. Estado: ${o.status||'pendiente'}.`;if(o.phone){const n=String(o.phone).replace(/\D/g,'');window.open('https://wa.me/'+(n||'')+'?text='+encodeURIComponent(t),'_blank')}else showToast('Este cliente no tiene teléfono guardado')}
+async function renderAdminClients(){const rows=await ptQueryAll('profiles','id,full_name,phone,created_at');const businesses=await ptQueryAll('businesses','user_id,business_name,address,neighborhood,city,province');const by={};businesses.forEach(b=>{by[b.user_id]=b});document.getElementById('ptAdminContent').innerHTML=`<div class="pt-admin-card"><div style="overflow:auto"><table class="pt-admin-table"><thead><tr><th>Cliente</th><th>Negocio</th><th>WhatsApp</th><th>Ubicación</th><th>Alta</th></tr></thead><tbody>${rows.map(r=>{const b=by[r.id]||{};return `<tr><td>${ptEscape(r.full_name||'Sin nombre')}</td><td>${ptEscape(b.business_name||'—')}</td><td>${r.phone?`<a style="color:#e0c158" href="https://wa.me/${String(r.phone).replace(/\D/g,'')}" target="_blank">${ptEscape(r.phone)}</a>`:'—'}</td><td>${ptEscape([b.neighborhood,b.city,b.province].filter(Boolean).join(', ')||'—')}</td><td>${new Date(r.created_at).toLocaleDateString('es-AR')}</td></tr>`}).join('')}</tbody></table></div></div>`}
+async function renderAdminCatalogs(){const rows=await ptQueryAll('catalogs','id,user_id,name,slug,general_markup,active,created_at');document.getElementById('ptAdminContent').innerHTML=`<div class="pt-admin-card"><div style="overflow:auto"><table class="pt-admin-table"><thead><tr><th>Catálogo</th><th>Propietario</th><th>Margen</th><th>Estado</th><th>Enlace</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${ptEscape(r.name||'Mi catálogo')}</td><td>${String(r.user_id).slice(0,8)}</td><td>+${Number(r.general_markup||0)}%</td><td><span class="pt-admin-badge">${r.active?'Activo':'Pausado'}</span></td><td><button class="pt-admin-btn" onclick="navigator.clipboard.writeText('${ptEscape(getCatalogPublicUrl(r.slug))}');showToast('Link copiado')">Copiar</button></td></tr>`).join('')}</tbody></table></div></div>`}
+async function renderAdminProducts(){const rows=await ptQueryAll('powertech_products','legacy_id,name,price,image_url,active,updated_at');ptAdminData.products=rows;document.getElementById('ptAdminContent').innerHTML=`<div class="pt-admin-card"><div class="pt-admin-actions"><button class="pt-admin-btn" onclick="syncStaticProductsToAdmin()">Sincronizar productos de la web</button><span style="font-size:10px;color:#69747e;padding:8px">Podés cambiar precio e imagen sin tocar el HTML.</span></div><div style="overflow:auto;margin-top:14px"><table class="pt-admin-table"><thead><tr><th></th><th>Producto</th><th>Precio</th><th>Imagen</th><th>Guardar</th></tr></thead><tbody>${rows.map(r=>`<tr><td><img class="pt-admin-product-img" src="${ptEscape(r.image_url||'')}" onerror="this.style.visibility='hidden'"></td><td>${ptEscape(r.name)}</td><td><input id="aprice_${r.legacy_id}" type="number" value="${Number(r.price||0)}" style="width:110px;background:#080e13;color:#fff;border:1px solid #26333d;border-radius:7px;padding:7px"></td><td><input id="aimg_${r.legacy_id}" type="text" value="${ptEscape(r.image_url||'')}" style="min-width:180px;background:#080e13;color:#fff;border:1px solid #26333d;border-radius:7px;padding:7px"></td><td><button class="pt-admin-btn gold" onclick="adminSaveProduct(${r.legacy_id})">Guardar</button></td></tr>`).join('')}</tbody></table></div></div>`}
+async function adminSaveProduct(id){const price=Number(document.getElementById('aprice_'+id)?.value||0);const image_url=document.getElementById('aimg_'+id)?.value.trim()||'';const {error}=await window.powertechSupabase.from('powertech_products').update({price,image_url,updated_at:new Date().toISOString()}).eq('legacy_id',id);if(error){showToast('No se pudo guardar el producto');return}showToast('Producto actualizado');await loadPowertechOverrides();await renderAdminProducts();}
+async function syncStaticProductsToAdmin(){if(!Array.isArray(products)||!products.length){showToast('No hay productos para sincronizar');return}const rows=products.map(p=>({legacy_id:p.id,name:p.name,description:p.desc||'',category:p.category||'',price:Number(p.price)||0,image_url:typeof imageName==='function'?imageName(p.images?.[0]):`prod${p.id}.jpg`,active:true}));const {error}=await window.powertechSupabase.from('powertech_products').upsert(rows,{onConflict:'legacy_id'});if(error){console.error(error);showToast('No se pudieron sincronizar los productos');return}showToast('Productos sincronizados');await renderAdminProducts();}
+async function loadPowertechOverrides(){try{const {data,error}=await window.powertechSupabase.from('powertech_products').select('legacy_id,name,description,price,image_url,active');if(error)throw error;if(!data?.length)return;data.forEach(r=>{const p=products.find(x=>x.id===r.legacy_id);if(!p)return;if(r.name)p.name=p.title=r.name;if(r.description)p.desc=r.description;if(r.price!==null)p.price=Number(r.price);if(r.image_url)p.images=[r.image_url]});refreshList();updateCartUI()}catch(e){console.warn('Product overrides unavailable',e)}}
+async function loadMyOrders(){const user=await ptGetSession();if(!user)return;const {data,error}=await window.powertechSupabase.from('powertech_orders').select('id,total,status,payment_status,created_at').eq('user_id',user.user.id).order('created_at',{ascending:false});const box=document.querySelector('#accountSectionOrders .pt-account-empty');if(error||!box)return;if(!data?.length){box.textContent='Todavía no hay pedidos registrados en tu cuenta.';return}box.innerHTML=data.map(o=>`<div style="border:1px solid #202c35;border-radius:10px;padding:10px;margin-top:8px"><b>#${String(o.id).slice(0,8)}</b><span style="float:right;color:#e0c158;font-weight:800">${ptMoney(o.total)}</span><small style="display:block;color:#69747e;margin-top:4px">${new Date(o.created_at).toLocaleString('es-AR')} · ${ptEscape(o.status||'pendiente')} · pago: ${ptEscape(o.payment_status||'pendiente')}</small></div>`).join('')}
+async function saveOrderToSupabase(){
+  const session=await ptGetSession();if(!session?.user)return null;const user=session.user;let profile={},business={};try{const a=await window.powertechSupabase.from('profiles').select('full_name,phone').eq('id',user.id).maybeSingle();profile=a.data||{};const b=await window.powertechSupabase.from('businesses').select('business_name,address,neighborhood,city,province,reference').eq('user_id',user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();business=b.data||{}}catch(e){}
+  const total=cartTotal();const orderPayload={user_id:user.id,total,status:'pending',payment_status:'pending',payment_provider:'whatsapp',customer_name:profile.full_name||'',business_name:business.business_name||'',phone:profile.phone||'',address:business.address||'',neighborhood:business.neighborhood||'',city:business.city||'',province:business.province||'',reference:business.reference||'',created_at:new Date().toISOString(),updated_at:new Date().toISOString()};
+  const {data,error}=await window.powertechSupabase.from('powertech_orders').insert(orderPayload).select('id').single();if(error)throw error;
+  const items=Object.entries(cart).map(([id,qty])=>{const p=products.find(x=>x.id===Number(id));return {order_id:data.id,product_legacy_id:p?.id||Number(id),product_name:p?.name||'Producto',unit_price:Number(p?.price)||0,quantity:Number(qty)||0,subtotal:(Number(p?.price)||0)*Number(qty)};}).filter(x=>x.quantity>0);
+  const r=await window.powertechSupabase.from('powertech_order_items').insert(items);if(r.error)throw r.error;return data.id;
+}
+async function sendOrder(){
+  const total=cartTotal();if(total===0){showToast('Agregá productos al pedido');return}if(total<MIN_PURCHASE){showToast(`El pedido mínimo es ${ptMoney(MIN_PURCHASE)}.`);return}
+  const session=await ptGetSession();if(!session?.user){openPowertechAuth('login');showToast('Ingresá a tu cuenta para registrar el pedido');return}
+  const btn=document.getElementById('checkoutBtn');if(btn){btn.disabled=true;btn.textContent='Registrando pedido…'}
+  let orderId=null;try{orderId=await saveOrderToSupabase()}catch(e){console.error(e);if(btn){btn.disabled=false;btn.textContent='Enviar pedido por WhatsApp'}showToast('No pudimos registrar el pedido. Revisá Supabase.');return}
+  let customer={};try{const p=await window.powertechSupabase.from('profiles').select('full_name,phone').eq('id',session.user.id).maybeSingle();const b=await window.powertechSupabase.from('businesses').select('business_name,address,neighborhood,city,province,reference').eq('user_id',session.user.id).order('created_at',{ascending:true}).limit(1).maybeSingle();customer={...(p.data||{}),...(b.data||{})}}catch(e){}
+  let msg=`¡Hola Powertech! 👋 Quiero confirmar mi pedido #${String(orderId).slice(0,8)}:\n\n`;Object.entries(cart).forEach(([id,qty])=>{const p=products.find(x=>x.id===Number(id));if(p)msg+=`▪️ ${qty}x ${p.name} — ${ptMoney(p.price)} c/u\n`});msg+=`\n------------------------------\nTOTAL: ${ptMoney(total)}\n`;if(customer.full_name)msg+=`\nCliente: ${customer.full_name}`;if(customer.business_name)msg+=`\nNegocio: ${customer.business_name}`;if(customer.phone)msg+=`\nWhatsApp: ${customer.phone}`;if(customer.address)msg+=`\nDirección: ${customer.address}`;if(customer.neighborhood)msg+=`\nBarrio: ${customer.neighborhood}`;if(customer.city)msg+=`\nLocalidad: ${customer.city}`;if(customer.province)msg+=`\nProvincia: ${customer.province}`;if(customer.reference)msg+=`\nReferencia: ${customer.reference}`;msg+=`\n\nPedido registrado en Powertech. Quedo a la espera de la confirmación.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=`+encodeURIComponent(msg),'_blank','noopener');cart={};localStorage.setItem('powertech_cart',JSON.stringify(cart));updateCartUI();if(btn){btn.disabled=true;btn.textContent='Pedido registrado ✓'}showToast('Pedido registrado y listo para enviar');await loadMyOrders();
+}
+// Make account actions reflect the real state and expose admin only to admins.
+const ptOriginalRenderAccountPanel=window.renderAccountPanel;
+window.renderAccountPanel=function(){try{if(typeof ptOriginalRenderAccountPanel==='function')ptOriginalRenderAccountPanel();}catch(e){console.warn(e)}ptRefreshIdentity().then(()=>{addAdminMenuButton();loadMyOrders()})}
+// Public catalog: prefer DB-managed product overrides and clean client mode.
+const ptOriginalLoadPublicCatalog=window.loadPublicCatalogFromUrl;
+window.loadPublicCatalogFromUrl=async function(){if(typeof ptOriginalLoadPublicCatalog==='function')await ptOriginalLoadPublicCatalog();await loadPowertechOverrides()}
+// Catalog activation: require saved business name for a meaningful catalog, then create/update.
+const ptOriginalActivateCatalog=window.activatePersonalCatalog;
+window.activatePersonalCatalog=async function(silent=false){const session=await ptGetSession();if(!session?.user){openPowertechAuth('signup');return}const name=document.getElementById('accountBusinessName')?.value.trim()||accountBusinessName||'';if(!name){accountSection('data');showToast('Primero completá el nombre de tu negocio en Mis datos');return}accountBusinessName=name;return ptOriginalActivateCatalog(silent)}
+// Account panel open: identity + admin + orders.
+const ptOriginalOpenAccountPanel=window.openAccountPanel;
+window.openAccountPanel=async function(){if(typeof ptOriginalOpenAccountPanel==='function')ptOriginalOpenAccountPanel();await ptRefreshIdentity();addAdminMenuButton();loadMyOrders();}
+// Product sharing from main catalog works even without a personalized catalog: it shares the public Powertech catalog.
+const ptOriginalGetResellerCatalogUrl=window.getResellerCatalogUrl;
+window.getResellerCatalogUrl=function(product){const slug=catalogSlug||resellerSlug||'';const base=slug?getCatalogPublicUrl(slug):window.location.href.split('?')[0];return `${base}${slug?'&':'?'}producto=${encodeURIComponent(slugifyProduct(product.name||product.title))}`}
+// On startup, load DB-managed prices/images after auth is ready.
+document.addEventListener('DOMContentLoaded',async()=>{await ptRefreshIdentity();addAdminMenuButton();await loadPowertechOverrides();await loadMyOrders();});
+if(window.powertechSupabase){window.powertechSupabase.auth.onAuthStateChange((_event)=>{setTimeout(async()=>{await ptRefreshIdentity();addAdminMenuButton();await loadMyOrders()},100)})}
+</script>
 </body>
 </html>
