@@ -723,6 +723,7 @@ window.powertechSupabase = window.supabase.createClient(
 <div class="p-4 pt-1">
 <span class="text-[10px] uppercase tracking-wider font-bold gold-text bg-gold-dark/20 border border-gold-dark/40 rounded-full px-2.5 py-1" id="comboBadge">
 </span>
+<h2 class="font-display font-extrabold text-2xl text-white mt-3 leading-tight" id="comboTitle"></h2>
 
 <p class="font-display font-extrabold text-3xl gold-text mt-2" id="comboPrice">
 </p>
@@ -2258,8 +2259,30 @@ async function loadPublicCatalogFromUrl(){
 
  }catch(e){console.error('Public catalog:',e);showToast('No pudimos cargar este catálogo.');}
 }
-async function copyCatalogLink(){if(!catalogSlug){await activatePersonalCatalog();return;}const url=getCatalogPublicUrl(catalogSlug);navigator.clipboard?.writeText(url).then(()=>showToast('Link del catálogo copiado')).catch(()=>window.prompt('Copiá este link:',url));}
-function shareCatalogWhatsApp(){if(!catalogSlug){activatePersonalCatalog();return;}openWhatsAppShare(`Hola! 👋 Te comparto mi catálogo Powertech con mis precios de venta:\n${getCatalogPublicUrl(catalogSlug)}`);}
+async function copyCatalogLink(){
+  if(!catalogSlug){
+    const created=await activatePersonalCatalog(true);
+    if(!created || !catalogSlug){ showToast('Primero necesitamos crear tu catálogo.'); return; }
+  }
+  const url=getCatalogPublicUrl(catalogSlug);
+  try{
+    if(navigator.clipboard?.writeText){
+      await navigator.clipboard.writeText(url);
+      showToast('Link del catálogo copiado');
+    }else{
+      window.prompt('Copiá este link:',url);
+    }
+  }catch(e){
+    window.prompt('Copiá este link:',url);
+  }
+}
+async function shareCatalogWhatsApp(){
+  if(!catalogSlug){
+    const created=await activatePersonalCatalog(true);
+    if(!created || !catalogSlug){ showToast('Primero necesitamos crear tu catálogo.'); return; }
+  }
+  openWhatsAppShare(`Hola! 👋 Te comparto mi catálogo Powertech con mis precios de venta:\n${getCatalogPublicUrl(catalogSlug)}`);
+}
 function updateSocialMetadata(){
   const currentUrl=window.location.href;
   const publicMode = viewingAsPublicCatalog;
@@ -2304,10 +2327,32 @@ function exitPublicCatalogView() {
 }
 
 async function shareCatalogNative(){
-  if(!catalogSlug){ await activatePersonalCatalog(); return; }
+  if(!catalogSlug){
+    const created=await activatePersonalCatalog(true);
+    if(!created || !catalogSlug){ showToast('Primero necesitamos crear tu catálogo.'); return; }
+  }
   const url=getCatalogPublicUrl(catalogSlug);
-  if(navigator.share){ try{ await navigator.share({title:accountBusinessName||'Mi catálogo Powertech',text:'Te comparto mi catálogo Powertech',url}); }catch(e){ if(e?.name!=='AbortError') showToast('No pudimos abrir el menú de compartir.'); } }
-  else copyCatalogLink();
+  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent||'');
+  // En escritorio evitamos navigator.share: algunos navegadores muestran un panel
+  // nativo vacío o casi transparente. En móvil sí aprovechamos el menú del sistema.
+  if(isMobile && typeof navigator.share==='function'){
+    try{
+      await navigator.share({title:accountBusinessName||'Mi catálogo Powertech',text:'Te comparto mi catálogo Powertech',url});
+      return;
+    }catch(e){
+      if(e?.name==='AbortError') return;
+    }
+  }
+  try{
+    if(navigator.clipboard?.writeText){
+      await navigator.clipboard.writeText(url);
+      showToast('Link del catálogo copiado. Ya podés pegarlo en WhatsApp o redes.');
+    }else{
+      window.prompt('Copiá este link:',url);
+    }
+  }catch(e){
+    window.prompt('Copiá este link:',url);
+  }
 }
 async function downloadCatalogPDF(){
   if(!catalogSlug){ await activatePersonalCatalog(true); }
