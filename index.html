@@ -3410,7 +3410,7 @@ function closeCheckoutModal(){const m=document.getElementById('checkoutModal');i
 async function sendOrder(){return openCheckoutModal();}
 async function submitCheckoutOrder(){
  const total=cartTotal();
- if(total<MIN_PURCHASE){showToast(`El pedido mínimo es \${money(MIN_PURCHASE)}.`);return;}
+ if(total<MIN_PURCHASE){showToast(`El pedido mínimo es ${money(MIN_PURCHASE)}.`);return;}
  if(!document.getElementById('checkoutTerms')?.checked){showToast('Aceptá los términos y condiciones para continuar.');return;}
 
  const name=document.getElementById('checkoutName')?.value.trim();
@@ -3445,7 +3445,7 @@ async function submitCheckoutOrder(){
    if(p){const unit=displayPrice(p.price,p);if(unit!==null&&unit!==undefined)items.push({item_type:'product',item_ref:String(p.id),product_id:p.id,name:p.name,quantity:Number(qty),unit_cost:p.price??'',unit_price:unit,subtotal:unit*Number(qty)});}
  });
 
- const itemLines=items.map(item=>`• \${item.name} x\${item.quantity} — \${money(item.unit_price)} c/u — subtotal \${money(item.subtotal)}`).join('\\n');
+ const itemLines=items.map(item=>`• ${item.name} x${item.quantity} — ${money(item.unit_price)} c/u — subtotal ${money(item.subtotal)}`).join('\\n');
  let orderNumber='';
  try{
    if(viewingAsPublicCatalog){
@@ -3456,15 +3456,15 @@ async function submitCheckoutOrder(){
  }catch(e){console.error('Registro del pedido en Supabase:',e);}
 
  const target=publicCatalogPhone||WHATSAPP_NUMBER;
- const orderTitle=orderNumber?`Pedido #\${orderNumber}`:'Pedido desde catálogo';
+ const orderTitle=orderNumber?`Pedido #${orderNumber}`:'Pedido desde catálogo';
  const message=[
-   'Hola Powertech 👋','',`*\${orderTitle}*`,'','*DETALLE DEL PEDIDO*',itemLines||'• Sin productos','',`*TOTAL: \${money(total+shippingCost)}*`,'','*DATOS DEL CLIENTE*',`Nombre: \${name}`,`WhatsApp: \${phone}`,`Dirección: \${address}`,`Barrio: \${neighborhood}`,`Localidad: \${city}`,`Provincia: \${province}`,`Referencia: \${reference}`,`Observaciones: \${observations}`,'','*ENTREGA Y PAGO*',`Envío: \${shippingLabel}`,`Pago: \${paymentLabel}`,'','Quedo a la espera de la confirmación. Gracias.'
+   'Hola Powertech 👋','',`*${orderTitle}*`,'','*DETALLE DEL PEDIDO*',itemLines||'• Sin productos','',`*TOTAL: ${money(total+shippingCost)}*`,'','*DATOS DEL CLIENTE*',`Nombre: ${name}`,`WhatsApp: ${phone}`,`Dirección: ${address}`,`Barrio: ${neighborhood}`,`Localidad: ${city}`,`Provincia: ${province}`,`Referencia: ${reference}`,`Observaciones: ${observations}`,'','*ENTREGA Y PAGO*',`Envío: ${shippingLabel}`,`Pago: ${paymentLabel}`,'','Quedo a la espera de la confirmación. Gracias.'
  ].join('\\n');
 
- const url=`https://wa.me/\${target}?text=\${encodeURIComponent(message)}`;
+ const url=`https://wa.me/${target}?text=${encodeURIComponent(message)}`;
  const popup=window.open(url,'_blank','noopener,noreferrer');
  clearPowertechCart();closeCheckoutModal();closeCart();updateCartUI();
- showToast(popup?(orderNumber?`Pedido #\${orderNumber} enviado por WhatsApp.`:'Pedido enviado por WhatsApp.'):'Pedido preparado. Si WhatsApp no se abrió, usá el botón de WhatsApp para enviarlo.');
+ showToast(popup?(orderNumber?`Pedido #${orderNumber} enviado por WhatsApp.`:'Pedido enviado por WhatsApp.'):'Pedido preparado. Si WhatsApp no se abrió, usá el botón de WhatsApp para enviarlo.');
 }
 async function getPublicCatalogId(){const slug=publicCatalogSlug;const {data}=await window.powertechSupabase.from('catalogs').select('id').eq('slug',slug).eq('active',true).maybeSingle();if(!data?.id)throw new Error('CATALOG_NOT_FOUND');return data.id;}
 async function loadPowertechAccountData(){
