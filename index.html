@@ -1828,7 +1828,6 @@ const products = [
 const MIN_PURCHASE = 50000;
 const WHATSAPP_NUMBER = "5491168878292";
 
-let cart = readPowertechCart();
 let activeCategory = null;
 let currentModalProduct = null;
 let catalogMode = localStorage.getItem('powertech_catalog_mode') || 'cliente';
@@ -1851,6 +1850,7 @@ let catalogSlug = localStorage.getItem('powertech_catalog_slug') || '';
 let accountBusinessName = localStorage.getItem('powertech_business_name') || '';
 
 if(!Number.isFinite(resellerMarkup) || resellerMarkup < 0) resellerMarkup = 30;
+let cart = readPowertechCart();
 
 /*
  * SEGURIDAD FUTURA: en un catálogo público no conviene enviar el precio mayorista
