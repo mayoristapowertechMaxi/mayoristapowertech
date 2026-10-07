@@ -522,7 +522,9 @@
 
       function productImage(product) {
         const image = product.images && product.images[0] ? product.images[0] : 'placeholder.jpg';
-        return image.includes('http') ? image : `images/${image}`;
+        // Las imágenes del catálogo están en la raíz del repositorio.
+        // Mantener JPG/PNG originales; no convertir a WebP ni anteponer "images/".
+        return image.includes('http') ? image : image;
       }
 
       function setCatalogMode(mode) {
@@ -531,6 +533,7 @@
         updateCatalogModeToggle();
         renderProducts();
         updateCartUI();
+        if (typeof updateSocialMetadata === 'function') updateSocialMetadata();
       }
 
       function updateCatalogModeToggle() {
@@ -764,6 +767,7 @@
         const payment = document.getElementById('checkoutPayment')?.value || 'consultar';
         const neighborhood = document.getElementById('checkoutNeighborhood')?.value.trim() || 'Sin barrio';
         const city = document.getElementById('checkoutCity')?.value.trim() || 'Sin ciudad';
+        const observations = document.getElementById('checkoutObservations')?.value.trim() || 'Sin observaciones';
 
         const message = [
           'Hola Powertech 👋',
@@ -773,6 +777,7 @@
           'Dirección: ' + address,
           'Barrio: ' + neighborhood,
           'Ciudad: ' + city,
+          'Observaciones: ' + observations,
           'Envío: ' + shipping,
           'Pago: ' + payment,
           '',
@@ -861,7 +866,9 @@
             const product = products.find(item => item.id === Number(shareTarget.dataset.shareId));
             if (product) {
               const url = getProductShareUrl(product);
-              const text = `${product.name} — ${product.price === null || product.price === undefined ? 'Consultar' : money(displayPrice(product.price))}\n${url}`;
+              const priceText = product.price === null || product.price === undefined ? 'Consultar' : money(displayPrice(product.price));
+              const descriptionText = product.desc ? `\n${product.desc}` : '';
+              const text = `${product.name}${descriptionText} — ${priceText}\n${url}`;
               window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
             }
             return;
