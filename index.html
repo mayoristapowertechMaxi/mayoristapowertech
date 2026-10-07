@@ -3331,6 +3331,9 @@ function renderCartItems(){
         <p class="text-xs gold-text font-semibold mt-0.5">
           ${money(displayPrice(p.price,p))} c/u
         </p>
+        <p class="text-xs text-gray-500 mt-0.5">
+          Subtotal: ${money(displayPrice(p.price,p) * qty)}
+        </p>
 
       </div>
 
@@ -3406,22 +3409,62 @@ function openCheckoutModal(){
 function closeCheckoutModal(){const m=document.getElementById('checkoutModal');if(m){m.classList.add('hidden');m.classList.remove('flex');}syncBodyScrollLock();}
 async function sendOrder(){return openCheckoutModal();}
 async function submitCheckoutOrder(){
- const total=cartTotal();if(total<MIN_PURCHASE){showToast(`El pedido mínimo es ${money(MIN_PURCHASE)}.`);return;}
+ const total=cartTotal();
+ if(total<MIN_PURCHASE){showToast(`El pedido mínimo es \${money(MIN_PURCHASE)}.`);return;}
  if(!document.getElementById('checkoutTerms')?.checked){showToast('Aceptá los términos y condiciones para continuar.');return;}
- const name=document.getElementById('checkoutName')?.value.trim();if(!name){showToast('Ingresá tu nombre y apellido.');return;}
- const phone=document.getElementById('checkoutPhone')?.value.trim();const address=document.getElementById('checkoutAddress')?.value.trim();if(!address){showToast('Ingresá la dirección de entrega.');return;}
- const shipping=document.getElementById('checkoutShipping')?.value||'other';let shippingCost=0;let shippingLabel='Retiro';if(shipping==='caba')shippingLabel=total>=200000?'Motomensajería CABA · GRATIS':'Motomensajería CABA · consultar';else if(shipping==='zona_sur')shippingLabel=total>=200000?'Motomensajería Zona Sur · GRATIS':'Motomensajería Zona Sur · consultar';else if(shipping==='other')shippingLabel='Otra zona · consultar';
- const items=[];Object.entries(cart).forEach(([id,qty])=>{if(String(id).startsWith('combo:')){const c=combos.find(x=>x.id===Number(String(id).split(':')[1]));if(c)items.push({item_type:'combo',item_ref:String(c.id),product_id:null,name:c.name,quantity:qty,unit_cost:'',unit_price:getComboEffectivePrice(c),subtotal:getComboEffectivePrice(c)*qty});return;}const p=products.find(x=>x.id===Number(id));if(p)items.push({item_type:'product',item_ref:String(p.id),product_id:p.id,name:p.name,quantity:qty,unit_cost:p.price??'',unit_price:displayPrice(p.price,p)??0,subtotal:(displayPrice(p.price,p)??0)*qty});});
+
+ const name=document.getElementById('checkoutName')?.value.trim();
+ const phone=document.getElementById('checkoutPhone')?.value.trim();
+ const address=document.getElementById('checkoutAddress')?.value.trim();
+ if(!name){showToast('Ingresá tu nombre y apellido.');return;}
+ if(!phone){showToast('Ingresá tu WhatsApp o teléfono.');return;}
+ if(!address){showToast('Ingresá la dirección de entrega.');return;}
+
+ const neighborhood=document.getElementById('checkoutNeighborhood')?.value.trim()||'Sin indicar';
+ const city=document.getElementById('checkoutCity')?.value.trim()||'Sin indicar';
+ const province=document.getElementById('checkoutProvince')?.value.trim()||'Sin indicar';
+ const reference=document.getElementById('checkoutReference')?.value.trim()||'Sin indicar';
+ const observations=document.getElementById('checkoutObservations')?.value.trim()||'Sin observaciones';
+ const shipping=document.getElementById('checkoutShipping')?.value||'other';
+ const payment=document.getElementById('checkoutPayment')?.value||'consultar';
+
+ const shippingLabels={caba:'Motomensajería CABA',zona_sur:'Motomensajería Zona Sur',other:'Otra zona · consultar',pickup:'Retiro en Powertech'};
+ const paymentLabels={consultar:'A coordinar por WhatsApp',efectivo:'Efectivo',transferencia:'Transferencia',tarjeta:'Tarjeta',otro:'Otro medio de pago'};
+ const shippingLabel=shippingLabels[shipping]||shipping;
+ const paymentLabel=paymentLabels[payment]||payment;
+ const shippingCost=0;
+
+ const items=[];
+ Object.entries(cart).forEach(([id,qty])=>{
+   if(String(id).startsWith('combo:')){
+     const c=combos.find(x=>x.id===Number(String(id).split(':')[1]));
+     if(c){const unit=getComboEffectivePrice(c);items.push({item_type:'combo',item_ref:String(c.id),product_id:null,name:c.name,quantity:Number(qty),unit_cost:'',unit_price:unit,subtotal:unit*Number(qty)});}
+     return;
+   }
+   const p=products.find(x=>x.id===Number(id));
+   if(p){const unit=displayPrice(p.price,p);if(unit!==null&&unit!==undefined)items.push({item_type:'product',item_ref:String(p.id),product_id:p.id,name:p.name,quantity:Number(qty),unit_cost:p.price??'',unit_price:unit,subtotal:unit*Number(qty)});}
+ });
+
+ const itemLines=items.map(item=>`• \${item.name} x\${item.quantity} — \${money(item.unit_price)} c/u — subtotal \${money(item.subtotal)}`).join('\\n');
+ let orderNumber='';
  try{
-  if(!viewingAsPublicCatalog){showToast('Este formulario es para compras desde un catálogo público.');return;}
-  const {data,error}=await window.powertechSupabase.rpc('create_public_order',{p_catalog_id:await getPublicCatalogId(),p_customer_name:name,p_customer_phone:phone,p_address:address,p_neighborhood:document.getElementById('checkoutNeighborhood')?.value.trim(),p_city:document.getElementById('checkoutCity')?.value.trim(),p_province:document.getElementById('checkoutProvince')?.value.trim(),p_reference:document.getElementById('checkoutReference')?.value.trim(),p_shipping_type:shipping,p_shipping_cost:shippingCost,p_shipping_label:shippingLabel,p_payment_method:document.getElementById('checkoutPayment')?.value||'consultar',p_subtotal:total,p_total:total+shippingCost,p_items:items});if(error)throw error;
-  const orderNumber=data?.order_number||'PT';const target=publicCatalogPhone||WHATSAPP_NUMBER;const msg=`Hola! 👋\n\nQuiero confirmar el pedido *#${orderNumber}*.\n\nTotal: *${money(total+shippingCost)}*\nEnvío: ${shippingLabel}
-\nCliente: ${name}
-WhatsApp: ${phone}
-Dirección: ${address}
-\nGracias.`;
-  clearPowertechCart();closeCheckoutModal();updateCartUI();window.open(`https://wa.me/${target}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');showToast('¡Pedido enviado! Powertech lo recibió y se coordina por WhatsApp.');
- }catch(e){console.error('Checkout:',e);showToast('No pudimos registrar el pedido. Intentá nuevamente.');}
+   if(viewingAsPublicCatalog){
+     const result=await window.powertechSupabase.rpc('create_public_order',{p_catalog_id:await getPublicCatalogId(),p_customer_name:name,p_customer_phone:phone,p_address:address,p_neighborhood:neighborhood,p_city:city,p_province:province,p_reference:reference,p_shipping_type:shipping,p_shipping_cost:shippingCost,p_shipping_label:shippingLabel,p_payment_method:payment,p_subtotal:total,p_total:total+shippingCost,p_items:items});
+     if(result.error) throw result.error;
+     orderNumber=result.data?.order_number||'';
+   }
+ }catch(e){console.error('Registro del pedido en Supabase:',e);}
+
+ const target=publicCatalogPhone||WHATSAPP_NUMBER;
+ const orderTitle=orderNumber?`Pedido #\${orderNumber}`:'Pedido desde catálogo';
+ const message=[
+   'Hola Powertech 👋','',`*\${orderTitle}*`,'','*DETALLE DEL PEDIDO*',itemLines||'• Sin productos','',`*TOTAL: \${money(total+shippingCost)}*`,'','*DATOS DEL CLIENTE*',`Nombre: \${name}`,`WhatsApp: \${phone}`,`Dirección: \${address}`,`Barrio: \${neighborhood}`,`Localidad: \${city}`,`Provincia: \${province}`,`Referencia: \${reference}`,`Observaciones: \${observations}`,'','*ENTREGA Y PAGO*',`Envío: \${shippingLabel}`,`Pago: \${paymentLabel}`,'','Quedo a la espera de la confirmación. Gracias.'
+ ].join('\\n');
+
+ const url=`https://wa.me/\${target}?text=\${encodeURIComponent(message)}`;
+ const popup=window.open(url,'_blank','noopener,noreferrer');
+ clearPowertechCart();closeCheckoutModal();closeCart();updateCartUI();
+ showToast(popup?(orderNumber?`Pedido #\${orderNumber} enviado por WhatsApp.`:'Pedido enviado por WhatsApp.'):'Pedido preparado. Si WhatsApp no se abrió, usá el botón de WhatsApp para enviarlo.');
 }
 async function getPublicCatalogId(){const slug=publicCatalogSlug;const {data}=await window.powertechSupabase.from('catalogs').select('id').eq('slug',slug).eq('active',true).maybeSingle();if(!data?.id)throw new Error('CATALOG_NOT_FOUND');return data.id;}
 async function loadPowertechAccountData(){
@@ -3705,7 +3748,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 });
 </script>
-<div aria-label="Confirmar pedido" aria-modal="true" class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal" role="dialog"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar pedido</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"/><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Pago a coordinar.</b><br/>Las condiciones particulares se confirman por WhatsApp.<br/>🚚 El costo de envío se informa según la zona y cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Enviar pedido</button></div></div></div><div class="fixed inset-0 z-[110] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="manualOrderModal">
+<div aria-label="Confirmar pedido" aria-modal="true" class="fixed inset-0 z-[105] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="checkoutModal" role="dialog"><div class="w-full max-w-xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5"><div class="flex justify-between"><div><div class="text-xs gold-text font-bold uppercase">Confirmar pedido</div><h2 class="text-xl font-bold text-white">Datos de entrega</h2></div><button class="text-2xl text-gray-400" onclick="closeCheckoutModal()" type="button">×</button></div><div class="grid gap-3 mt-4"><input aria-label="Nombre y apellido" class="pt-account-input" id="checkoutName" placeholder="Nombre y apellido"/><input aria-label="WhatsApp / teléfono" class="pt-account-input" id="checkoutPhone" placeholder="WhatsApp / teléfono"/><input aria-label="Dirección" class="pt-account-input" id="checkoutAddress" placeholder="Dirección"/><div class="grid grid-cols-2 gap-2"><input aria-label="Barrio" class="pt-account-input" id="checkoutNeighborhood" placeholder="Barrio"/><input aria-label="Localidad / ciudad" class="pt-account-input" id="checkoutCity" placeholder="Localidad / ciudad"/></div><input aria-label="Provincia" class="pt-account-input" id="checkoutProvince" placeholder="Provincia"/><input aria-label="Referencia" class="pt-account-input" id="checkoutReference" placeholder="Referencia"/><textarea aria-label="Observaciones" class="pt-account-input" id="checkoutObservations" placeholder="Observaciones del pedido (opcional)" rows="3"></textarea><select aria-label="checkoutShipping" class="pt-account-input" id="checkoutShipping"><option value="caba">Motomensajería CABA</option><option value="zona_sur">Motomensajería Zona Sur</option><option value="other">Otra zona · consultar</option><option value="pickup">Retiro</option></select><select aria-label="checkoutPayment" class="pt-account-input" id="checkoutPayment"><option value="consultar">Todos los medios de pago · coordinar</option><option value="efectivo">Efectivo</option><option value="transferencia">Transferencia</option><option value="tarjeta">Tarjeta</option><option value="otro">Otro medio de pago</option></select><div class="rounded-xl border border-neutral-800 p-3 text-sm text-gray-300">💳 <b class="text-white">Pago a coordinar.</b><br/>Las condiciones particulares se confirman por WhatsApp.<br/>🚚 El costo de envío se informa según la zona y cobertura.</div><label class="flex gap-2 items-start text-xs text-gray-400"><input class="mt-0.5" id="checkoutTerms" type="checkbox"/>Acepto los términos y condiciones de compra.</label><button class="pt-v7-btn gold" onclick="submitCheckoutOrder()" type="button">Enviar pedido</button></div></div></div><div class="fixed inset-0 z-[110] hidden items-end sm:items-center justify-center bg-black/80 p-0 sm:p-5" id="manualOrderModal">
 <div class="w-full max-w-2xl max-h-[92vh] overflow-auto bg-[#070b0f] border border-neutral-800 rounded-t-2xl sm:rounded-2xl p-5">
 <div class="flex justify-between"><h2 class="text-xl font-bold text-white">Crear pedido para cliente</h2><button class="text-2xl text-gray-400" onclick="closeManualOrderModal()" type="button">×</button></div>
 <div class="grid gap-3 mt-4">
